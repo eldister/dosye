@@ -34,9 +34,12 @@ all:
     # Enable the database manager
     use_database:           true
 
-    # Enable sfDoctrineGuardPlugin modules
-    enabled_modules:         [default, sfGuardGroup, sfGuardUser, sfGuardPermission, sfGuardAuth]
+    enabled_modules:         [default, sfGuardGroup, sfGuardUser, sfGuardPermission, sfGuardAuth, commentAdmin, commentReportAdmin]
+    
     login_module:           sfGuardAuth
     login_action:           signin
     secure_module:          sfGuardAuth
     secure_action:          secure
+    
+    default_culture:        es
+    i18n:                   true

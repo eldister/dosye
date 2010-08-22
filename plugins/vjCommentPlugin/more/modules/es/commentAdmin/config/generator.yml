@@ -1,0 +1,40 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Comment
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          commentAdmin
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        is_delete:          { label: Eliminado }
+        record_model:       { label: Modelo }
+        record_id:          { label: Registro }
+        created_at:         { label: Creado el }
+        author_name:        { label: Autor }
+        author_email:       { label: Email }
+        author_website:     { label: Sitio/Blog }
+        body:               { label: Mensaje }
+        _body:              { label: Mensaje }
+        edition_reason:     { label: Razón }
+      list:
+        title:              Lista de comentarios
+      filter:
+        display:            [id, is_delete, record_model, author_name, author_email, author_website, body, created_at]
+      form:
+        display:
+          Author:           [author_name, author_email, author_website]
+          Body:             [body]
+          Edition:          [edition_reason]
+        class:              commentAdminForm
+      edit:
+        title:              Editar comentario
+      new:
+        title:              Responder comentario
