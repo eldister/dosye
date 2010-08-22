@@ -10,5 +10,6 @@ class ProjectConfiguration extends sfProjectConfiguration
     $this->enablePlugins('sfDoctrinePlugin');
     $this->enablePlugins('vjCommentPlugin');
     $this->enablePlugins('sfDoctrineGuardPlugin');
+    $this->enablePlugins('sfDoctrineGuardLoginHistoryPlugin');
   }
 }
