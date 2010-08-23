@@ -16,21 +16,21 @@
  * @property string $job_phone
  * @property string $other_phone
  * @property string $email
- * @property integer $nationality
+ * @property integer $nationality_id
  * @property string $identification
  * @property enum $gender
- * @property integer $marital_status
+ * @property integer $marital_status_id
  * @property boolean $has_a_job
  * @property string $employment
  * @property boolean $paid_job
  * @property boolean $temporal_job
- * @property int $address_area1
- * @property int $address_area2
- * @property int $address_area3
+ * @property integer $address_area1
+ * @property integer $address_area2
+ * @property integer $address_area3
  * @property string $address_neighborhood
  * @property string $address_directions
  * @property string $church
- * @property int $educational_level
+ * @property integer $educational_level
  * @property string $description
  * @property date $due_date
  * @property Image $Image
@@ -47,21 +47,21 @@
  * @method string              getJobPhone()             Returns the current record's "job_phone" value
  * @method string              getOtherPhone()           Returns the current record's "other_phone" value
  * @method string              getEmail()                Returns the current record's "email" value
- * @method integer             getNationality()          Returns the current record's "nationality" value
+ * @method integer             getNationalityId()        Returns the current record's "nationality_id" value
  * @method string              getIdentification()       Returns the current record's "identification" value
  * @method enum                getGender()               Returns the current record's "gender" value
- * @method integer             getMaritalStatus()        Returns the current record's "marital_status" value
+ * @method integer             getMaritalStatusId()      Returns the current record's "marital_status_id" value
  * @method boolean             getHasAJob()              Returns the current record's "has_a_job" value
  * @method string              getEmployment()           Returns the current record's "employment" value
  * @method boolean             getPaidJob()              Returns the current record's "paid_job" value
  * @method boolean             getTemporalJob()          Returns the current record's "temporal_job" value
- * @method int                 getAddressArea1()         Returns the current record's "address_area1" value
- * @method int                 getAddressArea2()         Returns the current record's "address_area2" value
- * @method int                 getAddressArea3()         Returns the current record's "address_area3" value
+ * @method integer             getAddressArea1()         Returns the current record's "address_area1" value
+ * @method integer             getAddressArea2()         Returns the current record's "address_area2" value
+ * @method integer             getAddressArea3()         Returns the current record's "address_area3" value
  * @method string              getAddressNeighborhood()  Returns the current record's "address_neighborhood" value
  * @method string              getAddressDirections()    Returns the current record's "address_directions" value
  * @method string              getChurch()               Returns the current record's "church" value
- * @method int                 getEducationalLevel()     Returns the current record's "educational_level" value
+ * @method integer             getEducationalLevel()     Returns the current record's "educational_level" value
  * @method string              getDescription()          Returns the current record's "description" value
  * @method date                getDueDate()              Returns the current record's "due_date" value
  * @method Image               getImage()                Returns the current record's "Image" value
@@ -77,10 +77,10 @@
  * @method Member              setJobPhone()             Sets the current record's "job_phone" value
  * @method Member              setOtherPhone()           Sets the current record's "other_phone" value
  * @method Member              setEmail()                Sets the current record's "email" value
- * @method Member              setNationality()          Sets the current record's "nationality" value
+ * @method Member              setNationalityId()        Sets the current record's "nationality_id" value
  * @method Member              setIdentification()       Sets the current record's "identification" value
  * @method Member              setGender()               Sets the current record's "gender" value
- * @method Member              setMaritalStatus()        Sets the current record's "marital_status" value
+ * @method Member              setMaritalStatusId()      Sets the current record's "marital_status_id" value
  * @method Member              setHasAJob()              Sets the current record's "has_a_job" value
  * @method Member              setEmployment()           Sets the current record's "employment" value
  * @method Member              setPaidJob()              Sets the current record's "paid_job" value
@@ -152,7 +152,7 @@ abstract class BaseMember extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
-        $this->hasColumn('nationality', 'integer', null, array(
+        $this->hasColumn('nationality_id', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('identification', 'string', 50, array(
@@ -168,7 +168,7 @@ abstract class BaseMember extends sfDoctrineRecord
               1 => 'F',
              ),
              ));
-        $this->hasColumn('marital_status', 'integer', null, array(
+        $this->hasColumn('marital_status_id', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('has_a_job', 'boolean', null, array(
@@ -184,14 +184,14 @@ abstract class BaseMember extends sfDoctrineRecord
         $this->hasColumn('temporal_job', 'boolean', null, array(
              'type' => 'boolean',
              ));
-        $this->hasColumn('address_area1', 'int', null, array(
-             'type' => 'int',
+        $this->hasColumn('address_area1', 'integer', null, array(
+             'type' => 'integer',
              ));
-        $this->hasColumn('address_area2', 'int', null, array(
-             'type' => 'int',
+        $this->hasColumn('address_area2', 'integer', null, array(
+             'type' => 'integer',
              ));
-        $this->hasColumn('address_area3', 'int', null, array(
-             'type' => 'int',
+        $this->hasColumn('address_area3', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('address_neighborhood', 'string', 100, array(
              'type' => 'string',
@@ -205,8 +205,8 @@ abstract class BaseMember extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
-        $this->hasColumn('educational_level', 'int', null, array(
-             'type' => 'int',
+        $this->hasColumn('educational_level', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('description', 'string', 255, array(
              'type' => 'string',
