@@ -3,7 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <title>Módulo Administrativo de Dosye</title>
-    <link rel="shortcut icon" href="/favicon.ico" />
     <?php use_stylesheet('admin.css') ?>
     <?php include_javascripts() ?>
     <?php include_stylesheets() ?>
@@ -13,7 +12,7 @@
       <div id="header">
         <h1>
           <a href="<?php echo url_for('@homepage') ?>">
-            <img src="/images/jobeet.gif" alt="Jobeet Job Board" />
+            <img src="/images/logo.gif" alt="Dosye" />
           </a>
         </h1>
       </div>
@@ -26,7 +25,15 @@
           <li>
             <?php echo link_to('Grupos', 'guard/groups') ?>
           </li>
-        </ul>
+            <li>
+            <?php echo link_to('Comentarios', '@commentAdmin') ?>
+          </li>
+            <li>
+            <?php echo link_to('Reportes sobre Comentarios', '@commentReportAdmin') ?>
+          </li>
+        <li>
+            <?php echo link_to('Salir', '@sf_guard_signout') ?>
+          </li></ul>
       </div>
 
       <div id="content">
@@ -34,7 +41,7 @@
       </div>
 
       <div id="footer">
-          Dosye &copy; 2010 Technologicart
+          Dosye &copy; 2010
       </div>
     </div>
   </body>
