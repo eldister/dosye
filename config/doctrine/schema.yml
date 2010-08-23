@@ -1,0 +1,73 @@
+File:
+  actAs: { Timestampable: ~, fzBlameable: ~ }
+  columns:
+    original_filename: { type: string(255), notnull: true }
+    internal_filename: { type: string(255), notnull: true }
+    description:       { type: string(255), notnull: true }
+    owned_by:          { type: string(20),  notnull: true }
+  relations:
+    Member:
+      class:    Member
+      local:    owned_by
+      foreign:  id
+      onDelete: CASCADE
+
+Image:
+  inheritance:
+    extends:  File
+    type:     column_aggregation
+    keyField: type
+    keyValue: Image
+
+Member:
+  actAs: { Timestampable: ~, fzBlameable: ~ }
+  columns:
+    id:       { type: string(20), notnull: true, primary: true }
+    name:     { type: string(100), notnull: true }
+    image_id: integer
+  relations:
+    Image:
+      class:   Image
+      local:   image_id
+      foreign: id
+
+Person:
+  inheritance:
+    extends:  Member
+    type:     column_aggregation
+    keyField: type
+    keyValue: User
+  columns:
+    last_name:            { type: string(100), notnull: true }
+    date_of_birth:        date
+    cell_phone:           string(50)
+    home_phone:           string(50)
+    job_phone:            string(50)
+    other_phone:          string(50)
+    email:                string(100)
+    nationality:          integer
+    identification:       string(50)
+    gender:               { type: enum, length: 1, values: ['M', 'F'] }
+    marital_status:       integer
+    has_a_job:            boolean
+    employment:           string(50)
+    paid_job:             boolean
+    temporal_job:         boolean
+    address_area1:        int
+    address_area2:        int
+    address_area3:        int
+    address_neighborhood: string(100)
+    address_directions:   string(100)
+    church:               string(100)
+    educational_level:    int
+    
+Group:
+  inheritance:
+    extends:  Member
+    type:     column_aggregation
+    keyField: type
+    keyValue: Group
+  columns:
+    description: { type: string(255), notnull: true }
+    due_date:    { type: date, notnull: true }
+    
