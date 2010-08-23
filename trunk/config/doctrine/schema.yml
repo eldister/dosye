@@ -45,22 +45,47 @@ Person:
     job_phone:            string(50)
     other_phone:          string(50)
     email:                string(100)
-    nationality:          integer
+    nationality_id:       integer
     identification:       string(50)
     gender:               { type: enum, length: 1, values: ['M', 'F'] }
-    marital_status:       integer
+    marital_status_id:    integer
     has_a_job:            boolean
     employment:           string(50)
     paid_job:             boolean
     temporal_job:         boolean
-    address_area1:        int
-    address_area2:        int
-    address_area3:        int
+    address_area1:        integer
+    address_area2:        integer
+    address_area3:        integer
     address_neighborhood: string(100)
     address_directions:   string(100)
     church:               string(100)
-    educational_level:    int
-    
+    educational_level:    integer
+  relations:
+    Nationality:
+      class:   Nationality
+      local:   nationality_id
+      foreign: id
+    MaritalStatus:
+      class:   MaritalStatus
+      local:   marital_status_id
+      foreign: id
+    AreaLevel1:
+      class:   AreaLevel1
+      local:   address_area1
+      foreign: id
+    AreaLevel2:
+      class:   AreaLevel2
+      local:   address_area2
+      foreign: id
+    AreaLevel3:
+      class:   AreaLevel3
+      local:   address_area3
+      foreign: id
+    EducationalLevel:
+      class:   EducationalLevel
+      local:   educational_level
+      foreign: id
+
 Group:
   inheritance:
     extends:  Member
@@ -71,3 +96,38 @@ Group:
     description: { type: string(255), notnull: true }
     due_date:    { type: date, notnull: true }
     
+Nationality:
+  columns:
+    description: string
+
+MaritalStatus:
+  columns:
+    description: string
+
+AreaLevel1:
+  columns:
+    description: string
+
+AreaLevel2:
+  columns:
+    area1_id:    integer
+    description: string
+  relations:
+    AreaLevel1:
+      class:   AreaLevel1
+      local:   area1_id
+      foreign: id
+
+AreaLevel3:
+  columns:
+    area2_id:    integer
+    description: string
+  relations:
+    AreaLevel2:
+      class:   AreaLevel2
+      local:   area2_id
+      foreign: id
+ 
+EducationalLevel:
+  columns:
+    description: string
