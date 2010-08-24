@@ -1,0 +1,27 @@
+DosyeGroup:
+  everyone:
+    group_name: Todos
+    photo_image_id: ~
+    avatar_image_id: ~
+    description: Todas las personas en el PEA
+    due_date: ~
+  students:
+    group_name: Estudiantes
+    photo_image_id: ~
+    avatar_image_id: ~
+    description: Estudiantes del PEA
+    due_date: ~
+  volunteers:
+    group_name: Voluntarios
+    photo_image_id: ~
+    avatar_image_id: ~
+    description: Voluntarios del PEA
+    due_date: ~
+
+DosyeSubGroup:
+  everyone-students:
+    Group: everyone
+    SubGroup: students
+  everyone-volunteers:
+    Group: everyone
+    SubGroup: volunteers
