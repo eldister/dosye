@@ -1,44 +1,28 @@
-File:
+DosyeFile:
   actAs: { Timestampable: ~, fzBlameable: ~ }
   columns:
     original_filename: { type: string(255), notnull: true }
     internal_filename: { type: string(255), notnull: true }
     description:       { type: string(255), notnull: true }
-    owned_by:          { type: string(20),  notnull: true }
-  relations:
-    Member:
-      class:    Member
-      local:    owned_by
-      foreign:  id
-      onDelete: CASCADE
 
-Image:
+DosyeImage:
   inheritance:
-    extends:  File
+    extends:  DosyeFile
     type:     column_aggregation
     keyField: type
     keyValue: Image
+  columns:
+    image_width: integer
+    image_height: integer
 
-Member:
+DosyePerson:
   actAs: { Timestampable: ~, fzBlameable: ~ }
   columns:
-    id:       { type: string(20), notnull: true, primary: true }
-    name:     { type: string(100), notnull: true }
-    image_id: integer
-  relations:
-    Image:
-      class:   Image
-      local:   image_id
-      foreign: id
-
-Person:
-  inheritance:
-    extends:  Member
-    type:     column_aggregation
-    keyField: type
-    keyValue: User
-  columns:
+    internal_id:          { type: string(20), notnull: true, unique: true }
+    first_name:           { type: string(100), notnull: true }
     last_name:            { type: string(100), notnull: true }
+    photo_image_id:       integer
+    avatar_image_id:      integer
     date_of_birth:        date
     cell_phone:           string(50)
     home_phone:           string(50)
@@ -62,72 +46,166 @@ Person:
     educational_level:    integer
   relations:
     Nationality:
-      class:   Nationality
+      class:   DosyeNationality
       local:   nationality_id
       foreign: id
     MaritalStatus:
-      class:   MaritalStatus
+      class:   DosyeMaritalStatus
       local:   marital_status_id
       foreign: id
     AreaLevel1:
-      class:   AreaLevel1
+      class:   DosyeAreaLevel1
       local:   address_area1
       foreign: id
     AreaLevel2:
-      class:   AreaLevel2
+      class:   DosyeAreaLevel2
       local:   address_area2
       foreign: id
     AreaLevel3:
-      class:   AreaLevel3
+      class:   DosyeAreaLevel3
       local:   address_area3
       foreign: id
     EducationalLevel:
-      class:   EducationalLevel
+      class:   DosyeEducationalLevel
       local:   educational_level
       foreign: id
+    AvatarImage:
+      class:   DosyeImage
+      local:   avatar_image_id
+      foreign: id
+    PhotoImage:
+      class:   DosyeImage
+      local:   photo_image_id
+      foreign: id
+    Files:
+      foreignAlias: DosyeFiles
+      class: DosyeFile
+      refClass: DosyePersonFile
 
-Group:
-  inheritance:
-    extends:  Member
-    type:     column_aggregation
-    keyField: type
-    keyValue: Group
+DosyeGroup:
+  actAs: { Timestampable: ~, fzBlameable: ~ }
   columns:
-    description: { type: string(255), notnull: true }
-    due_date:    { type: date, notnull: true }
-    
-Nationality:
+    group_name:      { type: string(100), notnull: true }
+    photo_image_id:  integer
+    avatar_image_id: integer
+    description:     { type: string(255), notnull: true }
+    due_date:        date
+  relations:
+    SubGroups:
+      foreignAlias: DosyeGroups
+      class:        DosyeGroup
+      refClass:     DosyeSubGroup
+    Persons:
+      foreignAlias: DosyePersons
+      class:        DosyePerson
+      refClass:     DosyeGroupPerson
+    Files:
+      foreignAlias: DosyeFiles
+      class:        DosyeFile
+      refClass:     DosyeGroupFile
+    AvatarImage:
+      class:        DosyeImage
+      local:        avatar_image_id
+      foreign:      id
+    PhotoImage:
+      class:        DosyeImage
+      local:        photo_image_id
+      foreign:      id
+
+DosyeSubGroup:
+  actAs: { Timestampable: ~, fzBlameable: ~ }
+  columns:
+    group_id:    { type: integer, notnull: true, primary: true }
+    subgroup_id: { type: integer, notnull: true, primary: true }
+  relations:
+    Group:
+      class:   DosyeGroup
+      local:   group_id
+      foreign: id
+    SubGroup:
+      class:   DosyeGroup
+      local:   subgroup_id
+      foreign: id
+
+DosyeGroupPerson:
+  actAs: { Timestampable: ~, fzBlameable: ~ }
+  columns:
+    group_id:  { type: integer, notnull: true, primary: true }
+    person_id: { type: integer, notnull: true, primary: true }
+  relations:
+    Group:
+      class:   DosyeGroup
+      local:   group_id
+      foreign: id
+    Person:
+      class:   DosyePerson
+      local:   person_id
+      foreign: id
+
+DosyePersonFile:
+  actAs: { Timestampable: ~, fzBlameable: ~ }
+  columns:
+    person_id: { type: integer, notnull: true, primary: true }
+    file_id:   { type: integer, notnull: true, primary: true }
+    visible:   { type: boolean, notnull: true, default: true }
+  relations:
+    Person:
+      class:   DosyePerson
+      local:   person_id
+      foreign: id
+    File:
+      class:   DosyeFile
+      local:   file_id
+      foreign: id
+
+DosyeGroupFile:
+  actAs: { Timestampable: ~, fzBlameable: ~ }
+  columns:
+    group_id: { type: integer, notnull: true, primary: true }
+    file_id:  { type: integer, notnull: true, primary: true }
+    visible:  { type: boolean, notnull: true, default: true }
+  relations:
+    Group:
+      class:   DosyeGroup
+      local:   group_id
+      foreign: id
+    File:
+      class:   DosyeFile
+      local:   file_id
+      foreign: id
+
+DosyeNationality:
   columns:
     description: string
 
-MaritalStatus:
+DosyeMaritalStatus:
   columns:
     description: string
 
-AreaLevel1:
+DosyeAreaLevel1:
   columns:
     description: string
 
-AreaLevel2:
+DosyeAreaLevel2:
   columns:
     area1_id:    integer
     description: string
   relations:
     AreaLevel1:
-      class:   AreaLevel1
+      class:   DosyeAreaLevel1
       local:   area1_id
       foreign: id
 
-AreaLevel3:
+DosyeAreaLevel3:
   columns:
     area2_id:    integer
     description: string
   relations:
     AreaLevel2:
-      class:   AreaLevel2
+      class:   DosyeAreaLevel2
       local:   area2_id
       foreign: id
  
-EducationalLevel:
+DosyeEducationalLevel:
   columns:
     description: string

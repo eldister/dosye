@@ -1,9 +1,0 @@
-Nationality:
-  cr: { description: costarricense }
-  ni: { description: nicaragüense }
-  sv: { description: salvadoreño(a) }
-  hn: { description: hondureño(a) }
-  ca: { description: centroamericano(a) }
-  co: { description: colombiano(a) }
-  la: { description: latinoamericano(a) }
-  wd: { description: otra }

@@ -1,0 +1,14 @@
+DosyeEducationalLevel:
+  illiterate: { description: analfabeto(a) }
+  partial_elementary: { description: primaria incompleta }
+  elementary: { description: primaria completa }
+  partial_high: { description: secundaria incompleta (antes de 9º año) }
+  high: { description: 9º año concluido  }
+  partial_baccalaureate: { description: bachillerato incompleto }
+  baccalaureate: { description: bachillerato en educación media }
+  technical: { description: educación técnica }
+  commercial: { description: educación comercial }
+  partial_college: { description: universitaria incompleta }
+  college_pregrade: { description: universitaria (diplomado) }
+  college_grade: { description: universitaria (bachillerato) }
+  college_postgrade: { description: universitaria (post-grado) }
