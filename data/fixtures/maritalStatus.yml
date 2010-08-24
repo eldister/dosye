@@ -1,0 +1,6 @@
+MaritalStatus:
+  single:             { description: soltero(a) }
+  married:            { description: casado(a) }
+  divorced:           { description: divorciado(a) }
+  widowed:            { description: viudo(a) }
+  unmarried_partners: { description: en unión libre }
