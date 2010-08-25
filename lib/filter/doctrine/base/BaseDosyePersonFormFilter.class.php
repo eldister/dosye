@@ -44,7 +44,7 @@ abstract class BaseDosyePersonFormFilter extends BaseFormFilterDoctrine
       'created_by'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'add_empty' => true)),
       'updated_by'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'add_empty' => true)),
       'files_list'           => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyeFile')),
-      'dosye_persons_list'   => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup')),
+      'groups_list'          => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup')),
     ));
 
     $this->setValidators(array(
@@ -79,7 +79,7 @@ abstract class BaseDosyePersonFormFilter extends BaseFormFilterDoctrine
       'created_by'           => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('CreatedBy'), 'column' => 'id')),
       'updated_by'           => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('UpdatedBy'), 'column' => 'id')),
       'files_list'           => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyeFile', 'required' => false)),
-      'dosye_persons_list'   => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup', 'required' => false)),
+      'groups_list'          => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('dosye_person_filters[%s]');
@@ -105,11 +105,11 @@ abstract class BaseDosyePersonFormFilter extends BaseFormFilterDoctrine
 
     $query
       ->leftJoin($query->getRootAlias().'.DosyePersonFile DosyePersonFile')
-      ->andWhereIn('DosyePersonFile.dosye_file_id', $values)
+      ->andWhereIn('DosyePersonFile.person_id', $values)
     ;
   }
 
-  public function addDosyePersonsListColumnQuery(Doctrine_Query $query, $field, $values)
+  public function addGroupsListColumnQuery(Doctrine_Query $query, $field, $values)
   {
     if (!is_array($values))
     {
@@ -123,7 +123,7 @@ abstract class BaseDosyePersonFormFilter extends BaseFormFilterDoctrine
 
     $query
       ->leftJoin($query->getRootAlias().'.DosyeGroupPerson DosyeGroupPerson')
-      ->andWhereIn('DosyeGroupPerson.dosye_group_id', $values)
+      ->andWhereIn('DosyeGroupPerson.person_id', $values)
     ;
   }
 
@@ -167,7 +167,7 @@ abstract class BaseDosyePersonFormFilter extends BaseFormFilterDoctrine
       'created_by'           => 'ForeignKey',
       'updated_by'           => 'ForeignKey',
       'files_list'           => 'ManyKey',
-      'dosye_persons_list'   => 'ManyKey',
+      'groups_list'          => 'ManyKey',
     );
   }
 }

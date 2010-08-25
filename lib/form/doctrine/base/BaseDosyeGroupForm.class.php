@@ -15,35 +15,37 @@ abstract class BaseDosyeGroupForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'id'              => new sfWidgetFormInputHidden(),
-      'group_name'      => new sfWidgetFormInputText(),
-      'photo_image_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('PhotoImage'), 'add_empty' => true)),
-      'avatar_image_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('AvatarImage'), 'add_empty' => true)),
-      'description'     => new sfWidgetFormInputText(),
-      'due_date'        => new sfWidgetFormDate(),
-      'created_at'      => new sfWidgetFormDateTime(),
-      'updated_at'      => new sfWidgetFormDateTime(),
-      'created_by'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'add_empty' => true)),
-      'updated_by'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'add_empty' => true)),
-      'sub_groups_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup')),
-      'persons_list'    => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyePerson')),
-      'files_list'      => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyeFile')),
+      'id'                => new sfWidgetFormInputHidden(),
+      'name'              => new sfWidgetFormInputText(),
+      'photo_image_id'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('PhotoImage'), 'add_empty' => true)),
+      'avatar_image_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('AvatarImage'), 'add_empty' => true)),
+      'description'       => new sfWidgetFormInputText(),
+      'due_date'          => new sfWidgetFormDate(),
+      'created_at'        => new sfWidgetFormDateTime(),
+      'updated_at'        => new sfWidgetFormDateTime(),
+      'created_by'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'add_empty' => true)),
+      'updated_by'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'add_empty' => true)),
+      'sub_groups_list'   => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup')),
+      'super_groups_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup')),
+      'persons_list'      => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyePerson')),
+      'files_list'        => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyeFile')),
     ));
 
     $this->setValidators(array(
-      'id'              => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'group_name'      => new sfValidatorString(array('max_length' => 100)),
-      'photo_image_id'  => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('PhotoImage'), 'required' => false)),
-      'avatar_image_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AvatarImage'), 'required' => false)),
-      'description'     => new sfValidatorString(array('max_length' => 255)),
-      'due_date'        => new sfValidatorDate(array('required' => false)),
-      'created_at'      => new sfValidatorDateTime(),
-      'updated_at'      => new sfValidatorDateTime(),
-      'created_by'      => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'required' => false)),
-      'updated_by'      => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'required' => false)),
-      'sub_groups_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup', 'required' => false)),
-      'persons_list'    => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyePerson', 'required' => false)),
-      'files_list'      => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyeFile', 'required' => false)),
+      'id'                => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'name'              => new sfValidatorString(array('max_length' => 100)),
+      'photo_image_id'    => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('PhotoImage'), 'required' => false)),
+      'avatar_image_id'   => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AvatarImage'), 'required' => false)),
+      'description'       => new sfValidatorString(array('max_length' => 255)),
+      'due_date'          => new sfValidatorDate(array('required' => false)),
+      'created_at'        => new sfValidatorDateTime(),
+      'updated_at'        => new sfValidatorDateTime(),
+      'created_by'        => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'required' => false)),
+      'updated_by'        => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'required' => false)),
+      'sub_groups_list'   => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup', 'required' => false)),
+      'super_groups_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup', 'required' => false)),
+      'persons_list'      => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyePerson', 'required' => false)),
+      'files_list'        => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyeFile', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('dosye_group[%s]');
@@ -69,6 +71,11 @@ abstract class BaseDosyeGroupForm extends BaseFormDoctrine
       $this->setDefault('sub_groups_list', $this->object->SubGroups->getPrimaryKeys());
     }
 
+    if (isset($this->widgetSchema['super_groups_list']))
+    {
+      $this->setDefault('super_groups_list', $this->object->SuperGroups->getPrimaryKeys());
+    }
+
     if (isset($this->widgetSchema['persons_list']))
     {
       $this->setDefault('persons_list', $this->object->Persons->getPrimaryKeys());
@@ -84,6 +91,7 @@ abstract class BaseDosyeGroupForm extends BaseFormDoctrine
   protected function doSave($con = null)
   {
     $this->saveSubGroupsList($con);
+    $this->saveSuperGroupsList($con);
     $this->savePersonsList($con);
     $this->saveFilesList($con);
 
@@ -125,6 +133,44 @@ abstract class BaseDosyeGroupForm extends BaseFormDoctrine
     if (count($link))
     {
       $this->object->link('SubGroups', array_values($link));
+    }
+  }
+
+  public function saveSuperGroupsList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['super_groups_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $existing = $this->object->SuperGroups->getPrimaryKeys();
+    $values = $this->getValue('super_groups_list');
+    if (!is_array($values))
+    {
+      $values = array();
+    }
+
+    $unlink = array_diff($existing, $values);
+    if (count($unlink))
+    {
+      $this->object->unlink('SuperGroups', array_values($unlink));
+    }
+
+    $link = array_diff($values, $existing);
+    if (count($link))
+    {
+      $this->object->link('SuperGroups', array_values($link));
     }
   }
 

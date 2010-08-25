@@ -23,7 +23,9 @@ abstract class BaseDosyeFileFormFilter extends BaseFormFilterDoctrine
       'updated_at'        => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'created_by'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'add_empty' => true)),
       'updated_by'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'add_empty' => true)),
-      'dosye_files_list'  => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyePerson')),
+      'groups_list'       => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup')),
+      'persons_list'      => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyePerson')),
+      'files_list'        => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup')),
     ));
 
     $this->setValidators(array(
@@ -37,7 +39,9 @@ abstract class BaseDosyeFileFormFilter extends BaseFormFilterDoctrine
       'updated_at'        => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'created_by'        => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('CreatedBy'), 'column' => 'id')),
       'updated_by'        => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('UpdatedBy'), 'column' => 'id')),
-      'dosye_files_list'  => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyePerson', 'required' => false)),
+      'groups_list'       => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup', 'required' => false)),
+      'persons_list'      => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyePerson', 'required' => false)),
+      'files_list'        => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('dosye_file_filters[%s]');
@@ -49,7 +53,25 @@ abstract class BaseDosyeFileFormFilter extends BaseFormFilterDoctrine
     parent::setup();
   }
 
-  public function addDosyeFilesListColumnQuery(Doctrine_Query $query, $field, $values)
+  public function addGroupsListColumnQuery(Doctrine_Query $query, $field, $values)
+  {
+    if (!is_array($values))
+    {
+      $values = array($values);
+    }
+
+    if (!count($values))
+    {
+      return;
+    }
+
+    $query
+      ->leftJoin($query->getRootAlias().'.DosyeGroupFile DosyeGroupFile')
+      ->andWhereIn('DosyeGroupFile.file_id', $values)
+    ;
+  }
+
+  public function addPersonsListColumnQuery(Doctrine_Query $query, $field, $values)
   {
     if (!is_array($values))
     {
@@ -63,7 +85,25 @@ abstract class BaseDosyeFileFormFilter extends BaseFormFilterDoctrine
 
     $query
       ->leftJoin($query->getRootAlias().'.DosyePersonFile DosyePersonFile')
-      ->andWhereIn('DosyePersonFile.dosye_person_id', $values)
+      ->andWhereIn('DosyePersonFile.file_id', $values)
+    ;
+  }
+
+  public function addFilesListColumnQuery(Doctrine_Query $query, $field, $values)
+  {
+    if (!is_array($values))
+    {
+      $values = array($values);
+    }
+
+    if (!count($values))
+    {
+      return;
+    }
+
+    $query
+      ->leftJoin($query->getRootAlias().'.DosyeGroupFile DosyeGroupFile')
+      ->andWhereIn('DosyeGroupFile.id', $values)
     ;
   }
 
@@ -86,7 +126,9 @@ abstract class BaseDosyeFileFormFilter extends BaseFormFilterDoctrine
       'updated_at'        => 'Date',
       'created_by'        => 'ForeignKey',
       'updated_by'        => 'ForeignKey',
-      'dosye_files_list'  => 'ManyKey',
+      'groups_list'       => 'ManyKey',
+      'persons_list'      => 'ManyKey',
+      'files_list'        => 'ManyKey',
     );
   }
 }

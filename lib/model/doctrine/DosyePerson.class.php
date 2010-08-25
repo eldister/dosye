@@ -12,5 +12,8 @@
  */
 class DosyePerson extends BaseDosyePerson
 {
-
+    public function __toString()
+    {
+        return sprintf('%s - %s %s', $this->getInternalId(), $this->getFirstName(), $this->getLastName());
+    }
 }
