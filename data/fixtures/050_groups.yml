@@ -1,27 +1,24 @@
-DosyeGroup:
+Team:
   everyone:
     name: Todos
     photo_image_id: ~
-    avatar_image_id: ~
     description: Todas las personas en el PEA
     due_date: ~
   students:
     name: Estudiantes
     photo_image_id: ~
-    avatar_image_id: ~
     description: Estudiantes del PEA
     due_date: ~
   volunteers:
     name: Voluntarios
     photo_image_id: ~
-    avatar_image_id: ~
     description: Voluntarios del PEA
     due_date: ~
 
-DosyeSubGroup:
+SubTeam:
   everyone-students:
-    SuperGroup: everyone
-    SubGroup: students
+    SuperTeam: everyone
+    SubTeam: students
   everyone-volunteers:
-    SuperGroup: everyone
-    SubGroup: volunteers
+    SuperTeam: everyone
+    SubTeam: volunteers

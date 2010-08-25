@@ -1,4 +1,4 @@
-DosyeAreaLevel1:
+AreaLevel1:
   San_Jose:   { description: San José }
   Alajuela:   { description: Alajuela }
   Cartago:    { description: Cartago }
@@ -7,7 +7,7 @@ DosyeAreaLevel1:
   Limon:      { description: Limón }
   Puntarenas: { description: Puntarenas }
 
-DosyeAreaLevel2:
+AreaLevel2:
   SJ_Central:   { AreaLevel1: San_Jose, description: San José }
   Escazu:       { AreaLevel1: San_Jose, description: Escazú }
   Desamparados: { AreaLevel1: San_Jose, description: Desamparados }
