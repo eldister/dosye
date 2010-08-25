@@ -4,6 +4,19 @@ DosyeFile:
     original_filename: { type: string(255), notnull: true }
     internal_filename: { type: string(255), notnull: true }
     description:       { type: string(255), notnull: true }
+  relations:
+    Groups:
+      foreignAlias: Files
+      class:        DosyeGroup
+      refClass:     DosyeGroupFile
+      local:        id
+      foreign:      file_id
+    Persons:
+      foreignAlias: Files
+      class:        DosyePerson
+      refClass:     DosyePersonFile
+      local:        id
+      foreign:      file_id
 
 DosyeImage:
   inheritance:
@@ -78,31 +91,51 @@ DosyePerson:
       local:   photo_image_id
       foreign: id
     Files:
-      foreignAlias: DosyeFiles
-      class: DosyeFile
-      refClass: DosyePersonFile
+      foreignAlias: Persons
+      class:        DosyeFile
+      refClass:     DosyePersonFile
+      local:        id
+      foreign:      person_id
+    Groups:
+      foreignAlias: Persons
+      class:        DosyeGroup
+      refClass:     DosyeGroupPerson
+      local:        id
+      foreign:      person_id
 
 DosyeGroup:
   actAs: { Timestampable: ~, fzBlameable: ~ }
   columns:
-    group_name:      { type: string(100), notnull: true }
+    name:            { type: string(100), notnull: true }
     photo_image_id:  integer
     avatar_image_id: integer
     description:     { type: string(255), notnull: true }
     due_date:        date
   relations:
     SubGroups:
-      foreignAlias: DosyeGroups
+      foreignAlias: SuperGroups
       class:        DosyeGroup
       refClass:     DosyeSubGroup
+      local:        id
+      foreign:      supergroup_id
+    SuperGroups:
+      foreignAlias: SubGroups
+      class:        DosyeGroup
+      refClass:     DosyeSubGroup
+      local:        id
+      foreign:      subgroup_id
     Persons:
-      foreignAlias: DosyePersons
+      foreignAlias: Groups
       class:        DosyePerson
       refClass:     DosyeGroupPerson
+      local:        id
+      foreign:      group_id
     Files:
-      foreignAlias: DosyeFiles
+      foreignAlias: Files
       class:        DosyeFile
       refClass:     DosyeGroupFile
+      local:        id
+      foreign:      group_id
     AvatarImage:
       class:        DosyeImage
       local:        avatar_image_id
@@ -115,17 +148,20 @@ DosyeGroup:
 DosyeSubGroup:
   actAs: { Timestampable: ~, fzBlameable: ~ }
   columns:
-    group_id:    { type: integer, notnull: true, primary: true }
-    subgroup_id: { type: integer, notnull: true, primary: true }
+    supergroup_id: { type: integer, notnull: true, primary: true }
+    subgroup_id:   { type: integer, notnull: true, primary: true }
   relations:
-    Group:
-      class:   DosyeGroup
-      local:   group_id
-      foreign: id
+    SuperGroup:
+      class:        DosyeGroup
+      local:        supergroup_id
+      foreign:      id
     SubGroup:
-      class:   DosyeGroup
-      local:   subgroup_id
-      foreign: id
+      class:        DosyeGroup
+      local:        subgroup_id
+      foreign:      id
+  checks:
+    notselfsubgrouping: supergroup_id <> subgroup_id
+
 
 DosyeGroupPerson:
   actAs: { Timestampable: ~, fzBlameable: ~ }

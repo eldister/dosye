@@ -26,7 +26,9 @@ abstract class BaseDosyeFileForm extends BaseFormDoctrine
       'updated_at'        => new sfWidgetFormDateTime(),
       'created_by'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'add_empty' => true)),
       'updated_by'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'add_empty' => true)),
-      'dosye_files_list'  => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyePerson')),
+      'groups_list'       => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup')),
+      'persons_list'      => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyePerson')),
+      'files_list'        => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup')),
     ));
 
     $this->setValidators(array(
@@ -41,7 +43,9 @@ abstract class BaseDosyeFileForm extends BaseFormDoctrine
       'updated_at'        => new sfValidatorDateTime(),
       'created_by'        => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'required' => false)),
       'updated_by'        => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'required' => false)),
-      'dosye_files_list'  => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyePerson', 'required' => false)),
+      'groups_list'       => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup', 'required' => false)),
+      'persons_list'      => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyePerson', 'required' => false)),
+      'files_list'        => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('dosye_file[%s]');
@@ -62,28 +66,40 @@ abstract class BaseDosyeFileForm extends BaseFormDoctrine
   {
     parent::updateDefaultsFromObject();
 
-    if (isset($this->widgetSchema['dosye_files_list']))
+    if (isset($this->widgetSchema['groups_list']))
     {
-      $this->setDefault('dosye_files_list', $this->object->DosyeFiles->getPrimaryKeys());
+      $this->setDefault('groups_list', $this->object->Groups->getPrimaryKeys());
+    }
+
+    if (isset($this->widgetSchema['persons_list']))
+    {
+      $this->setDefault('persons_list', $this->object->Persons->getPrimaryKeys());
+    }
+
+    if (isset($this->widgetSchema['files_list']))
+    {
+      $this->setDefault('files_list', $this->object->Files->getPrimaryKeys());
     }
 
   }
 
   protected function doSave($con = null)
   {
-    $this->saveDosyeFilesList($con);
+    $this->saveGroupsList($con);
+    $this->savePersonsList($con);
+    $this->saveFilesList($con);
 
     parent::doSave($con);
   }
 
-  public function saveDosyeFilesList($con = null)
+  public function saveGroupsList($con = null)
   {
     if (!$this->isValid())
     {
       throw $this->getErrorSchema();
     }
 
-    if (!isset($this->widgetSchema['dosye_files_list']))
+    if (!isset($this->widgetSchema['groups_list']))
     {
       // somebody has unset this widget
       return;
@@ -94,8 +110,8 @@ abstract class BaseDosyeFileForm extends BaseFormDoctrine
       $con = $this->getConnection();
     }
 
-    $existing = $this->object->DosyeFiles->getPrimaryKeys();
-    $values = $this->getValue('dosye_files_list');
+    $existing = $this->object->Groups->getPrimaryKeys();
+    $values = $this->getValue('groups_list');
     if (!is_array($values))
     {
       $values = array();
@@ -104,13 +120,89 @@ abstract class BaseDosyeFileForm extends BaseFormDoctrine
     $unlink = array_diff($existing, $values);
     if (count($unlink))
     {
-      $this->object->unlink('DosyeFiles', array_values($unlink));
+      $this->object->unlink('Groups', array_values($unlink));
     }
 
     $link = array_diff($values, $existing);
     if (count($link))
     {
-      $this->object->link('DosyeFiles', array_values($link));
+      $this->object->link('Groups', array_values($link));
+    }
+  }
+
+  public function savePersonsList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['persons_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $existing = $this->object->Persons->getPrimaryKeys();
+    $values = $this->getValue('persons_list');
+    if (!is_array($values))
+    {
+      $values = array();
+    }
+
+    $unlink = array_diff($existing, $values);
+    if (count($unlink))
+    {
+      $this->object->unlink('Persons', array_values($unlink));
+    }
+
+    $link = array_diff($values, $existing);
+    if (count($link))
+    {
+      $this->object->link('Persons', array_values($link));
+    }
+  }
+
+  public function saveFilesList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['files_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $existing = $this->object->Files->getPrimaryKeys();
+    $values = $this->getValue('files_list');
+    if (!is_array($values))
+    {
+      $values = array();
+    }
+
+    $unlink = array_diff($existing, $values);
+    if (count($unlink))
+    {
+      $this->object->unlink('Files', array_values($unlink));
+    }
+
+    $link = array_diff($values, $existing);
+    if (count($link))
+    {
+      $this->object->link('Files', array_values($link));
     }
   }
 

@@ -47,7 +47,7 @@ abstract class BaseDosyePersonForm extends BaseFormDoctrine
       'created_by'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'add_empty' => true)),
       'updated_by'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'add_empty' => true)),
       'files_list'           => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyeFile')),
-      'dosye_persons_list'   => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup')),
+      'groups_list'          => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup')),
     ));
 
     $this->setValidators(array(
@@ -83,7 +83,7 @@ abstract class BaseDosyePersonForm extends BaseFormDoctrine
       'created_by'           => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'required' => false)),
       'updated_by'           => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'required' => false)),
       'files_list'           => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyeFile', 'required' => false)),
-      'dosye_persons_list'   => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup', 'required' => false)),
+      'groups_list'          => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'DosyeGroup', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -113,9 +113,9 @@ abstract class BaseDosyePersonForm extends BaseFormDoctrine
       $this->setDefault('files_list', $this->object->Files->getPrimaryKeys());
     }
 
-    if (isset($this->widgetSchema['dosye_persons_list']))
+    if (isset($this->widgetSchema['groups_list']))
     {
-      $this->setDefault('dosye_persons_list', $this->object->DosyePersons->getPrimaryKeys());
+      $this->setDefault('groups_list', $this->object->Groups->getPrimaryKeys());
     }
 
   }
@@ -123,7 +123,7 @@ abstract class BaseDosyePersonForm extends BaseFormDoctrine
   protected function doSave($con = null)
   {
     $this->saveFilesList($con);
-    $this->saveDosyePersonsList($con);
+    $this->saveGroupsList($con);
 
     parent::doSave($con);
   }
@@ -166,14 +166,14 @@ abstract class BaseDosyePersonForm extends BaseFormDoctrine
     }
   }
 
-  public function saveDosyePersonsList($con = null)
+  public function saveGroupsList($con = null)
   {
     if (!$this->isValid())
     {
       throw $this->getErrorSchema();
     }
 
-    if (!isset($this->widgetSchema['dosye_persons_list']))
+    if (!isset($this->widgetSchema['groups_list']))
     {
       // somebody has unset this widget
       return;
@@ -184,8 +184,8 @@ abstract class BaseDosyePersonForm extends BaseFormDoctrine
       $con = $this->getConnection();
     }
 
-    $existing = $this->object->DosyePersons->getPrimaryKeys();
-    $values = $this->getValue('dosye_persons_list');
+    $existing = $this->object->Groups->getPrimaryKeys();
+    $values = $this->getValue('groups_list');
     if (!is_array($values))
     {
       $values = array();
@@ -194,13 +194,13 @@ abstract class BaseDosyePersonForm extends BaseFormDoctrine
     $unlink = array_diff($existing, $values);
     if (count($unlink))
     {
-      $this->object->unlink('DosyePersons', array_values($unlink));
+      $this->object->unlink('Groups', array_values($unlink));
     }
 
     $link = array_diff($values, $existing);
     if (count($link))
     {
-      $this->object->link('DosyePersons', array_values($link));
+      $this->object->link('Groups', array_values($link));
     }
   }
 

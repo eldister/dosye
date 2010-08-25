@@ -12,5 +12,8 @@
  */
 class DosyeGroup extends BaseDosyeGroup
 {
-
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }

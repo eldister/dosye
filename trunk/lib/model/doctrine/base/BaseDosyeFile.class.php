@@ -11,7 +11,9 @@
  * @property string $type
  * @property integer $image_width
  * @property integer $image_height
- * @property Doctrine_Collection $DosyeFiles
+ * @property Doctrine_Collection $Groups
+ * @property Doctrine_Collection $Persons
+ * @property Doctrine_Collection $Files
  * @property Doctrine_Collection $DosyePersonFile
  * @property Doctrine_Collection $DosyeGroupFile
  * 
@@ -21,7 +23,9 @@
  * @method string              getType()              Returns the current record's "type" value
  * @method integer             getImageWidth()        Returns the current record's "image_width" value
  * @method integer             getImageHeight()       Returns the current record's "image_height" value
- * @method Doctrine_Collection getDosyeFiles()        Returns the current record's "DosyeFiles" collection
+ * @method Doctrine_Collection getGroups()            Returns the current record's "Groups" collection
+ * @method Doctrine_Collection getPersons()           Returns the current record's "Persons" collection
+ * @method Doctrine_Collection getFiles()             Returns the current record's "Files" collection
  * @method Doctrine_Collection getDosyePersonFile()   Returns the current record's "DosyePersonFile" collection
  * @method Doctrine_Collection getDosyeGroupFile()    Returns the current record's "DosyeGroupFile" collection
  * @method DosyeFile           setOriginalFilename()  Sets the current record's "original_filename" value
@@ -30,7 +34,9 @@
  * @method DosyeFile           setType()              Sets the current record's "type" value
  * @method DosyeFile           setImageWidth()        Sets the current record's "image_width" value
  * @method DosyeFile           setImageHeight()       Sets the current record's "image_height" value
- * @method DosyeFile           setDosyeFiles()        Sets the current record's "DosyeFiles" collection
+ * @method DosyeFile           setGroups()            Sets the current record's "Groups" collection
+ * @method DosyeFile           setPersons()           Sets the current record's "Persons" collection
+ * @method DosyeFile           setFiles()             Sets the current record's "Files" collection
  * @method DosyeFile           setDosyePersonFile()   Sets the current record's "DosyePersonFile" collection
  * @method DosyeFile           setDosyeGroupFile()    Sets the current record's "DosyeGroupFile" collection
  * 
@@ -81,10 +87,20 @@ abstract class BaseDosyeFile extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasMany('DosyePerson as DosyeFiles', array(
+        $this->hasMany('DosyeGroup as Groups', array(
+             'refClass' => 'DosyeGroupFile',
+             'local' => 'id',
+             'foreign' => 'file_id'));
+
+        $this->hasMany('DosyePerson as Persons', array(
              'refClass' => 'DosyePersonFile',
-             'local' => 'dosye_file_id',
-             'foreign' => 'dosye_person_id'));
+             'local' => 'id',
+             'foreign' => 'file_id'));
+
+        $this->hasMany('DosyeGroup as Files', array(
+             'refClass' => 'DosyeGroupFile',
+             'local' => 'group_id',
+             'foreign' => 'id'));
 
         $this->hasMany('DosyePersonFile', array(
              'local' => 'id',

@@ -40,7 +40,7 @@
  * @property DosyeImage $AvatarImage
  * @property DosyeImage $PhotoImage
  * @property Doctrine_Collection $Files
- * @property Doctrine_Collection $DosyePersons
+ * @property Doctrine_Collection $Groups
  * @property Doctrine_Collection $DosyeGroupPerson
  * @property Doctrine_Collection $DosyePersonFile
  * 
@@ -79,7 +79,7 @@
  * @method DosyeImage            getAvatarImage()          Returns the current record's "AvatarImage" value
  * @method DosyeImage            getPhotoImage()           Returns the current record's "PhotoImage" value
  * @method Doctrine_Collection   getFiles()                Returns the current record's "Files" collection
- * @method Doctrine_Collection   getDosyePersons()         Returns the current record's "DosyePersons" collection
+ * @method Doctrine_Collection   getGroups()               Returns the current record's "Groups" collection
  * @method Doctrine_Collection   getDosyeGroupPerson()     Returns the current record's "DosyeGroupPerson" collection
  * @method Doctrine_Collection   getDosyePersonFile()      Returns the current record's "DosyePersonFile" collection
  * @method DosyePerson           setInternalId()           Sets the current record's "internal_id" value
@@ -117,7 +117,7 @@
  * @method DosyePerson           setAvatarImage()          Sets the current record's "AvatarImage" value
  * @method DosyePerson           setPhotoImage()           Sets the current record's "PhotoImage" value
  * @method DosyePerson           setFiles()                Sets the current record's "Files" collection
- * @method DosyePerson           setDosyePersons()         Sets the current record's "DosyePersons" collection
+ * @method DosyePerson           setGroups()               Sets the current record's "Groups" collection
  * @method DosyePerson           setDosyeGroupPerson()     Sets the current record's "DosyeGroupPerson" collection
  * @method DosyePerson           setDosyePersonFile()      Sets the current record's "DosyePersonFile" collection
  * 
@@ -271,13 +271,13 @@ abstract class BaseDosyePerson extends sfDoctrineRecord
 
         $this->hasMany('DosyeFile as Files', array(
              'refClass' => 'DosyePersonFile',
-             'local' => 'dosye_person_id',
-             'foreign' => 'dosye_file_id'));
+             'local' => 'id',
+             'foreign' => 'person_id'));
 
-        $this->hasMany('DosyeGroup as DosyePersons', array(
+        $this->hasMany('DosyeGroup as Groups', array(
              'refClass' => 'DosyeGroupPerson',
-             'local' => 'dosye_person_id',
-             'foreign' => 'dosye_group_id'));
+             'local' => 'id',
+             'foreign' => 'person_id'));
 
         $this->hasMany('DosyeGroupPerson', array(
              'local' => 'id',
