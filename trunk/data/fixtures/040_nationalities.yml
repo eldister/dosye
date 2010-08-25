@@ -1,4 +1,4 @@
-DosyeNationality:
+Nationality:
   cr: { description: costarricense }
   ni: { description: nicaragüense }
   sv: { description: salvadoreño(a) }

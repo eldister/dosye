@@ -1,4 +1,4 @@
-DosyeMaritalStatus:
+MaritalStatus:
   single:             { description: soltero(a) }
   married:            { description: casado(a) }
   divorced:           { description: divorciado(a) }

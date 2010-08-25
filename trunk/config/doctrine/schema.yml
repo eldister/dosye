@@ -1,26 +1,28 @@
-DosyeFile:
+File:
   actAs: { Timestampable: ~, fzBlameable: ~ }
   columns:
     original_filename: { type: string(255), notnull: true }
     internal_filename: { type: string(255), notnull: true }
     description:       { type: string(255), notnull: true }
   relations:
-    Groups:
-      foreignAlias: Files
-      class:        DosyeGroup
-      refClass:     DosyeGroupFile
+    Team:
+      foreignAlias: File
+      class:        Team
+      refClass:     TeamFile
       local:        id
       foreign:      file_id
-    Persons:
-      foreignAlias: Files
-      class:        DosyePerson
-      refClass:     DosyePersonFile
+      type:         one
+    Person:
+      foreignAlias: File
+      class:        Person
+      refClass:     PersonFile
       local:        id
       foreign:      file_id
+      type:         one
 
-DosyeImage:
+Image:
   inheritance:
-    extends:  DosyeFile
+    extends:  File
     type:     column_aggregation
     keyField: type
     keyValue: Image
@@ -28,14 +30,13 @@ DosyeImage:
     image_width: integer
     image_height: integer
 
-DosyePerson:
+Person:
   actAs: { Timestampable: ~, fzBlameable: ~ }
   columns:
     internal_id:          { type: string(20), notnull: true, unique: true }
     first_name:           { type: string(100), notnull: true }
     last_name:            { type: string(100), notnull: true }
     photo_image_id:       integer
-    avatar_image_id:      integer
     date_of_birth:        date
     cell_phone:           string(50)
     home_phone:           string(50)
@@ -59,126 +60,125 @@ DosyePerson:
     educational_level:    integer
   relations:
     Nationality:
-      class:   DosyeNationality
+      class:   Nationality
       local:   nationality_id
       foreign: id
+      type:    one
     MaritalStatus:
-      class:   DosyeMaritalStatus
+      class:   MaritalStatus
       local:   marital_status_id
       foreign: id
+      type:    one
     AreaLevel1:
-      class:   DosyeAreaLevel1
+      class:   AreaLevel1
       local:   address_area1
       foreign: id
+      type:    one
     AreaLevel2:
-      class:   DosyeAreaLevel2
+      class:   AreaLevel2
       local:   address_area2
       foreign: id
+      type:    one
     AreaLevel3:
-      class:   DosyeAreaLevel3
+      class:   AreaLevel3
       local:   address_area3
       foreign: id
+      type:    one
     EducationalLevel:
-      class:   DosyeEducationalLevel
+      class:   EducationalLevel
       local:   educational_level
       foreign: id
-    AvatarImage:
-      class:   DosyeImage
-      local:   avatar_image_id
-      foreign: id
+      type:    one
     PhotoImage:
-      class:   DosyeImage
+      class:   Image
       local:   photo_image_id
       foreign: id
-    Files:
-      foreignAlias: Persons
-      class:        DosyeFile
-      refClass:     DosyePersonFile
+      type:    one
+    File:
+      foreignAlias: Person
+      class:        File
+      refClass:     PersonFile
       local:        id
       foreign:      person_id
-    Groups:
-      foreignAlias: Persons
-      class:        DosyeGroup
-      refClass:     DosyeGroupPerson
+    Team:
+      foreignAlias: Person
+      class:        Team
+      refClass:     PersonTeam
       local:        id
       foreign:      person_id
+      type:         many
 
-DosyeGroup:
+Team:
   actAs: { Timestampable: ~, fzBlameable: ~ }
   columns:
     name:            { type: string(100), notnull: true }
     photo_image_id:  integer
-    avatar_image_id: integer
     description:     { type: string(255), notnull: true }
     due_date:        date
   relations:
-    SubGroups:
-      foreignAlias: SuperGroups
-      class:        DosyeGroup
-      refClass:     DosyeSubGroup
+    SubTeam:
+      foreignAlias: SuperTeam
+      class:        Team
+      refClass:     SubTeam
       local:        id
-      foreign:      supergroup_id
-    SuperGroups:
-      foreignAlias: SubGroups
-      class:        DosyeGroup
-      refClass:     DosyeSubGroup
+      foreign:      superteam_id
+      type:         many
+    SuperTeam:
+      foreignAlias: SubTeam
+      class:        Team
+      refClass:     SubTeam
       local:        id
-      foreign:      subgroup_id
-    Persons:
-      foreignAlias: Groups
-      class:        DosyePerson
-      refClass:     DosyeGroupPerson
+      foreign:      subteam_id
+      type:         many
+    Person:
+      foreignAlias: Team
+      class:        Person
+      refClass:     PersonTeam
       local:        id
-      foreign:      group_id
-    Files:
-      foreignAlias: Files
-      class:        DosyeFile
-      refClass:     DosyeGroupFile
+      foreign:      team_id
+      type:         many
+    File:
+      foreignAlias: File
+      class:        File
+      refClass:     TeamFile
       local:        id
-      foreign:      group_id
-    AvatarImage:
-      class:        DosyeImage
-      local:        avatar_image_id
-      foreign:      id
-    PhotoImage:
-      class:        DosyeImage
+      foreign:      team_id
+      type:         many
+    Image:
+      class:        Image
       local:        photo_image_id
       foreign:      id
+      type:         one
 
-DosyeSubGroup:
+SubTeam:
   actAs: { Timestampable: ~, fzBlameable: ~ }
   columns:
-    supergroup_id: { type: integer, notnull: true, primary: true }
-    subgroup_id:   { type: integer, notnull: true, primary: true }
+    superteam_id: { type: integer, notnull: true, primary: true }
+    subteam_id:   { type: integer, notnull: true, primary: true }
   relations:
-    SuperGroup:
-      class:        DosyeGroup
-      local:        supergroup_id
+    SuperTeam:
+      class:        Team
+      local:        superteam_id
       foreign:      id
-    SubGroup:
-      class:        DosyeGroup
-      local:        subgroup_id
+      type:         one
+    SubTeam:
+      class:        Team
+      local:        subteam_id
       foreign:      id
-  checks:
-    notselfsubgrouping: supergroup_id <> subgroup_id
+      type:         one
 
-
-DosyeGroupPerson:
+PersonTeam:
   actAs: { Timestampable: ~, fzBlameable: ~ }
   columns:
-    group_id:  { type: integer, notnull: true, primary: true }
     person_id: { type: integer, notnull: true, primary: true }
+    team_id:  { type: integer, notnull: true, primary: true }
   relations:
-    Group:
-      class:   DosyeGroup
-      local:   group_id
-      foreign: id
+    Team:
+      type: one
     Person:
-      class:   DosyePerson
-      local:   person_id
-      foreign: id
+      type: one
 
-DosyePersonFile:
+PersonFile:
   actAs: { Timestampable: ~, fzBlameable: ~ }
   columns:
     person_id: { type: integer, notnull: true, primary: true }
@@ -186,62 +186,54 @@ DosyePersonFile:
     visible:   { type: boolean, notnull: true, default: true }
   relations:
     Person:
-      class:   DosyePerson
-      local:   person_id
-      foreign: id
+      type:    one
     File:
-      class:   DosyeFile
-      local:   file_id
-      foreign: id
+      type:    one
 
-DosyeGroupFile:
+TeamFile:
   actAs: { Timestampable: ~, fzBlameable: ~ }
   columns:
-    group_id: { type: integer, notnull: true, primary: true }
+    team_id: { type: integer, notnull: true, primary: true }
     file_id:  { type: integer, notnull: true, primary: true }
     visible:  { type: boolean, notnull: true, default: true }
   relations:
-    Group:
-      class:   DosyeGroup
-      local:   group_id
-      foreign: id
+    Team:
+      type:    one
     File:
-      class:   DosyeFile
-      local:   file_id
-      foreign: id
+      type:    one
 
-DosyeNationality:
+Nationality:
   columns:
     description: string
 
-DosyeMaritalStatus:
+MaritalStatus:
   columns:
     description: string
 
-DosyeAreaLevel1:
+AreaLevel1:
   columns:
     description: string
 
-DosyeAreaLevel2:
+AreaLevel2:
   columns:
     area1_id:    integer
     description: string
   relations:
     AreaLevel1:
-      class:   DosyeAreaLevel1
+      class:   AreaLevel1
       local:   area1_id
       foreign: id
 
-DosyeAreaLevel3:
+AreaLevel3:
   columns:
     area2_id:    integer
     description: string
   relations:
     AreaLevel2:
-      class:   DosyeAreaLevel2
+      class:   AreaLevel2
       local:   area2_id
       foreign: id
  
-DosyeEducationalLevel:
+EducationalLevel:
   columns:
     description: string

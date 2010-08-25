@@ -1,4 +1,4 @@
-DosyeEducationalLevel:
+EducationalLevel:
   illiterate: { description: analfabeto(a) }
   partial_elementary: { description: primaria incompleta }
   elementary: { description: primaria completa }
