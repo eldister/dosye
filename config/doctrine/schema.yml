@@ -5,10 +5,10 @@ File:
     internal_filename: { type: string(255), notnull: true }
     description:       { type: string(255), notnull: true }
   relations:
-    Team:
+    Grouping:
       foreignAlias: File
-      class:        Team
-      refClass:     TeamFile
+      class:        Grouping
+      refClass:     GroupingFile
       local:        id
       foreign:      file_id
       type:         one
@@ -100,15 +100,15 @@ Person:
       refClass:     PersonFile
       local:        id
       foreign:      person_id
-    Team:
+    Grouping:
       foreignAlias: Person
-      class:        Team
-      refClass:     PersonTeam
+      class:        Grouping
+      refClass:     PersonGrouping
       local:        id
       foreign:      person_id
       type:         many
 
-Team:
+Grouping:
   actAs: { Timestampable: ~, fzBlameable: ~ }
   columns:
     name:            { type: string(100), notnull: true }
@@ -116,33 +116,33 @@ Team:
     description:     { type: string(255), notnull: true }
     due_date:        date
   relations:
-    SubTeam:
-      foreignAlias: SuperTeam
-      class:        Team
-      refClass:     SubTeam
+    SubGrouping:
+      foreignAlias: SuperGrouping
+      class:        Grouping
+      refClass:     SubGrouping
       local:        id
-      foreign:      superteam_id
+      foreign:      supergrouping_id
       type:         many
-    SuperTeam:
-      foreignAlias: SubTeam
-      class:        Team
-      refClass:     SubTeam
+    SuperGrouping:
+      foreignAlias: SubGrouping
+      class:        Grouping
+      refClass:     SubGrouping
       local:        id
-      foreign:      subteam_id
+      foreign:      subgrouping_id
       type:         many
     Person:
-      foreignAlias: Team
+      foreignAlias: Grouping
       class:        Person
-      refClass:     PersonTeam
+      refClass:     PersonGrouping
       local:        id
-      foreign:      team_id
+      foreign:      grouping_id
       type:         many
     File:
       foreignAlias: File
       class:        File
-      refClass:     TeamFile
+      refClass:     GroupingFile
       local:        id
-      foreign:      team_id
+      foreign:      grouping_id
       type:         many
     Image:
       class:        Image
@@ -150,30 +150,30 @@ Team:
       foreign:      id
       type:         one
 
-SubTeam:
+SubGrouping:
   actAs: { Timestampable: ~, fzBlameable: ~ }
   columns:
-    superteam_id: { type: integer, notnull: true, primary: true }
-    subteam_id:   { type: integer, notnull: true, primary: true }
+    supergrouping_id: { type: integer, notnull: true, primary: true }
+    subgrouping_id:   { type: integer, notnull: true, primary: true }
   relations:
-    SuperTeam:
-      class:        Team
-      local:        superteam_id
+    SuperGrouping:
+      class:        Grouping
+      local:        supergrouping_id
       foreign:      id
       type:         one
-    SubTeam:
-      class:        Team
-      local:        subteam_id
+    SubGrouping:
+      class:        Grouping
+      local:        subgrouping_id
       foreign:      id
       type:         one
 
-PersonTeam:
+PersonGrouping:
   actAs: { Timestampable: ~, fzBlameable: ~ }
   columns:
     person_id: { type: integer, notnull: true, primary: true }
-    team_id:  { type: integer, notnull: true, primary: true }
+    grouping_id:  { type: integer, notnull: true, primary: true }
   relations:
-    Team:
+    Grouping:
       type: one
     Person:
       type: one
@@ -190,14 +190,14 @@ PersonFile:
     File:
       type:    one
 
-TeamFile:
+GroupingFile:
   actAs: { Timestampable: ~, fzBlameable: ~ }
   columns:
-    team_id: { type: integer, notnull: true, primary: true }
+    grouping_id: { type: integer, notnull: true, primary: true }
     file_id:  { type: integer, notnull: true, primary: true }
     visible:  { type: boolean, notnull: true, default: true }
   relations:
-    Team:
+    Grouping:
       type:    one
     File:
       type:    one
