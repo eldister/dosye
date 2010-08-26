@@ -43,7 +43,7 @@ abstract class BasePersonFormFilter extends BaseFormFilterDoctrine
       'created_by'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'add_empty' => true)),
       'updated_by'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'add_empty' => true)),
       'file_list'            => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'File')),
-      'team_list'            => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Team')),
+      'grouping_list'        => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Grouping')),
     ));
 
     $this->setValidators(array(
@@ -77,7 +77,7 @@ abstract class BasePersonFormFilter extends BaseFormFilterDoctrine
       'created_by'           => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('CreatedBy'), 'column' => 'id')),
       'updated_by'           => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('UpdatedBy'), 'column' => 'id')),
       'file_list'            => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'File', 'required' => false)),
-      'team_list'            => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Team', 'required' => false)),
+      'grouping_list'        => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Grouping', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('person_filters[%s]');
@@ -107,7 +107,7 @@ abstract class BasePersonFormFilter extends BaseFormFilterDoctrine
     ;
   }
 
-  public function addTeamListColumnQuery(Doctrine_Query $query, $field, $values)
+  public function addGroupingListColumnQuery(Doctrine_Query $query, $field, $values)
   {
     if (!is_array($values))
     {
@@ -120,8 +120,8 @@ abstract class BasePersonFormFilter extends BaseFormFilterDoctrine
     }
 
     $query
-      ->leftJoin($query->getRootAlias().'.PersonTeam PersonTeam')
-      ->andWhereIn('PersonTeam.person_id', $values)
+      ->leftJoin($query->getRootAlias().'.PersonGrouping PersonGrouping')
+      ->andWhereIn('PersonGrouping.person_id', $values)
     ;
   }
 
@@ -164,7 +164,7 @@ abstract class BasePersonFormFilter extends BaseFormFilterDoctrine
       'created_by'           => 'ForeignKey',
       'updated_by'           => 'ForeignKey',
       'file_list'            => 'ManyKey',
-      'team_list'            => 'ManyKey',
+      'grouping_list'        => 'ManyKey',
     );
   }
 }

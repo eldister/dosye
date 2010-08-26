@@ -1,4 +1,4 @@
-Team:
+Grouping:
   everyone:
     name: Todos
     photo_image_id: ~
@@ -15,10 +15,10 @@ Team:
     description: Voluntarios del PEA
     due_date: ~
 
-SubTeam:
+SubGrouping:
   everyone-students:
-    SuperTeam: everyone
-    SubTeam: students
+    SuperGrouping: everyone
+    SubGrouping: students
   everyone-volunteers:
-    SuperTeam: everyone
-    SubTeam: volunteers
+    SuperGrouping: everyone
+    SubGrouping: volunteers
