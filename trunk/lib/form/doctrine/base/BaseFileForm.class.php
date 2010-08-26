@@ -26,9 +26,9 @@ abstract class BaseFileForm extends BaseFormDoctrine
       'updated_at'        => new sfWidgetFormDateTime(),
       'created_by'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'add_empty' => true)),
       'updated_by'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'add_empty' => true)),
-      'team_list'         => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Team')),
+      'grouping_list'     => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Grouping')),
       'person_list'       => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Person')),
-      'file_list'         => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Team')),
+      'file_list'         => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Grouping')),
     ));
 
     $this->setValidators(array(
@@ -43,9 +43,9 @@ abstract class BaseFileForm extends BaseFormDoctrine
       'updated_at'        => new sfValidatorDateTime(),
       'created_by'        => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'required' => false)),
       'updated_by'        => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'required' => false)),
-      'team_list'         => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Team', 'required' => false)),
+      'grouping_list'     => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Grouping', 'required' => false)),
       'person_list'       => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Person', 'required' => false)),
-      'file_list'         => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Team', 'required' => false)),
+      'file_list'         => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Grouping', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('file[%s]');
@@ -66,9 +66,9 @@ abstract class BaseFileForm extends BaseFormDoctrine
   {
     parent::updateDefaultsFromObject();
 
-    if (isset($this->widgetSchema['team_list']))
+    if (isset($this->widgetSchema['grouping_list']))
     {
-      $this->setDefault('team_list', $this->object->Team->getPrimaryKeys());
+      $this->setDefault('grouping_list', $this->object->Grouping->getPrimaryKeys());
     }
 
     if (isset($this->widgetSchema['person_list']))
@@ -85,21 +85,21 @@ abstract class BaseFileForm extends BaseFormDoctrine
 
   protected function doSave($con = null)
   {
-    $this->saveTeamList($con);
+    $this->saveGroupingList($con);
     $this->savePersonList($con);
     $this->saveFileList($con);
 
     parent::doSave($con);
   }
 
-  public function saveTeamList($con = null)
+  public function saveGroupingList($con = null)
   {
     if (!$this->isValid())
     {
       throw $this->getErrorSchema();
     }
 
-    if (!isset($this->widgetSchema['team_list']))
+    if (!isset($this->widgetSchema['grouping_list']))
     {
       // somebody has unset this widget
       return;
@@ -110,8 +110,8 @@ abstract class BaseFileForm extends BaseFormDoctrine
       $con = $this->getConnection();
     }
 
-    $existing = $this->object->Team->getPrimaryKeys();
-    $values = $this->getValue('team_list');
+    $existing = $this->object->Grouping->getPrimaryKeys();
+    $values = $this->getValue('grouping_list');
     if (!is_array($values))
     {
       $values = array();
@@ -120,13 +120,13 @@ abstract class BaseFileForm extends BaseFormDoctrine
     $unlink = array_diff($existing, $values);
     if (count($unlink))
     {
-      $this->object->unlink('Team', array_values($unlink));
+      $this->object->unlink('Grouping', array_values($unlink));
     }
 
     $link = array_diff($values, $existing);
     if (count($link))
     {
-      $this->object->link('Team', array_values($link));
+      $this->object->link('Grouping', array_values($link));
     }
   }
 

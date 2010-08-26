@@ -23,9 +23,9 @@ abstract class BaseFileFormFilter extends BaseFormFilterDoctrine
       'updated_at'        => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'created_by'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'add_empty' => true)),
       'updated_by'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'add_empty' => true)),
-      'team_list'         => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Team')),
+      'grouping_list'     => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Grouping')),
       'person_list'       => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Person')),
-      'file_list'         => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Team')),
+      'file_list'         => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Grouping')),
     ));
 
     $this->setValidators(array(
@@ -39,9 +39,9 @@ abstract class BaseFileFormFilter extends BaseFormFilterDoctrine
       'updated_at'        => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'created_by'        => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('CreatedBy'), 'column' => 'id')),
       'updated_by'        => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('UpdatedBy'), 'column' => 'id')),
-      'team_list'         => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Team', 'required' => false)),
+      'grouping_list'     => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Grouping', 'required' => false)),
       'person_list'       => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Person', 'required' => false)),
-      'file_list'         => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Team', 'required' => false)),
+      'file_list'         => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Grouping', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('file_filters[%s]');
@@ -53,7 +53,7 @@ abstract class BaseFileFormFilter extends BaseFormFilterDoctrine
     parent::setup();
   }
 
-  public function addTeamListColumnQuery(Doctrine_Query $query, $field, $values)
+  public function addGroupingListColumnQuery(Doctrine_Query $query, $field, $values)
   {
     if (!is_array($values))
     {
@@ -66,8 +66,8 @@ abstract class BaseFileFormFilter extends BaseFormFilterDoctrine
     }
 
     $query
-      ->leftJoin($query->getRootAlias().'.TeamFile TeamFile')
-      ->andWhereIn('TeamFile.file_id', $values)
+      ->leftJoin($query->getRootAlias().'.GroupingFile GroupingFile')
+      ->andWhereIn('GroupingFile.file_id', $values)
     ;
   }
 
@@ -102,8 +102,8 @@ abstract class BaseFileFormFilter extends BaseFormFilterDoctrine
     }
 
     $query
-      ->leftJoin($query->getRootAlias().'.TeamFile TeamFile')
-      ->andWhereIn('TeamFile.id', $values)
+      ->leftJoin($query->getRootAlias().'.GroupingFile GroupingFile')
+      ->andWhereIn('GroupingFile.id', $values)
     ;
   }
 
@@ -126,7 +126,7 @@ abstract class BaseFileFormFilter extends BaseFormFilterDoctrine
       'updated_at'        => 'Date',
       'created_by'        => 'ForeignKey',
       'updated_by'        => 'ForeignKey',
-      'team_list'         => 'ManyKey',
+      'grouping_list'     => 'ManyKey',
       'person_list'       => 'ManyKey',
       'file_list'         => 'ManyKey',
     );
