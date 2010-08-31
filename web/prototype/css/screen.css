@@ -1,0 +1,97 @@
+body {
+    line-height: 1;
+    color: black;
+    background: white;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+.wrap {
+    width: 960px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+h1.logo a {
+    display: block;
+    height: 53px;
+    width: 117px;
+    background: url(../img/h1-ubuntuone-logo.png) no-repeat;
+    text-indent: -9999px;
+    float: left;
+    margin-top: 22px;
+}
+
+.you {
+    text-align: right;
+    float: right;
+    margin-top: 7px;
+}
+
+.you ul.not_logged_in {
+    margin-top: 60px;
+}
+
+.you ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+.you ul.not_logged_in li a {
+    font-size: 18px;
+}
+
+.you ul.logged_in {
+    margin-top: 10px;
+}
+
+#header {
+    height: 120px;
+}
+
+#header ul.navigation {
+    float: left;
+    margin-top: 95px;
+    margin-left: 27px;
+}
+
+#header ul.navigation li {
+    display: inline;
+}
+
+#header ul.navigation li a {
+    color: #666666;
+    text-decoration: none;
+    background: url(images/left_tab.png) no-repeat left;
+    padding-left: 22px;
+    height: 26px;
+    display: block;
+    float: right;
+    margin-left: -13px;
+    position: relative;
+    z-index: 3;
+}
+
+#header ul.navigation li a span {
+    background: url(images/right_tab.png) no-repeat right 0px;;
+    padding-top: 5px;
+    margin-left: -7px;
+    padding-right: 20px;
+    padding-left: 7px;
+    display: block;
+    height: 30px;
+}
+
+body.home #header ul.navigation li a.home,
+body.persons #header ul.navigation li a.persons,
+body.groups #header ul.navigation li a.groups {
+    position: relative;
+    color: #000;
+    z-index: 6;
+}
+
+
+
+
