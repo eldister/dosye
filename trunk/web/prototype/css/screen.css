@@ -2,10 +2,8 @@ body {
     line-height: 1;
     color: black;
     background: white;
-}
-
-ol, ul {
-    list-style: none;
+    font-family:Arial, Helvetica, sans-serif; 
+    font-size:13px;
 }
 
 .wrap {
@@ -14,16 +12,21 @@ ol, ul {
     text-align: left;
 }
 
+#header {
+    height: 120px;
+}
+
 h1.logo a {
     display: block;
-    height: 53px;
-    width: 117px;
-    background: url(../img/h1-ubuntuone-logo.png) no-repeat;
+    height: 92px;
+    width: 150px;
+    background: url(../img/logo.jpg) no-repeat;
     text-indent: -9999px;
     float: left;
     margin-top: 22px;
 }
 
+/* LoggedIn Info */
 .you {
     text-align: right;
     float: right;
@@ -47,50 +50,47 @@ h1.logo a {
     margin-top: 10px;
 }
 
-#header {
-    height: 120px;
+/* Tabs */
+
+ul.tab, ul.tab li {
+    
+    border:0; margin:0; padding:0; list-style:none;
+    }
+ul.tab {float: left; border-bottom:solid 1px #DEDEDE; height:29px; padding-left:20px;}
+    
+ul.tab li{float:left; margin-right:2px;}
+ul.tab a:link, ul.tab a:visited{
+	background:url(../img/tab-round.png) right 60px;
+	color:#666666;
+	display:block;
+	font-weight:bold;
+	height:30px;
+	line-height:30px;
+	text-decoration:none;
+}
+ul.tab a span{
+	background:url(../img/tab-round.png) left 60px;
+	display:block;
+	height:30px;
+	margin-right:14px;
+	padding-left:14px;
+}
+ul.tab a:hover{
+	background:url(../img/tab-round.png) right 30px;
+	display:block;
+}
+ul.tab a:hover span{
+	background:url(../img/tab-round.png) left 30px;
+	display:block;
 }
 
-#header ul.navigation {
-    float: left;
-    margin-top: 95px;
-    margin-left: 27px;
+ul.tab li.active a:link, .active a:visited, .active a:visited, .active a:hover{
+	background:url(../img/tab-round.png) right 0 no-repeat;
+} 
+ul.tab li.active a span, ul.tab li.active a:hover span{
+	background:url(../img/tab-round.png) left 0 no-repeat;
 }
 
-#header ul.navigation li {
-    display: inline;
-}
-
-#header ul.navigation li a {
-    color: #666666;
-    text-decoration: none;
-    background: url(images/left_tab.png) no-repeat left;
-    padding-left: 22px;
-    height: 26px;
-    display: block;
-    float: right;
-    margin-left: -13px;
-    position: relative;
-    z-index: 3;
-}
-
-#header ul.navigation li a span {
-    background: url(images/right_tab.png) no-repeat right 0px;;
-    padding-top: 5px;
-    margin-left: -7px;
-    padding-right: 20px;
-    padding-left: 7px;
-    display: block;
-    height: 30px;
-}
-
-body.home #header ul.navigation li a.home,
-body.persons #header ul.navigation li a.persons,
-body.groups #header ul.navigation li a.groups {
-    position: relative;
-    color: #000;
-    z-index: 6;
-}
 
 
 
