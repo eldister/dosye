@@ -12,9 +12,7 @@ body {
     text-align: left;
 }
 
-#header {
-    height: 120px;
-}
+#header {}
 
 h1.logo a {
     display: block;
@@ -23,7 +21,6 @@ h1.logo a {
     background: url(../img/logo.jpg) no-repeat;
     text-indent: -9999px;
     float: left;
-    margin-top: 22px;
 }
 
 /* LoggedIn Info */
@@ -53,10 +50,18 @@ h1.logo a {
 /* Tabs */
 
 ul.tab, ul.tab li {
-    
-    border:0; margin:0; padding:0; list-style:none;
-    }
-ul.tab {float: left; border-bottom:solid 1px #DEDEDE; height:29px; padding-left:20px;}
+    border:0;
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+ul.tab {
+	border-bottom:solid 1px #DEDEDE; 
+	height:29px; 
+	padding-right:20px;
+	top: 64px;
+	position: relative;
+}
     
 ul.tab li{float:left; margin-right:2px;}
 ul.tab a:link, ul.tab a:visited{
@@ -84,7 +89,7 @@ ul.tab a:hover span{
 	display:block;
 }
 
-ul.tab li.active a:link, .active a:visited, .active a:visited, .active a:hover{
+ul.tab li.active a, .active a:visited, .active a:visited, .active a:hover{
 	background:url(../img/tab-round.png) right 0 no-repeat;
 } 
 ul.tab li.active a span, ul.tab li.active a:hover span{
