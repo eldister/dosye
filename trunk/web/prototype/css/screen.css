@@ -94,7 +94,6 @@ h1.module_name {
 .module_operation > img
 {
     float: left;
-    top: 1px;
     position: relative;
 }
 
@@ -107,7 +106,7 @@ div.module_search
 
 input.module_search
 {
-    width: 200px;
+    width: 250px;
 }
 
 /* Contenido de la página */
@@ -115,6 +114,43 @@ input.module_search
 #content {
     clear: both;
     padding: 10px 5px;
+}
+
+.left_panel {
+    float: left;
+    clear: left;
+    width: 150px;
+}
+.main_panel {
+    float: left;
+    clear: right;
+    width: 800px;
+}
+
+h3.content_title {
+    padding: 0;
+    margin:0 0 5px 0;
+    font-size: large;
+}
+
+.left_panel > ul {
+    list-style-type: none;
+    margin:5px -30px;
+}
+
+.content_operation{
+    display: block;
+    float: left;
+    clear: right;
+    color: #3c5aa8;
+    padding: 0;
+    margin: 0;
+}
+
+.content_operation > img
+{
+    float: left;
+    position: relative;
 }
 
 /* Pie de página */
@@ -168,6 +204,7 @@ ul.tab {
 	top: 65px;
 	position: relative;
 	padding-left: 20px;
+	font-size: 120%;
 }
     
 ul.tab li{float:left; margin-right:2px;}

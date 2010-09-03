@@ -4,6 +4,9 @@
     <head>
         <title>Expediente Electr&oacute;nico del PEA</title>
         <link rel="stylesheet" href="css/screen.css" type="text/css" media="all" />
+	<link type="text/css" href="css/redmond/jquery-ui-1.8.4.custom.css" rel="stylesheet" />	
+	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.4.custom.min.js"></script>	
     </head>
     <body>
         <div id="header">
@@ -47,7 +50,36 @@
 	<div id="content">
 	    <div class="wrap">
 		
-		
+		<div class="left_panel">
+		    <img class="photo" src="img/person.png" />
+		    <ul>
+			<li><a class="content_operation" href="#"><img src="img/edit.png"/>&nbsp;Modificar</a></li>
+		    </ul>
+		</div>
+		<div class="main_panel">
+		    <h3 class="content_title">Alexis Serrano Rodr&iacute;guez (051034)</h3>
+
+		    <div id="content_tabs">
+			<script type="text/javascript">
+			$(function(){
+				// Declara los tabs en JQuery
+				$('#content_tabs').tabs();
+			});
+			</script>
+
+			<ul>
+				<li><a href="#profile">Perfil</a></li>
+				<li><a href="#personalinfo">Datos Personales</a></li>
+				<li><a href="#groups">Grupos</a></li>
+				<li><a href="#files">Archivos</a></li>
+			</ul>
+			<div id="profile">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+			<div id="personalinfo">Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</div>
+			<div id="groups">Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
+			<div id="files">Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
+		</div>
+
+		</div>
 	    
 	    </div><!-- close .wrap -->
 	</div><!-- close #content -->
