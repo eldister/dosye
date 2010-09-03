@@ -1,9 +1,4 @@
-.clearfloat { /* this class should be placed on a div or break element and should be the final element before the close of a container that should fully contain a float */
-    clear:both;
-    height:0;
-    font-size: 1px;
-    line-height: 0px;
-}
+/* Elementos del HTML */
 
 body {
     line-height: 1;
@@ -15,10 +10,33 @@ body {
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
+a img {
+    border: 0;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Clases generales */
+
+.clearfloat { /* this class should be placed on a div or break element and should be the final element before the close of a container that should fully contain a float */
+    clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;
+}
+
 .wrap {
     width: 960px;
     margin: 0 auto;
 }
+
+/* Encabezado */
 
 #header {
     clear: both;
@@ -27,6 +45,17 @@ body {
     padding-top: 1px;
 }
 
+h1.logo a {
+    display: block;
+    height: 92px;
+    width: 150px;
+    background: url(../img/logo.jpg) no-repeat;
+    text-indent: -9999px;
+    float: left;
+}
+
+/* Barra superior del contenido */
+
 #topcontent {
     clear: both;
     padding: 3px 0px;
@@ -34,10 +63,61 @@ body {
     background-color: white;
 }
 
+h1.module_name {
+    font-size: large;
+    font-weight: bold;
+    color: black;
+    float: left;
+}
+
+#topcontent ul
+{
+    list-style: none;
+    display: inline-block;
+}
+
+#topcontent ul li
+{
+    float:left;
+    margin-right:2px;
+    vertical-align: middle;
+}
+
+.module_operation
+{
+    top: 1px;
+    position: relative;
+    color: #088308;
+    font-size: 100%;
+}
+
+.module_operation > img
+{
+    float: left;
+    top: 1px;
+    position: relative;
+}
+
+div.module_search
+{
+    float: right;
+    position: relative;
+    top: 10px;
+}
+
+input.module_search
+{
+    width: 200px;
+}
+
+/* Contenido de la página */
+
 #content {
     clear: both;
-    padding: 10px 0px;
+    padding: 10px 5px;
 }
+
+/* Pie de página */
 
 #footer {
     clear: both;
@@ -50,22 +130,7 @@ body {
     width: 100%;
 }
 
-h1.logo a {
-    display: block;
-    height: 92px;
-    width: 150px;
-    background: url(../img/logo.jpg) no-repeat;
-    text-indent: -9999px;
-    float: left;
-}
-
-h1.modulename {
-    font-size: large;
-    font-weight: bold;
-    color: black;
-}
-
-/* LoggedIn Info */
+/* Información de ingreso */
 
 .you {
     text-align: right;
