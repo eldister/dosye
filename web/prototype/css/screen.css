@@ -3,7 +3,7 @@
 body {
     line-height: 1;
     color: black;
-    /*background: repeat-x url(../img/background.png) bottom #dee6f1;*/
+    background: repeat-x url(../img/background.png) #dee6f1;
     font-family:Arial, Helvetica, sans-serif; 
     font-size:13px;
     padding: 0;
@@ -147,6 +147,7 @@ h3.content_title {
 .result_panel {
    background-color: white;
     border: solid 1px #DEDEDE;
+    padding: 10px;
 }
 
 table.result_table {
@@ -168,6 +169,10 @@ td.result_caption {
 
 td.result_action {
     width: 150px;
+}
+
+td.result_separator {
+    border-bottom:solid 1px #DEDEDE;
 }
 
 .content_operation{
