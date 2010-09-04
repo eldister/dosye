@@ -139,11 +139,35 @@ h3.content_title {
 }
 
 .one_panel {
-    background-color: white;
-    border: solid 1px #DEDEDE;
     margin-left: auto;
     margin-right: auto;
     width: 700px;
+}
+
+.result_panel {
+   background-color: white;
+    border: solid 1px #DEDEDE;
+}
+
+table.result_table {
+    width: 100%;
+    color: #3c5aa8;
+}
+
+td.result_photo {
+    width: 60px;
+}
+
+td.result_caption {
+    width: 100px;
+}
+
+.result_main_data {
+    font-weight: bold;
+}
+
+td.result_action {
+    width: 150px;
 }
 
 .content_operation{
@@ -153,6 +177,7 @@ h3.content_title {
     color: #3c5aa8;
     padding: 0;
     margin: 0;
+    width: 100%;
 }
 
 .content_operation > img
