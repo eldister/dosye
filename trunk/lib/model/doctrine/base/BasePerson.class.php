@@ -276,7 +276,9 @@ abstract class BasePerson extends sfDoctrineRecord
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $fzblameable0 = new Doctrine_Template_fzBlameable();
+        $commentable0 = new Doctrine_Template_Commentable();
         $this->actAs($timestampable0);
         $this->actAs($fzblameable0);
+        $this->actAs($commentable0);
     }
 }
