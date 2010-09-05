@@ -31,7 +31,7 @@ Image:
     image_height: integer
 
 Person:
-  actAs: { Timestampable: ~, fzBlameable: ~ }
+  actAs: { Timestampable: ~, fzBlameable: ~, Commentable: ~ }
   columns:
     internal_id:          { type: string(20), notnull: true, unique: true }
     first_name:           { type: string(100), notnull: true }
@@ -109,7 +109,7 @@ Person:
       type:         many
 
 Grouping:
-  actAs: { Timestampable: ~, fzBlameable: ~ }
+  actAs: { Timestampable: ~, fzBlameable: ~, Commentable: ~ }
   columns:
     name:            { type: string(100), notnull: true }
     photo_image_id:  integer
