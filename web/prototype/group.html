@@ -4,6 +4,9 @@
     <head>
         <title>Expediente Electr&oacute;nico del PEA</title>
         <link rel="stylesheet" href="css/screen.css" type="text/css" media="all" />
+	<link type="text/css" href="css/redmond/jquery-ui-1.8.4.custom.css" rel="stylesheet" />	
+	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.4.custom.min.js"></script>
 
         <!-- Protonotes -->
         <script src="http://www.protonotes.com/js/protonotes.js" type="text/javascript"></script>
@@ -11,7 +14,7 @@
         var groupnumber="qgR8jwNsQULB";
         var show_menubar_default=false;
         </script><!-- close Protonotes -->
-
+        
     </head>
     <body>
         <div id="header">
@@ -30,7 +33,8 @@
 	    <ul class="tab">
 		<li><a href="default.html"><span>Inicio</span></a></li>
 		<li><a href="persons.html"><span>Personas</span></a></li>
-		<li class="active"><a href="groups.html"><span>Grupos</span></a></li>
+		<li class="active"><a href="group.html"><span>Grupos</span></a></li>
+		
 	    </ul>
 	    	 
 	</div><!-- close #header -->
@@ -55,7 +59,54 @@
 	<div id="content">
 	    <div class="wrap">
 		
-		
+		<div class="left_panel">
+		    <img class="photo" src="img/group.png" />
+		    <ul>
+			<li><a class="content_operation" href="#"><img src="img/edit.png"/>&nbsp;Modificar</a></li>
+		    </ul>
+		</div>
+
+		<div class="right_panel">
+		    <h3 class="content_title">Voluntarios</h3>
+
+		    <div id="content_tabs">
+			<script type="text/javascript">
+			$(function(){
+				// Declara los tabs en JQuery
+				$('#content_tabs').tabs();
+			});
+			</script>
+
+			<ul>
+				<li><a href="#profile">Perfil</a></li>
+				<li><a href="#files">Archivos</a></li>
+			</ul>
+			<div id="profile">
+			    <table>
+					<tr>
+						<th>Nombre:</th>
+						<td>Voluntarios</td>
+					</tr>
+					<tr>
+						<th>Descripci&oacute;n:</th>
+						<td>Grupo conformado por los facilitadores del programa</td>
+					</tr>
+					<tr>
+						<th>Fecha de Inicio:</th>
+						<td>30-01-2010</td>
+					</tr>
+					<tr>
+						<th>Fecha de finalizaci&oacute;n:</th>
+						<td>29-05-2010</td>
+					</tr>
+			    </table>
+			    <h4>Anotaciones</h4>			    
+			</div>
+			
+			<div id="files">Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
+		    </div>
+
+		</div>
 	    
 	    </div><!-- close .wrap -->
 	</div><!-- close #content -->
