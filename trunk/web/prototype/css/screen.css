@@ -107,6 +107,7 @@ a.module_operation > img
 {
     float: left;
     position: relative;
+    margin-right: 3px;
 }
 
 
@@ -203,6 +204,7 @@ td.result_separator {
 {
     float: left;
     position: relative;
+    margin-right: 3px;
 }
 
 span.filename {
@@ -221,6 +223,7 @@ span.filename {
 	float: left;
 	clear: right;
 	margin: 5px 3px;
+        width: 600px;
 }
 
 .c-grav {
