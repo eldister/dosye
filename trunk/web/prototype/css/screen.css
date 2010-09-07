@@ -95,7 +95,7 @@ h1.module_name {
     vertical-align: middle;
 }
 
-.module_operation
+a.module_operation
 {
     top: 1px;
     position: relative;
@@ -103,11 +103,13 @@ h1.module_name {
     font-size: 100%;
 }
 
-.module_operation > img
+a.module_operation > img
 {
     float: left;
     position: relative;
 }
+
+
 
 div.module_search
 {
@@ -187,7 +189,7 @@ td.result_separator {
     border-bottom:solid 1px #DEDEDE;
 }
 
-.content_operation{
+.content_operation, ui-widget-content a.content_operation {
     display: block;
     float: left;
     clear: right;
@@ -271,7 +273,8 @@ span.filename {
     margin-top: 10px;
 }
 
-.text-right {
+div.text-right {
+    width: 100%;
     text-align: right;
 }
 
