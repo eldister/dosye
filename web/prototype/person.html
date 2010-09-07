@@ -3,10 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <title>Expediente Electr&oacute;nico del PEA</title>
+        <link type="text/css" href="css/redmond/jquery-ui-1.8.4.custom.css" rel="stylesheet" />
         <link rel="stylesheet" href="css/screen.css" type="text/css" media="all" />
-	<link type="text/css" href="css/redmond/jquery-ui-1.8.4.custom.css" rel="stylesheet" />
-	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
-	<script type="text/javascript" src="js/jquery-ui-1.8.4.custom.min.js"></script>
+	
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.4.custom.min.js"></script>
 
         <!-- Protonotes -->
         <script src="http://www.protonotes.com/js/protonotes.js" type="text/javascript"></script>
@@ -44,7 +45,7 @@
 		<h1 class="module_name">Personas</h1>
 
 		<ul>
-		    <li><a class="module_operation" href="#"><img src="img/add.jpg"/>&nbsp;Agregar nueva persona</a></li>
+		    <li><a class="module_operation" href="person-new.html"><img src="img/add.jpg"/>&nbsp;Agregar nueva persona</a></li>
 		</ul>
 
 		<div class="module_search">
@@ -339,9 +340,9 @@
 						<tr>
 							<th>Categor&iacute;a:</th>
 							<td>
-								<p><input type="radio" name="file_category" value="internal">Interno: el archivo sólo será visible por los usuarios que cuentan con acceso administrativo.</input></p>
-								<p><input type="radio" name="file_category" value="protected">Protegido: el archivo sólo será visible por los miembros del grupo y los usuarios con acceso administrativo.</input></p>
-								<p><input type="radio" name="file_category" value="public">P&uacute;blico: el archivo será visible para todos los usuarios, aunque no sean miembros del grupo. Una imagen debe ser pública para establecerla como imagen del perfil.</input></p>
+								<p><input type="radio" name="file_category" value="internal">Interno: el archivo s&oacute;lo ser&aacute; visible por los usuarios que cuentan con acceso administrativo.</input></p>
+								<p><input type="radio" name="file_category" value="protected">Protegido: el archivo s&oacute;lo ser&aacute; visible por el due&ntilde;o del perfil, los facilitadores de los grupos a los que pertenezca y los usuarios con acceso administrativo.</input></p>
+								<p><input type="radio" name="file_category" value="public">P&uacute;blico: el archivo ser&aacute; visible para todos los usuarios. Una imagen debe ser p&uacute;blica para establecerla como imagen del perfil.</input></p>
 							</td>
 						</tr>
 					</tbody>
