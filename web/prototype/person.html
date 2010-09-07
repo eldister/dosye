@@ -108,7 +108,6 @@
 			    <div id="comments"> <h4>Anotaciones</h4>
 					<div class="comment-number"> 
 						<span>2 anotaciones</span> 
-						<a id="leavecomment" href="#respond" title="Leave One"> &rarr;</a> 
 					</div><!--end comment-number--> 
 					<ol class="commentlist"> 
 						<li class="comment even thread-even depth-1" id="comment-34" > 
@@ -142,7 +141,7 @@
 					<h4 id="postcomment">Realizar una anotaci&oacute;n</h4> 
 					<form action="" method="post" id="commentform"> 
 						<fieldset> 
-							<textarea name="comment" id="comment" cols="80" rows="10" tabindex="4"></textarea> 
+							<textarea name="comment" id="comment" cols="78" rows="10" tabindex="4"></textarea> 
 							<input name="submit" type="submit" id="submit" tabindex="5" value="Agregar Anotaci&oacute;n" /> 
 						</fieldset> 
 					</form><!--end commentform--> 
@@ -209,7 +208,7 @@
 				</tr>
 				<tr>
 					<td></td>  
-					<th>Otras se&nacute;as:</th>
+					<th>Otras se&ntilde;as:</th>
 				    <td colspan = "3">150 mts al norte de la Iglesia</td>								
 				</tr>
 				<tr> </tr>
@@ -276,18 +275,82 @@
 			
 			
 			<div id="groups">
-				<table>
-					<tbody>
-					<tr>
-						<th>Grupo:</th>
-						<td class="result_action"><a class="content_operation" href="group.html">Voluntarios</a></td>			
-					</tr>								
-					</tbody>
-				</table>
+				<div class="result_panel">
+                    <table class="result_table">
+                        <tbody>
+                            <tr>
+                                <td rowspan="3" class="result_photo"><img src="img/group_thumb.png" width="50" height="50" alt="estudiantes"/></td>
+                                <td class="result_caption">Nombre:</td>
+                                <td class="result_data result_main_data"><a class="content_operation" href="group.html">Estudiantes</a></td>
+                                <td class="result_action"><a class="content_operation" href="group.html"><img src="img/show.png"/>&nbsp;Ver el expediente</a></td>
+                            </tr>
+                            <tr>
+                                <td class="result_caption">Descripci&oacute;n:</td>
+                                <td class="result_data">Grupo conformado por los estudiantes del programa</td>
+                            </tr>
+                            <tr>
+                                <td class="result_separator" colspan="3"></td>
+                            </tr>                      
+
+                        </tbody>
+                    </table>
+                </div> <!-- close .result_panel -->
 			</div>
 			
-			<div id="files">Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
-		    </div>
+			<div id="files">
+				<div class="filedownload">
+					<table>
+					<thead>
+						<tr>
+							<th>Nombre</th><th>Fecha</th><th>Usuario</th><th>Categor&iacute;a</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Questionario I-2010<span class="filename">questionario.doc</span></td>
+							<td>10-08-2010</td>
+							<td><a class="content_operation" href="person.html">egarcia</a></td>
+							<td>Protegido</td>
+							<td><a class="content_operation" href="#"><img src="img/download.jpg"/>Descargar</a></td>
+							<td><a class="content_operation" href="#"><img src="img/delete.jpg"/>Eliminar</a></td>
+						</tr>
+						<tr>
+							<td>Fotograf&iacute;a<span class="filename">foto.jpg</span></td>
+							<td>02-08-2010</td>
+							<td><a href="person.html">asura</a></td>
+							<td>P&uacute;blico</td>
+							<td><a class="content_operation" href="#"><img src="img/download.jpg"/>Descargar</a></td>
+							<td><a class="content_operation" href="#"><img src="img/delete.jpg"/>Eliminar</a></td>
+							<td><input type="checkbox" checked="checked">Usar como imagen del perfil</input></td>
+						</tr>
+					</tbody>
+					</table>
+				</div> <!-- close .filedownload -->
+				<div class="fileupload">
+					<h4>Subir un nuevo archivo</h4>
+					<table>
+					<tbody>
+						<tr>
+							<th>Archivo:</th><td><input type="file" /></td>
+						</tr>
+						<tr>
+							<th>Descripci&oacute;n:</th><td><input type="text" /></td>
+						</tr>
+						<tr>
+							<th>Categor&iacute;a:</th>
+							<td>
+								<p><input type="radio" name="file_category" value="internal">Interno: el archivo sólo será visible por los usuarios que cuentan con acceso administrativo.</input></p>
+								<p><input type="radio" name="file_category" value="protected">Protegido: el archivo sólo será visible por los miembros del grupo y los usuarios con acceso administrativo.</input></p>
+								<p><input type="radio" name="file_category" value="public">P&uacute;blico: el archivo será visible para todos los usuarios, aunque no sean miembros del grupo. Una imagen debe ser pública para establecerla como imagen del perfil.</input></p>
+							</td>
+						</tr>
+					</tbody>
+					</table>
+					<div>
+						<input type="button" value="Subir el archivo" />&nbsp;<a href="#">Cancelar</a>
+					</div>
+				</div> <!-- close .fileupload -->
+		    </div> <!-- close #files -->
 
 		</div>
 
