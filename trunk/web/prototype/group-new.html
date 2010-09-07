@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>Expediente Electr&oacute;nico del PEA</title>
+        <link rel="stylesheet" href="css/screen.css" type="text/css" media="all" />
+	<link type="text/css" href="css/redmond/jquery-ui-1.8.4.custom.css" rel="stylesheet" />	
+	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.4.custom.min.js"></script>
+
+        <!-- Protonotes -->
+        <script src="http://www.protonotes.com/js/protonotes.js" type="text/javascript"></script>
+        <script type="text/javascript">
+        var groupnumber="qgR8jwNsQULB";
+        var show_menubar_default=false;
+        </script><!-- close Protonotes -->
+        
+    </head>
+    <body>
+        <div id="header">
+	    <div class="wrap">
+                <h1 class="logo"><a href="default.html">PEA</a></h1>
+
+                <div class="you">
+                    <ul class="logged_in">
+                        <li>Thirsa Sili&eacute;zar Rodas</li>
+                        <li><a href="/logout.html">salir &raquo;</a></li>
+                    </ul>
+                </div><!-- close .you -->
+		
+	    </div><!-- close .wrap -->
+	    
+	    <ul class="tab">
+		<li><a href="default.html"><span>Inicio</span></a></li>
+		<li><a href="persons.html"><span>Personas</span></a></li>
+		<li class="active"><a href="group.html"><span>Grupos</span></a></li>
+		
+	    </ul>
+	    	 
+	</div><!-- close #header -->
+	
+	<div id="topcontent">
+	    <div class="wrap">
+		
+		<h1 class="module_name">Grupos</h1>
+		
+		<div class="module_search">
+		    <input type="text" class="module_search" />&nbsp;<input type="button" value="Buscar" />
+		</div>
+		
+		<div class="clearfloat"></div>
+	    </div><!-- close .wrap -->
+	</div><!-- close #topcontent -->
+	
+	<div id="content">
+	    <div class="wrap">
+		
+		<div class="left_panel">
+		    <img class="photo" src="img/group.png" />
+		</div>
+
+		<div class="right_panel">
+		    <h3 class="content_title">Agregando grupo</h3>
+
+		    <div id="content_tabs">
+			<script type="text/javascript">
+			$(function(){
+				// Declara los tabs en JQuery
+				$('#content_tabs').tabs();
+			});
+			</script>
+
+			<ul>
+				<li><a href="#profile">Perfil</a></li>
+				<li><a href="#members">Miembros</a></li>
+				<li><a href="#groups">Grupos</a></li>
+				<li><a href="#files">Archivos</a></li>
+			</ul>
+			<div id="profile">
+			    <table>
+					<tr>
+						<th>Nombre:</th>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<th>Descripci&oacute;n:</th>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<th>Fecha de Inicio:</th>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<th>Fecha de finalizaci&oacute;n:</th>
+						<td><input type="text"></td>
+					</tr>
+			    </table>
+			    <h4>Anotaciones</h4>	   
+			</div>
+			
+			<div id="members">Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
+		    <div id="groups">Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
+		    <div id="files">Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
+		</div>
+		
+		<div class="text-right">
+			<input type="button" value="Guardar"/>
+			<a href="#">Cancelar</a>
+		</div>	
+	    
+	    </div><!-- close .wrap -->
+	</div><!-- close #content -->
+	
+	<div id="footer">
+	    <div class="wrap">
+		
+		&copy; 2010 bajo <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">licencia MIT</a><br/>
+		para el Programa de Educaci&oacute;n Abierta Vida Abundante
+	    
+	    </div><!-- close .wrap -->
+	</div><!-- close #content -->
+	
+      </body>
+</html>
