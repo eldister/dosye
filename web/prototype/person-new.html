@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>Expediente Electr&oacute;nico del PEA</title>
+        <link rel="stylesheet" href="css/screen.css" type="text/css" media="all" />
+	<link type="text/css" href="css/redmond/jquery-ui-1.8.4.custom.css" rel="stylesheet" />	
+	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.4.custom.min.js"></script>
+
+        <!-- Protonotes -->
+        <script src="http://www.protonotes.com/js/protonotes.js" type="text/javascript"></script>
+        <script type="text/javascript">
+        var groupnumber="qgR8jwNsQULB";
+        var show_menubar_default=false;
+        </script><!-- close Protonotes -->
+        
+    </head>
+    <body>
+        <div id="header">
+	    <div class="wrap">
+                <h1 class="logo"><a href="default.html">PEA</a></h1>
+
+                <div class="you">
+                    <ul class="logged_in">
+                        <li>Thirsa Sili&eacute;zar Rodas</li>
+                        <li><a href="/logout.html">salir &raquo;</a></li>
+                    </ul>
+                </div><!-- close .you -->
+		
+	    </div><!-- close .wrap -->
+	    
+	    <ul class="tab">
+		<li><a href="default.html"><span>Inicio</span></a></li>
+		<li class="active"><a href="persons.html"><span>Personas</span></a></li>
+		<li><a href="groups.html"><span>Grupos</span></a></li>
+	    </ul>
+	    	 
+	</div><!-- close #header -->
+	
+	<div id="topcontent">
+	    <div class="wrap">
+		
+		<h1 class="module_name">Personas</h1>
+		
+		<div class="module_search">
+		    <input type="text" class="module_search" />&nbsp;<input type="button" value="Buscar" />
+		</div>
+		
+		<div class="clearfloat"></div>
+	    </div><!-- close .wrap -->
+	</div><!-- close #topcontent -->
+	
+	<div id="content">
+	    <div class="wrap">
+		
+		<div class="left_panel">
+		    <img class="photo" src="img/person.png" />
+		</div>
+
+		<div class="right_panel">
+		    <h3 class="content_title">Agregando persona</h3>
+
+		    <div id="content_tabs">
+			<script type="text/javascript">
+			$(function(){
+				// Declara los tabs en JQuery
+				$('#content_tabs').tabs();
+			});
+			</script>
+
+			<ul>
+				<li><a href="#profile">Perfil</a></li>
+				<li><a href="#personalinfo">Datos Personales</a></li>
+				<li><a href="#groups">Grupos</a></li>
+				<li><a href="#files">Archivos</a></li>
+			</ul>
+			<div id="profile">
+			    <table>
+					<colgroup>
+						<col span="1" align="right"></col>
+					</colgroup>
+					<tr>
+						<th>Nombre:</th>
+						<td><input type="text"</td>
+					</tr>
+					<tr>
+						<th>Apellidos:</th>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<th>Identificaci&oacute;n:</th>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<th>Expediente:</th>
+						<td><input type="text"></td>
+					</tr>				
+			    </table>
+			    <h4>Anotaciones</h4>    							
+			</div>
+			
+			<div id="personalinfo">
+			<table>
+			    <tbody>
+				<tr>
+				    <th>Fecha de Nacimiento:</th>
+				    <td><input type="text"></td>
+				</tr>
+				<tr>
+				    <th>Nacionalidad:</th>
+				    <td><input type="text"></td>
+				</tr>
+				<tr>
+				    <th>Estado Civil:</th>
+				    <td><input type="text"></td>
+				</tr>
+				<tr>
+				    <th>Ocupaci&oacute;n:</th>
+				    <td><input type="text"></td>
+				</tr>
+				<tr>
+				    <th>Tiene trabajo remunerado:</th>
+				    <td>
+						<select size=1> 
+							<option value="esp">&nbsp;</option>
+							<option value="Si">S&iacute;</option>
+							<option value="No">No</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+				    <th>Trabajo temporal:</th>
+				    <td>
+						<select size=1> 
+							<option value="esp">&nbsp;</option>
+							<option value="Si">S&iacute;</option>
+							<option value="No">No</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+				    <th>Escolaridad:</th>
+				    <td colspan = "2"><input type="text"></td>
+				</tr>
+				<tr>
+				    <th>Formaci&oacute;n:</th>
+				    <td><input type="text"></td>
+				</tr>
+				<tr>
+				    <th>Direcci&oacute;n:</th>
+				</tr>				
+				<tr>
+					<td></td>
+					<th>Provincia:</th>
+				    <td>
+						<select SIZE=1> 
+							<option value="esp">&nbsp;</option>
+							<option VALUE="Si">Alajuela</option>
+							<option VALUE="No">Cartago</option>
+							<option VALUE="No">Guanacaste</option>
+							<option VALUE="No">Heredia</option>
+							<option VALUE="No">Lim&oacute;n</option>
+							<option VALUE="No">Puntarenas</option>
+							<option VALUE="No">San Jos&eacute;</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<th>Cant&oacute;n:</th>
+				    <td><input type="text"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<th>Distrito:</th>
+				    <td><input type="text"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<th>Barrio o caser&iacute;o:</th>
+				    <td><input type="text"></td>	
+				</tr>
+				<tr>
+					<td></td>  
+					<th>Otras señas:</th>
+				    <td colspan = "3"><input type="text"></td>								
+				</tr>
+				<tr> </tr>
+				<tr>
+					<th>Iglesia:</th>
+				    <td><input type="text"></td>			
+				</tr>
+				<tr>
+					<th>Fecha de Ingreso a la iglesia:</th>
+				    <td><input type="text"></td>			
+				</tr>
+				<tr>
+					<th>Fecha de Conversi&oacute;n</th>
+				    <td><input type="text"></td>			
+				</tr>
+				<tr>
+					<th>Contacto:</th>				    			
+				</tr>
+				<tr>
+					<td></td>
+					<th>Tel&eacute;fonos:</th>
+				    <td></td>			
+				</tr>
+				<tr>					
+					<td></td>
+					<th>Casa:</th>
+				    <td><input type="text"></td>
+				<tr>
+					<td></td>
+					<th>Trabajo:</th>
+				    <td><input type="text"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<th >Celular:</th>
+				    <td><input type="text"></td>
+				</tr>		
+					<td></td>
+					<th>Otro:</th>
+				    <td><input type="text"></td>						
+				</tr>
+				<tr>
+					<th>Correo Electrónico:</th>
+				    <td colspan="3"><input type="text"></td>			
+				</tr>
+				<tr>
+					<th>Medio preferido de contacto:</th>
+				    <td><input type="text"></td>			
+				</tr>
+				<tr>
+					<th>Fecha de ingreso a PEA:</th>
+				    <td><input type="text"></td>			
+				</tr>
+				<tr>
+					<th>Fecha de salida del PEA:</th>
+				    <td><input type="text"></td>			
+				</tr>
+								
+				</tbody>
+			    </table>
+				
+			    <h4>Anotaciones</h4>
+			</div>
+			
+			<div id="groups">
+				<table>
+					<tbody>
+					<tr>
+						<th>Grupo:</th>
+						<td><input type="text"></td>			
+					</tr>								
+					</tbody>
+				</table>
+			</div>
+			
+			<div id="files">Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
+		    </div>
+		</div>
+	    
+		<div class="text-right">
+			<input type="button" value="Guardar"/>
+			<a href="#">Cancelar</a>
+		</div>	
+		
+	    </div><!-- close .wrap -->
+	</div><!-- close #content -->
+	
+	<div id="footer">
+	    <div class="wrap">
+		
+		&copy; 2010 bajo <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">licencia MIT</a><br/>
+		para el Programa de Educaci&oacute;n Abierta Vida Abundante
+	    
+	    </div><!-- close .wrap -->
+	</div><!-- close #content -->
+	
+      </body>
+</html>
