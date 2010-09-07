@@ -230,6 +230,10 @@ td.result_separator {
     margin-top: 10px;
 }
 
+.text-right {
+    text-align: right;
+}
+
 /* Tabs */
 
 ul.tab, ul.tab li {
