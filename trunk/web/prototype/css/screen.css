@@ -22,8 +22,16 @@ a:hover {
     text-decoration: underline;
 }
 
-tbody th {
+td, th {
+	padding: 3px 5px;
+}
+
+th {
     text-align: left;
+}
+
+h4 {
+	font-size: 120%;
 }
 
 /* Clases generales */
@@ -193,6 +201,39 @@ td.result_separator {
 {
     float: left;
     position: relative;
+}
+
+span.filename {
+	display: block;
+	clear: left;
+	color: gray;
+	font-style:italic;
+}
+
+/* Comentarios / Anotaciones */
+#comments ol {
+	list-style: none;
+}
+
+.c-body {
+	float: left;
+	clear: right;
+	margin: 5px 3px;
+}
+
+.c-grav {
+	clear: left;
+	float: left;
+	margin: 5px 3px;
+}
+
+.c-head {
+	color: gray;
+	font-style:italic;
+}
+
+#postcomment {
+	clear: both;
 }
 
 /* Pie de página */
