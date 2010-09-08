@@ -30,6 +30,10 @@ th {
     text-align: left;
 }
 
+tbody th {
+    vertical-align: top;
+}
+
 h4 {
 	font-size: 120%;
 }
@@ -331,7 +335,25 @@ ul.tab li.active a span, ul.tab li.active a:hover span{
 	background:url(../img/tab-round.png) left 0 no-repeat;
 }
 
+/* Categorías de la información */
 
+.public_info, protected_info, internal_info {
+    margin: 5px 0px 10px;
+}
 
+.public_info:before
+{
+    content:url(../img/public.gif) " ";
+}
+
+.protected_info:before
+{
+    content:url(../img/protected.gif) " ";
+}
+
+.internal_info:before
+{
+    content:url(../img/internal.gif) " ";
+}
 
 
