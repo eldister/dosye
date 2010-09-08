@@ -343,17 +343,17 @@ ul.tab li.active a span, ul.tab li.active a:hover span{
 
 .public_info:before
 {
-    content:url(../img/public.gif) " ";
+    content:url(../img/public.jpg) " ";
 }
 
 .protected_info:before
 {
-    content:url(../img/protected.gif) " ";
+    content:url(../img/protected.png) " ";
 }
 
 .internal_info:before
 {
-    content:url(../img/internal.gif) " ";
+    content:url(../img/internal.png) " ";
 }
 
 

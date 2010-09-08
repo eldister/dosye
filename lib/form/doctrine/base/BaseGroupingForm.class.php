@@ -24,9 +24,9 @@ abstract class BaseGroupingForm extends BaseFormDoctrine
       'updated_at'          => new sfWidgetFormDateTime(),
       'created_by'          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'add_empty' => true)),
       'updated_by'          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'add_empty' => true)),
-      'sub_grouping_list'   => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Grouping')),
-      'super_grouping_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Grouping')),
-      'person_list'         => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Person')),
+      'sub_grouping_list'   => new sfWidgetFormChoiceAutocomplete(array('multiple' => true, 'model' => 'Grouping')),
+      'super_grouping_list' => new sfWidgetFormChoiceAutocomplete(array('multiple' => true, 'model' => 'Grouping')),
+      'person_list'         => new sfWidgetFormChoiceAutocomplete(array('multiple' => true, 'model' => 'Person')),
       'file_list'           => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'File')),
     ));
 
