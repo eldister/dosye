@@ -137,7 +137,8 @@
 					</div> 
 					<h4 id="postcomment">Realizar una anotaci&oacute;n</h4> 
 					<form action="" method="post" id="commentform"> 
-						<fieldset> 
+						<fieldset>
+                                                    <div class="protected_info">Esta información es protegida.</div>
 							<textarea name="comment" id="comment" cols="78" rows="10" tabindex="4"></textarea> 
 							<input name="submit" type="submit" id="submit" tabindex="5" value="Agregar Anotaci&oacute;n" /> 
 						</fieldset> 
@@ -262,7 +263,7 @@
 							<td>Questionario I-2010<span class="filename">questionario.doc</span></td>
 							<td>10-08-2010</td>
 							<td><a class="content_operation" href="person.html">egarcia</a></td>
-							<td>Protegido</td>
+                                                        <td><div class="protected_info">Protegido</div></td>
 							<td><a class="content_operation" href="#"><img src="img/download.jpg"/>Descargar</a></td>
 							<td><a class="content_operation" href="#"><img src="img/delete.jpg"/>Eliminar</a></td>
 						</tr>
@@ -270,7 +271,7 @@
 							<td>Fotograf&iacute;a<span class="filename">foto.jpg</span></td>
 							<td>02-08-2010</td>
 							<td><a href="person.html">asura</a></td>
-							<td>P&uacute;blico</td>
+                                                        <td><div class="public_info">P&uacute;blico</div></td>
 							<td><a class="content_operation" href="#"><img src="img/download.jpg"/>Descargar</a></td>
 							<td><a class="content_operation" href="#"><img src="img/delete.jpg"/>Eliminar</a></td>
 							<td><input type="checkbox" checked="checked">Imagen del perfil</input></td>
@@ -291,9 +292,9 @@
 						<tr>
 							<th>Categor&iacute;a:</th>
 							<td>
-								<p><input type="radio" name="file_category" value="internal">Interno: el archivo s&oacute;lo ser&aacute; visible por los usuarios que cuentan con acceso administrativo.</input></p>
-								<p><input type="radio" name="file_category" value="protected">Protegido: el archivo s&oacute;lo ser&aacute; visible por los miembros del grupo y los usuarios con acceso administrativo.</input></p>
-								<p><input type="radio" name="file_category" value="public">P&uacute;blico: el archivo ser&aacute; visible para todos los usuarios, aunque no sean miembros del grupo. Una imagen debe ser p&uacute;blica para establecerla como imagen del perfil.</input></p>
+                                                            <div class="internal_info"><input type="radio" name="file_category" value="internal">Interno: el archivo s&oacute;lo ser&aacute; visible por los usuarios que cuentan con acceso administrativo.</input></div>
+								<div class="protected_info"><input type="radio" name="file_category" value="protected">Protegido: el archivo s&oacute;lo ser&aacute; visible por los miembros del grupo y los usuarios con acceso administrativo.</input></div>
+								<div class="public_info"><input type="radio" name="file_category" value="public">P&uacute;blico: el archivo ser&aacute; visible para todos los usuarios, aunque no sean miembros del grupo. Una imagen debe ser p&uacute;blica para establecerla como imagen del perfil.</input></div>
 							</td>
 						</tr>
 					</tbody>
