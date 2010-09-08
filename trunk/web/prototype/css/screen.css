@@ -337,7 +337,7 @@ ul.tab li.active a span, ul.tab li.active a:hover span{
 
 /* Categorías de la información */
 
-.public_info, protected_info, internal_info {
+.public_info, .protected_info, .internal_info {
     margin: 5px 0px 10px;
 }
 
