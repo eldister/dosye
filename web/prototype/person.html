@@ -9,12 +9,12 @@
 		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.8.4.custom.min.js"></script>
 
-        <!-- Protonotes -->
+        <!-- Protonotes 
         <script src="http://www.protonotes.com/js/protonotes.js" type="text/javascript"></script>
         <script type="text/javascript">
         var groupnumber="qgR8jwNsQULB";
         var show_menubar_default=false;
-        </script><!-- close Protonotes -->
+        </script> close Protonotes -->
 
     </head>
     <body>
@@ -34,7 +34,7 @@
 	    <ul class="tab">
 		<li><a href="default.html"><span>Inicio</span></a></li>
 		<li class="active"><a href="persons.html"><span>Personas</span></a></li>
-		<li><a href="groups.html"><span>Grupos</span></a></li>
+		<!--<li><a href="groups.html"><span>Grupos</span></a></li>-->
 	    </ul>
 
 	</div><!-- close #header -->
@@ -80,7 +80,7 @@
 			<ul>
 				<li><a href="#profile">Perfil</a></li>
 				<li><a href="#personalinfo">Datos Personales</a></li>
-				<li><a href="#groups">Grupos</a></li>
+				<!--<li><a href="#groups">Grupos</a></li>-->
 				<li><a href="#files">Archivos</a></li>
 			</ul>
 			<div id="profile">
@@ -103,6 +103,10 @@
 				<tr>
 				    <th>Expediente:</th>
 				    <td>051034</td>
+				</tr>
+				<tr>
+				    <th>Usuario:</th>
+				    <td>aserrano</td>
 				</tr>
 				
 			    </table>
@@ -277,7 +281,7 @@
 			</div> 
 			
 			
-			<div id="groups">
+			<!--<div id="groups">
 				<div class="result_panel">
                     <table class="result_table">
                         <tbody>
@@ -297,8 +301,8 @@
 
                         </tbody>
                     </table>
-                </div> <!-- close .result_panel -->
-			</div>
+                </div> 
+			</div>-->
 			
 			<div id="files">
 				<div class="filedownload">
@@ -343,7 +347,7 @@
 							<th>Categor&iacute;a:</th>
 							<td>
 								<div class="internal_info"><input type="radio" name="file_category" value="internal">Interno: el archivo s&oacute;lo ser&aacute; visible por los usuarios que cuentan con acceso administrativo.</input></div>
-								<div class="protected_info"><input type="radio" name="file_category" value="protected">Protegido: el archivo s&oacute;lo ser&aacute; visible por el due&ntilde;o del perfil, los facilitadores de los grupos a los que pertenezca y los usuarios con acceso administrativo.</input></div>
+								<div class="protected_info"><input type="radio" name="file_category" value="protected">Protegido: el archivo s&oacute;lo ser&aacute; visible por el due&ntilde;o del perfil y los usuarios con acceso administrativo o docente.</input></div>
 								<div class="public_info"><input type="radio" name="file_category" value="public">P&uacute;blico: el archivo ser&aacute; visible para todos los usuarios. Una imagen debe ser p&uacute;blica para establecerla como imagen del perfil.</input></div>
 							</td>
 						</tr>
