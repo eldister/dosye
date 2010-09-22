@@ -1,0 +1,379 @@
+/* Elementos del HTML */
+
+body {
+    line-height: 1;
+    color: black;
+    background: repeat-x url(../images/background.png) #dee6f1;
+    font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size:13px;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a img {
+    border: 0;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+td, th {
+	padding: 3px 5px;
+}
+
+th {
+    text-align: left;
+}
+
+tbody th {
+    vertical-align: top;
+}
+
+h4 {
+	font-size: 120%;
+}
+
+/* Clases generales */
+
+.clearfloat { /* this class should be placed on a div or break element and should be the final element before the close of a container that should fully contain a float */
+    clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;
+}
+
+.wrap {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.note {
+    font-style:italic;
+    color: gray;
+}
+
+/* Encabezado */
+
+#header {
+    clear: both;
+    background-color: white;
+    height: 110px;
+    padding-top: 1px;
+}
+
+h1.logo a {
+    display: block;
+    height: 92px;
+    width: 150px;
+    background: url(../images/logo_frontend.jpg) no-repeat;
+    text-indent: -9999px;
+    float: left;
+}
+
+/* Barra superior del contenido */
+
+#topcontent {
+    clear: both;
+    padding: 3px 0px;
+    border-bottom:solid 1px #DEDEDE;
+    background-color: white;
+}
+
+h1.module_name {
+    font-size: large;
+    font-weight: bold;
+    color: black;
+    float: left;
+}
+
+#topcontent ul
+{
+    list-style: none;
+    display: inline-block;
+}
+
+#topcontent ul li
+{
+    float:left;
+    margin-right:2px;
+    vertical-align: middle;
+}
+
+a.module_operation
+{
+    top: 1px;
+    position: relative;
+    color: #088308;
+    font-size: 100%;
+}
+
+a.module_operation > img
+{
+    float: left;
+    position: relative;
+    margin-right: 3px;
+}
+
+
+
+div.module_search
+{
+    float: right;
+    position: relative;
+    top: 10px;
+}
+
+input.module_search
+{
+    width: 250px;
+}
+
+/* Contenido de la página */
+
+#content {
+    clear: both;
+    padding: 10px 5px;
+}
+
+.left_panel {
+    float: left;
+    clear: left;
+    width: 150px;
+}
+.right_panel {
+    float: left;
+    clear: right;
+    width: 800px;
+}
+
+h3.content_title {
+    padding: 0;
+    margin:0 0 5px 0;
+    font-size: 120%;
+}
+
+.left_panel > ul {
+    list-style-type: none;
+    margin:5px -30px;
+}
+
+.one_panel {
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+}
+
+.result_panel {
+   background-color: white;
+    border: solid 1px #DEDEDE;
+    padding: 10px;
+}
+
+table.result_table {
+    width: 100%;
+    color: #3c5aa8;
+}
+
+td.result_photo {
+    width: 60px;
+}
+
+td.result_caption {
+    width: 100px;
+}
+
+.result_main_data {
+    font-weight: bold;
+}
+
+td.result_action {
+    width: 150px;
+}
+
+td.result_separator {
+    border-bottom:solid 1px #DEDEDE;
+}
+
+.content_operation, ui-widget-content a.content_operation {
+    display: block;
+    float: left;
+    clear: right;
+    color: #3c5aa8;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.content_operation > img
+{
+    float: left;
+    position: relative;
+    margin-right: 3px;
+}
+
+span.filename {
+	display: block;
+	clear: left;
+	color: gray;
+	font-style:italic;
+}
+
+/* Comentarios / Anotaciones */
+#comments ol {
+	list-style: none;
+}
+
+.c-body {
+	float: left;
+	clear: right;
+	margin: 5px 3px;
+        width: 600px;
+}
+
+.c-grav {
+	clear: left;
+	float: left;
+	margin: 5px 3px;
+}
+
+.c-head {
+	color: gray;
+	font-style:italic;
+}
+
+#postcomment {
+	clear: both;
+}
+
+/* Pie de página */
+
+#footer {
+    clear: both;
+    padding: 10px 0px;
+    text-align: center;
+    font-size: small;
+    color: #666666;
+    width: 100%;
+}
+
+/* Seguridad */
+
+.you {
+    text-align: right;
+    float: right;
+}
+
+.you ul.not_logged_in {
+    margin-top: 60px;
+}
+
+.you ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+.you ul.not_logged_in li a {
+    font-size: 18px;
+}
+
+div#login {
+    width: 375px;
+    margin: auto;
+}
+
+.you ul.logged_in {
+    margin-top: 10px;
+}
+
+ul.error_list {
+    padding: 0;
+    margin: 0;
+}
+
+ul.error_list li {
+    list-style: none;
+    color: red;
+}
+
+div.text-right {
+    width: 100%;
+    text-align: right;
+}
+
+/* Tabs */
+
+ul.tab, ul.tab li {
+    border:0;
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+ul.tab {
+	border-bottom:solid 1px #DEDEDE; 
+	height:29px; 
+	top: 65px;
+	position: relative;
+	padding-left: 20px;
+	font-size: 120%;
+}
+    
+ul.tab li{float:left; margin-right:2px;}
+ul.tab a:link, ul.tab a:visited{
+	background:url(../images/tab-round.png) right 60px;
+	color:#666666;
+	display:block;
+	font-weight:bold;
+	height:30px;
+	line-height:30px;
+	text-decoration:none;
+}
+ul.tab a span{
+	background:url(../images/tab-round.png) left 60px;
+	display:block;
+	height:30px;
+	margin-right:14px;
+	padding-left:14px;
+}
+ul.tab a:hover{
+	background:url(../images/tab-round.png) right 30px;
+	display:block;
+}
+ul.tab a:hover span{
+	background:url(../images/tab-round.png) left 30px;
+	display:block;
+}
+
+ul.tab li.active a, .active a:visited, .active a:visited, .active a:hover{
+	background:url(../images/tab-round.png) right 0 no-repeat;
+} 
+ul.tab li.active a span, ul.tab li.active a:hover span{
+	background:url(../images/tab-round.png) left 0 no-repeat;
+}
+
+/* Categorías de la información */
+
+.public_info, .protected_info, .internal_info {
+    margin: 5px 0px 10px;
+}
+
+.public_info:before
+{
+    content:url(../images/public.jpg) " ";
+}
+
+.protected_info:before
+{
+    content:url(../images/protected.png) " ";
+}
+
+.internal_info:before
+{
+    content:url(../images/internal.png) " ";
+}
+
+

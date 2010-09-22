@@ -16,27 +16,14 @@
 	    <div class="wrap">
                 <h1 class="logo"><?php echo link_to('PEA', 'home/view') ?></h1>
 
-                <?php if ($sf_user->isAuthenticated()): ?>
-                <div class="you">
-                    <ul class="logged_in">
-                        <li><?php echo $sf_user->getUsername() ?></li>
-                        <li><?php echo link_to('salir &raquo;', 'sfGuardAuth/signout') ?></li>
-                    </ul>
-                </div><!-- close .you -->
-                <?php endif; ?>
-
 	    </div><!-- close .wrap -->
-
-	    <ul class="tab">
-		<li class="active"><?php echo link_to('<span>Inicio</span>', 'home/view') ?></li>
-		<li><?php echo link_to('<span>Personas</span>', 'p/search') ?></li>
-		<!--<li><a href="groups.html"><span>Grupos</span></a></li>-->
-	    </ul>
-
+            
 	</div><!-- close #header -->
 
-        <?php echo $sf_content ?>
-        
+        <div id="login">
+            <?php echo $sf_content ?>
+        </div>
+
         <div id="footer">
 	    <div class="wrap">
 
