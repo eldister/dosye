@@ -38,8 +38,6 @@
  * @property EducationalLevel $EducationalLevel
  * @property Image $PhotoImage
  * @property Doctrine_Collection $File
- * @property Doctrine_Collection $Grouping
- * @property Doctrine_Collection $PersonGrouping
  * @property Doctrine_Collection $PersonFile
  * 
  * @method string              getInternalId()           Returns the current record's "internal_id" value
@@ -75,8 +73,6 @@
  * @method EducationalLevel    getEducationalLevel()     Returns the current record's "EducationalLevel" value
  * @method Image               getPhotoImage()           Returns the current record's "PhotoImage" value
  * @method Doctrine_Collection getFile()                 Returns the current record's "File" collection
- * @method Doctrine_Collection getGrouping()             Returns the current record's "Grouping" collection
- * @method Doctrine_Collection getPersonGrouping()       Returns the current record's "PersonGrouping" collection
  * @method Doctrine_Collection getPersonFile()           Returns the current record's "PersonFile" collection
  * @method Person              setInternalId()           Sets the current record's "internal_id" value
  * @method Person              setFirstName()            Sets the current record's "first_name" value
@@ -111,8 +107,6 @@
  * @method Person              setEducationalLevel()     Sets the current record's "EducationalLevel" value
  * @method Person              setPhotoImage()           Sets the current record's "PhotoImage" value
  * @method Person              setFile()                 Sets the current record's "File" collection
- * @method Person              setGrouping()             Sets the current record's "Grouping" collection
- * @method Person              setPersonGrouping()       Sets the current record's "PersonGrouping" collection
  * @method Person              setPersonFile()           Sets the current record's "PersonFile" collection
  * 
  * @package    dosye
@@ -258,15 +252,6 @@ abstract class BasePerson extends sfDoctrineRecord
 
         $this->hasMany('File', array(
              'refClass' => 'PersonFile',
-             'local' => 'id',
-             'foreign' => 'person_id'));
-
-        $this->hasMany('Grouping', array(
-             'refClass' => 'PersonGrouping',
-             'local' => 'id',
-             'foreign' => 'person_id'));
-
-        $this->hasMany('PersonGrouping', array(
              'local' => 'id',
              'foreign' => 'person_id'));
 

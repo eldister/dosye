@@ -5,13 +5,6 @@ File:
     internal_filename: { type: string(255), notnull: true }
     description:       { type: string(255), notnull: true }
   relations:
-    Grouping:
-      foreignAlias: File
-      class:        Grouping
-      refClass:     GroupingFile
-      local:        id
-      foreign:      file_id
-      type:         one
     Person:
       foreignAlias: File
       class:        Person
@@ -100,83 +93,6 @@ Person:
       refClass:     PersonFile
       local:        id
       foreign:      person_id
-    Grouping:
-      foreignAlias: Person
-      class:        Grouping
-      refClass:     PersonGrouping
-      local:        id
-      foreign:      person_id
-      type:         many
-
-Grouping:
-  actAs: { Timestampable: ~, fzBlameable: ~, Commentable: ~ }
-  columns:
-    name:            { type: string(100), notnull: true }
-    photo_image_id:  integer
-    description:     { type: string(255), notnull: true }
-    due_date:        date
-  relations:
-    SubGrouping:
-      foreignAlias: SuperGrouping
-      class:        Grouping
-      refClass:     SubGrouping
-      local:        id
-      foreign:      supergrouping_id
-      type:         many
-    SuperGrouping:
-      foreignAlias: SubGrouping
-      class:        Grouping
-      refClass:     SubGrouping
-      local:        id
-      foreign:      subgrouping_id
-      type:         many
-    Person:
-      foreignAlias: Grouping
-      class:        Person
-      refClass:     PersonGrouping
-      local:        id
-      foreign:      grouping_id
-      type:         many
-    File:
-      foreignAlias: File
-      class:        File
-      refClass:     GroupingFile
-      local:        id
-      foreign:      grouping_id
-      type:         many
-    Image:
-      class:        Image
-      local:        photo_image_id
-      foreign:      id
-      type:         one
-
-SubGrouping:
-  actAs: { Timestampable: ~, fzBlameable: ~ }
-  columns:
-    supergrouping_id: { type: integer, notnull: true, primary: true }
-    subgrouping_id:   { type: integer, notnull: true, primary: true }
-  relations:
-    SuperGrouping:
-      class:        Grouping
-      local:        supergrouping_id
-      foreign:      id
-      type:         one
-    SubGrouping:
-      class:        Grouping
-      local:        subgrouping_id
-      foreign:      id
-      type:         one
-
-PersonGrouping:
-  actAs: { Timestampable: ~, fzBlameable: ~ }
-  columns:
-    person_id: { type: integer, notnull: true, primary: true }
-    grouping_id:  { type: integer, notnull: true, primary: true }
-  relations:
-    Grouping:
-      type: one
-    Person:
-      type: one
 
 PersonFile:
   actAs: { Timestampable: ~, fzBlameable: ~ }
@@ -186,18 +102,6 @@ PersonFile:
     visible:   { type: boolean, notnull: true, default: true }
   relations:
     Person:
-      type:    one
-    File:
-      type:    one
-
-GroupingFile:
-  actAs: { Timestampable: ~, fzBlameable: ~ }
-  columns:
-    grouping_id: { type: integer, notnull: true, primary: true }
-    file_id:  { type: integer, notnull: true, primary: true }
-    visible:  { type: boolean, notnull: true, default: true }
-  relations:
-    Grouping:
       type:    one
     File:
       type:    one

@@ -11,11 +11,8 @@
  * @property string $type
  * @property integer $image_width
  * @property integer $image_height
- * @property Doctrine_Collection $Grouping
  * @property Doctrine_Collection $Person
- * @property Doctrine_Collection $File
  * @property Doctrine_Collection $PersonFile
- * @property Doctrine_Collection $GroupingFile
  * 
  * @method string              getOriginalFilename()  Returns the current record's "original_filename" value
  * @method string              getInternalFilename()  Returns the current record's "internal_filename" value
@@ -23,22 +20,16 @@
  * @method string              getType()              Returns the current record's "type" value
  * @method integer             getImageWidth()        Returns the current record's "image_width" value
  * @method integer             getImageHeight()       Returns the current record's "image_height" value
- * @method Doctrine_Collection getGrouping()          Returns the current record's "Grouping" collection
  * @method Doctrine_Collection getPerson()            Returns the current record's "Person" collection
- * @method Doctrine_Collection getFile()              Returns the current record's "File" collection
  * @method Doctrine_Collection getPersonFile()        Returns the current record's "PersonFile" collection
- * @method Doctrine_Collection getGroupingFile()      Returns the current record's "GroupingFile" collection
  * @method File                setOriginalFilename()  Sets the current record's "original_filename" value
  * @method File                setInternalFilename()  Sets the current record's "internal_filename" value
  * @method File                setDescription()       Sets the current record's "description" value
  * @method File                setType()              Sets the current record's "type" value
  * @method File                setImageWidth()        Sets the current record's "image_width" value
  * @method File                setImageHeight()       Sets the current record's "image_height" value
- * @method File                setGrouping()          Sets the current record's "Grouping" collection
  * @method File                setPerson()            Sets the current record's "Person" collection
- * @method File                setFile()              Sets the current record's "File" collection
  * @method File                setPersonFile()        Sets the current record's "PersonFile" collection
- * @method File                setGroupingFile()      Sets the current record's "GroupingFile" collection
  * 
  * @package    dosye
  * @subpackage model
@@ -87,26 +78,12 @@ abstract class BaseFile extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasMany('Grouping', array(
-             'refClass' => 'GroupingFile',
-             'local' => 'id',
-             'foreign' => 'file_id'));
-
         $this->hasMany('Person', array(
              'refClass' => 'PersonFile',
              'local' => 'id',
              'foreign' => 'file_id'));
 
-        $this->hasMany('Grouping as File', array(
-             'refClass' => 'GroupingFile',
-             'local' => 'grouping_id',
-             'foreign' => 'id'));
-
         $this->hasMany('PersonFile', array(
-             'local' => 'id',
-             'foreign' => 'file_id'));
-
-        $this->hasMany('GroupingFile', array(
              'local' => 'id',
              'foreign' => 'file_id'));
 

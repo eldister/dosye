@@ -43,7 +43,6 @@ abstract class BasePersonFormFilter extends BaseFormFilterDoctrine
       'created_by'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'add_empty' => true)),
       'updated_by'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'add_empty' => true)),
       'file_list'            => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'File')),
-      'grouping_list'        => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Grouping')),
     ));
 
     $this->setValidators(array(
@@ -77,7 +76,6 @@ abstract class BasePersonFormFilter extends BaseFormFilterDoctrine
       'created_by'           => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('CreatedBy'), 'column' => 'id')),
       'updated_by'           => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('UpdatedBy'), 'column' => 'id')),
       'file_list'            => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'File', 'required' => false)),
-      'grouping_list'        => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Grouping', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('person_filters[%s]');
@@ -104,24 +102,6 @@ abstract class BasePersonFormFilter extends BaseFormFilterDoctrine
     $query
       ->leftJoin($query->getRootAlias().'.PersonFile PersonFile')
       ->andWhereIn('PersonFile.person_id', $values)
-    ;
-  }
-
-  public function addGroupingListColumnQuery(Doctrine_Query $query, $field, $values)
-  {
-    if (!is_array($values))
-    {
-      $values = array($values);
-    }
-
-    if (!count($values))
-    {
-      return;
-    }
-
-    $query
-      ->leftJoin($query->getRootAlias().'.PersonGrouping PersonGrouping')
-      ->andWhereIn('PersonGrouping.person_id', $values)
     ;
   }
 
@@ -164,7 +144,6 @@ abstract class BasePersonFormFilter extends BaseFormFilterDoctrine
       'created_by'           => 'ForeignKey',
       'updated_by'           => 'ForeignKey',
       'file_list'            => 'ManyKey',
-      'grouping_list'        => 'ManyKey',
     );
   }
 }
