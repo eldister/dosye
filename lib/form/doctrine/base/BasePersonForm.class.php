@@ -46,7 +46,6 @@ abstract class BasePersonForm extends BaseFormDoctrine
       'created_by'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'add_empty' => true)),
       'updated_by'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'add_empty' => true)),
       'file_list'            => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'File')),
-      'grouping_list'        => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Grouping')),
     ));
 
     $this->setValidators(array(
@@ -81,7 +80,6 @@ abstract class BasePersonForm extends BaseFormDoctrine
       'created_by'           => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'required' => false)),
       'updated_by'           => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'required' => false)),
       'file_list'            => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'File', 'required' => false)),
-      'grouping_list'        => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Grouping', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -111,17 +109,11 @@ abstract class BasePersonForm extends BaseFormDoctrine
       $this->setDefault('file_list', $this->object->File->getPrimaryKeys());
     }
 
-    if (isset($this->widgetSchema['grouping_list']))
-    {
-      $this->setDefault('grouping_list', $this->object->Grouping->getPrimaryKeys());
-    }
-
   }
 
   protected function doSave($con = null)
   {
     $this->saveFileList($con);
-    $this->saveGroupingList($con);
 
     parent::doSave($con);
   }
@@ -161,44 +153,6 @@ abstract class BasePersonForm extends BaseFormDoctrine
     if (count($link))
     {
       $this->object->link('File', array_values($link));
-    }
-  }
-
-  public function saveGroupingList($con = null)
-  {
-    if (!$this->isValid())
-    {
-      throw $this->getErrorSchema();
-    }
-
-    if (!isset($this->widgetSchema['grouping_list']))
-    {
-      // somebody has unset this widget
-      return;
-    }
-
-    if (null === $con)
-    {
-      $con = $this->getConnection();
-    }
-
-    $existing = $this->object->Grouping->getPrimaryKeys();
-    $values = $this->getValue('grouping_list');
-    if (!is_array($values))
-    {
-      $values = array();
-    }
-
-    $unlink = array_diff($existing, $values);
-    if (count($unlink))
-    {
-      $this->object->unlink('Grouping', array_values($unlink));
-    }
-
-    $link = array_diff($values, $existing);
-    if (count($link))
-    {
-      $this->object->link('Grouping', array_values($link));
     }
   }
 
