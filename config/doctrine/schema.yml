@@ -29,6 +29,7 @@ Person:
     internal_id:          { type: string(20), notnull: true, unique: true }
     first_name:           { type: string(100), notnull: true }
     last_name:            { type: string(100), notnull: true }
+    user_id:              integer
     photo_image_id:       integer
     date_of_birth:        date
     cell_phone:           string(50)
@@ -93,6 +94,11 @@ Person:
       refClass:     PersonFile
       local:        id
       foreign:      person_id
+    User:
+      foreignAlias: Profile
+      class:        sfGuardUser
+      local:        user_id
+      foreign:      id
 
 PersonFile:
   actAs: { Timestampable: ~, fzBlameable: ~ }
