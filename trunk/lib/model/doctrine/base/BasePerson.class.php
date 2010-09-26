@@ -8,6 +8,7 @@
  * @property string $internal_id
  * @property string $first_name
  * @property string $last_name
+ * @property integer $user_id
  * @property integer $photo_image_id
  * @property date $date_of_birth
  * @property string $cell_phone
@@ -38,11 +39,13 @@
  * @property EducationalLevel $EducationalLevel
  * @property Image $PhotoImage
  * @property Doctrine_Collection $File
+ * @property sfGuardUser $User
  * @property Doctrine_Collection $PersonFile
  * 
  * @method string              getInternalId()           Returns the current record's "internal_id" value
  * @method string              getFirstName()            Returns the current record's "first_name" value
  * @method string              getLastName()             Returns the current record's "last_name" value
+ * @method integer             getUserId()               Returns the current record's "user_id" value
  * @method integer             getPhotoImageId()         Returns the current record's "photo_image_id" value
  * @method date                getDateOfBirth()          Returns the current record's "date_of_birth" value
  * @method string              getCellPhone()            Returns the current record's "cell_phone" value
@@ -73,10 +76,12 @@
  * @method EducationalLevel    getEducationalLevel()     Returns the current record's "EducationalLevel" value
  * @method Image               getPhotoImage()           Returns the current record's "PhotoImage" value
  * @method Doctrine_Collection getFile()                 Returns the current record's "File" collection
+ * @method sfGuardUser         getUser()                 Returns the current record's "User" value
  * @method Doctrine_Collection getPersonFile()           Returns the current record's "PersonFile" collection
  * @method Person              setInternalId()           Sets the current record's "internal_id" value
  * @method Person              setFirstName()            Sets the current record's "first_name" value
  * @method Person              setLastName()             Sets the current record's "last_name" value
+ * @method Person              setUserId()               Sets the current record's "user_id" value
  * @method Person              setPhotoImageId()         Sets the current record's "photo_image_id" value
  * @method Person              setDateOfBirth()          Sets the current record's "date_of_birth" value
  * @method Person              setCellPhone()            Sets the current record's "cell_phone" value
@@ -107,6 +112,7 @@
  * @method Person              setEducationalLevel()     Sets the current record's "EducationalLevel" value
  * @method Person              setPhotoImage()           Sets the current record's "PhotoImage" value
  * @method Person              setFile()                 Sets the current record's "File" collection
+ * @method Person              setUser()                 Sets the current record's "User" value
  * @method Person              setPersonFile()           Sets the current record's "PersonFile" collection
  * 
  * @package    dosye
@@ -134,6 +140,9 @@ abstract class BasePerson extends sfDoctrineRecord
              'type' => 'string',
              'notnull' => true,
              'length' => 100,
+             ));
+        $this->hasColumn('user_id', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('photo_image_id', 'integer', null, array(
              'type' => 'integer',
@@ -254,6 +263,10 @@ abstract class BasePerson extends sfDoctrineRecord
              'refClass' => 'PersonFile',
              'local' => 'id',
              'foreign' => 'person_id'));
+
+        $this->hasOne('sfGuardUser as User', array(
+             'local' => 'user_id',
+             'foreign' => 'id'));
 
         $this->hasMany('PersonFile', array(
              'local' => 'id',
