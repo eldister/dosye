@@ -27,10 +27,13 @@
 
 	    </div><!-- close .wrap -->
 
-	    <ul class="tab">
-		<li class="active"><?php echo link_to('<span>Inicio</span>', 'home/view') ?></li>
-		<li><?php echo link_to('<span>Personas</span>', 'p/search') ?></li>
-		<!--<li><a href="groups.html"><span>Grupos</span></a></li>-->
+	    <ul class="tab"><?php $rp = $sf_request->getRequestParameters(); ?>
+		<li <?php if($rp['module'] == 'home') echo 'class="active"'; ?> >
+			<?php echo link_to('<span>Inicio</span>', 'home/view') ?>
+		</li>
+		<li <?php if($rp['module'] == 'p') echo 'class="active"'; ?> >
+			<?php echo link_to('<span>Personas</span>', 'p/search') ?>
+		</li>
 	    </ul>
 
 	</div><!-- close #header -->

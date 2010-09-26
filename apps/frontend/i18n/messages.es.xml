@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd" >
+<xliff version="1.0">
+	<file original="global" source-language="en_US" datatype="plaintext">
+		<body>
+			<trans-unit id="1"> 
+				<source>Forgot your password?</source> 
+				<target>¿Olvidó su clave?</target> 
+			</trans-unit> 
+			<trans-unit id="2"> 
+				<source>Remember</source> 
+				<target>Recordarme</target> 
+			</trans-unit> 
+			<trans-unit id="3"> 
+				<source>Required.</source> 
+				<target>Requerido.</target> 
+			</trans-unit> 
+			<trans-unit id="4"> 
+				<source>The username and/or password is invalid.</source> 
+				<target>El usuario y/o su clave son incorrectos.</target> 
+			</trans-unit>
+			<trans-unit id="5"> 
+				<source>Signin</source> 
+				<target>Ingresar al sistema</target> 
+			</trans-unit>  
+		</body>
+	</file>
+</xliff>

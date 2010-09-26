@@ -6,10 +6,10 @@ default:
     content-type: text/html
 
   metas:
-    #title:        symfony project
-    #description:  symfony project
-    #keywords:     symfony, project
-    #language:     en
+    title:        PEA - Expediente Electrónico
+    description:  Sistema de expediente electrónico del Programa de Educación Abierta Vida Abundante
+    keywords:     PEA, expediente, estudiantes, voluntarios, educación
+    language:     es
     #robots:       index, follow
 
   stylesheets:    [screen.css]
