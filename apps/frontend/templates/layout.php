@@ -19,7 +19,7 @@
                 <?php if ($sf_user->isAuthenticated()): ?>
                 <div class="you">
                     <ul class="logged_in">
-                        <li><?php echo $sf_user->getUsername() ?></li>
+                        <li><?php echo $sf_user->getName() ?></li>
                         <li><?php echo link_to('salir &raquo;', 'sfGuardAuth/signout') ?></li>
                     </ul>
                 </div><!-- close .you -->
