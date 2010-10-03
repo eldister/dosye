@@ -6,7 +6,7 @@ File:
     description:       { type: string(255), notnull: true }
   relations:
     Person:
-      foreignAlias: File
+      foreignAlias: Files
       class:        Person
       refClass:     PersonFile
       local:        id
@@ -88,12 +88,6 @@ Person:
       local:   photo_image_id
       foreign: id
       type:    one
-    File:
-      foreignAlias: Person
-      class:        File
-      refClass:     PersonFile
-      local:        id
-      foreign:      person_id
     User:
       foreignAlias: Profile
       class:        sfGuardUser

@@ -38,8 +38,8 @@
  * @property AreaLevel3 $AreaLevel3
  * @property EducationalLevel $EducationalLevel
  * @property Image $PhotoImage
- * @property Doctrine_Collection $File
  * @property sfGuardUser $User
+ * @property Doctrine_Collection $Files
  * @property Doctrine_Collection $PersonFile
  * 
  * @method string              getInternalId()           Returns the current record's "internal_id" value
@@ -75,8 +75,8 @@
  * @method AreaLevel3          getAreaLevel3()           Returns the current record's "AreaLevel3" value
  * @method EducationalLevel    getEducationalLevel()     Returns the current record's "EducationalLevel" value
  * @method Image               getPhotoImage()           Returns the current record's "PhotoImage" value
- * @method Doctrine_Collection getFile()                 Returns the current record's "File" collection
  * @method sfGuardUser         getUser()                 Returns the current record's "User" value
+ * @method Doctrine_Collection getFiles()                Returns the current record's "Files" collection
  * @method Doctrine_Collection getPersonFile()           Returns the current record's "PersonFile" collection
  * @method Person              setInternalId()           Sets the current record's "internal_id" value
  * @method Person              setFirstName()            Sets the current record's "first_name" value
@@ -111,8 +111,8 @@
  * @method Person              setAreaLevel3()           Sets the current record's "AreaLevel3" value
  * @method Person              setEducationalLevel()     Sets the current record's "EducationalLevel" value
  * @method Person              setPhotoImage()           Sets the current record's "PhotoImage" value
- * @method Person              setFile()                 Sets the current record's "File" collection
  * @method Person              setUser()                 Sets the current record's "User" value
+ * @method Person              setFiles()                Sets the current record's "Files" collection
  * @method Person              setPersonFile()           Sets the current record's "PersonFile" collection
  * 
  * @package    dosye
@@ -259,13 +259,13 @@ abstract class BasePerson extends sfDoctrineRecord
              'local' => 'photo_image_id',
              'foreign' => 'id'));
 
-        $this->hasMany('File', array(
-             'refClass' => 'PersonFile',
-             'local' => 'id',
-             'foreign' => 'person_id'));
-
         $this->hasOne('sfGuardUser as User', array(
              'local' => 'user_id',
+             'foreign' => 'id'));
+
+        $this->hasMany('File as Files', array(
+             'refClass' => 'PersonFile',
+             'local' => 'file_id',
              'foreign' => 'id'));
 
         $this->hasMany('PersonFile', array(

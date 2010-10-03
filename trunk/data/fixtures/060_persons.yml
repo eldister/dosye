@@ -1,0 +1,52 @@
+Person:
+  Esteban_Alvarado:
+    internal_id:          110880511
+    first_name:           Esteban
+    last_name:            Alvarado Bravo
+    User:                 User_ealvarado
+    date_of_birth:        1980/11/25
+    cell_phone:           8821-3573
+    home_phone:           2292-7684
+    job_phone:            ~
+    other_phone:          ~
+    email:                teban1812@gmail.com
+    Nationality:          cr
+    identification:       1-1088-0511
+    gender:               M
+    MaritalStatus:        married
+    has_a_job:            true
+    employment:           Programador
+    paid_job:             true
+    temporal_job:         false
+    AreaLevel1:           San_Jose
+    AreaLevel2:           Coronado
+    AreaLevel3:           Coronado_Patalillo
+    address_neighborhood: Urbanización La Amistad
+    address_directions:   casa 102
+    church:               Comunidad Cristiana Vida Abundante Coronado
+    EducationalLevel:     college_pregrade
+  Thirsa_Siliezar:
+    internal_id:          122200003423
+    first_name:           Thirsa
+    last_name:            Siliézar Rodas
+    date_of_birth:        1977/06/08
+    cell_phone:           8846-4069
+    home_phone:           2292-7684
+    job_phone:            2229-6800
+    other_phone:          ~
+    email:                thirsasiliezar@gmail.com
+    Nationality:          sv
+    identification:       122200003423
+    gender:               F
+    MaritalStatus:        married
+    has_a_job:            true
+    employment:           Secretaria
+    paid_job:             true
+    temporal_job:         false
+    AreaLevel1:           San_Jose
+    AreaLevel2:           Coronado
+    AreaLevel3:           Coronado_Patalillo
+    address_neighborhood: Urbanización La Amistad
+    address_directions:   casa 102
+    church:               Comunidad Cristiana Vida Abundante Coronado
+    EducationalLevel:     partial_college

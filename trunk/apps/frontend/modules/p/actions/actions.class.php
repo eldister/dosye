@@ -10,11 +10,27 @@
  */
 class pActions extends sfActions
 {
-  public function executeIndex(sfWebRequest $request)
+  
+  public function executeSearch(sfWebRequest $request)
   {
-    $this->persons = Doctrine::getTable('Person')
-      ->createQuery('a')
-      ->execute();
+      $terms = explode(' ', $request->GetParameter('search_terms', ''));
+      if (array_count_values($terms) > 0)
+      {
+          $query = Doctrine::getTable('Person')->createQuery('a');
+          foreach ($terms as $term)
+          {
+              if ($term != '')
+              {
+                $query = $query->orWhere("internal_id LIKE ?", '%'.$term.'%' );
+                $query = $query->orWhere("identification LIKE ?", '%'.$term.'%' );
+                $query = $query->orWhere("first_name LIKE ?", '%'.$term.'%' );
+                $query = $query->orWhere("last_name LIKE ?", '%'.$term.'%' );
+              }
+          }
+
+          $this->searchTerms = implode(' ', $terms);
+          $this->persons = $query->execute();
+      }
   }
 
   public function executeShow(sfWebRequest $request)

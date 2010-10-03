@@ -8,15 +8,37 @@ AreaLevel1:
   Puntarenas: { description: Puntarenas }
 
 AreaLevel2:
-  SJ_Central:   { AreaLevel1: San_Jose, description: San José }
-  Escazu:       { AreaLevel1: San_Jose, description: Escazú }
-  Desamparados: { AreaLevel1: San_Jose, description: Desamparados }
-  Puriscal:     { AreaLevel1: San_Jose, description: Puriscal }
-  Tarrazu:      { AreaLevel1: San_Jose, description: Tarrazú }
-  Aserri:       { AreaLevel1: San_Jose, description: Aserrí }
-  Mora:         { AreaLevel1: San_Jose, description: Mora }
-  Goicoechea:   { AreaLevel1: San_Jose, description: Goicoechea }
-  SantaAna:     { AreaLevel1: San_Jose, description: Santa Ana }
-  Alajuelita:   { AreaLevel1: San_Jose, description: Alajuelita }
-  Coronado:     { AreaLevel1: San_Jose, description: Vázquez de Coronado }
-  Acosta:       { AreaLevel1: San_Jose, description: Acosta }
+  SJ_Central:    { AreaLevel1: San_Jose, description: San José }
+  Escazu:        { AreaLevel1: San_Jose, description: Escazú }
+  Desamparados:  { AreaLevel1: San_Jose, description: Desamparados }
+  Puriscal:      { AreaLevel1: San_Jose, description: Puriscal }
+  Tarrazu:       { AreaLevel1: San_Jose, description: Tarrazú }
+  Aserri:        { AreaLevel1: San_Jose, description: Aserrí }
+  Mora:          { AreaLevel1: San_Jose, description: Mora }
+  Goicoechea:    { AreaLevel1: San_Jose, description: Goicoechea }
+  SantaAna:      { AreaLevel1: San_Jose, description: Santa Ana }
+  Alajuelita:    { AreaLevel1: San_Jose, description: Alajuelita }
+  Coronado:      { AreaLevel1: San_Jose, description: Vázquez de Coronado }
+  Acosta:        { AreaLevel1: San_Jose, description: Acosta }
+  Tibas:         { AreaLevel1: San_Jose, description: Tibás }
+  Moravia:       { AreaLevel1: San_Jose, description: Moravia }     
+  Montes_de_Oca: { AreaLevel1: San_Jose, description: Montes de Oca }
+  Turrubares:    { AreaLevel1: San_Jose, description: Turrubares }   
+  Dota:          { AreaLevel1: San_Jose, description: Dota }         
+  Curridabat:    { AreaLevel1: San_Jose, description: Curridabat }   
+  Perez_Zeledon: { AreaLevel1: San_Jose, description: Pérez Zeledón }
+  Leon_Cortes:   { AreaLevel1: San_Jose, description: León Cortés }  
+
+AreaLevel3:
+  Goicoechea_Guadalupe:       { AreaLevel2: Goicoechea, description: Guadalupe }
+  Goicoechea_San_Francisco:   { AreaLevel2: Goicoechea, description: San Francisco }
+  Goicoechea_Calle_Blancos:   { AreaLevel2: Goicoechea, description: Calle Blancos }
+  Goicoechea_Mata_de_Platano: { AreaLevel2: Goicoechea, description: Mata de Plátano (El Carmen) }
+  Goicoechea_Ipis:            { AreaLevel2: Goicoechea, description: Ipís }
+  Goicoechea_Rancho_Redondo:  { AreaLevel2: Goicoechea, description: Rancho Redondo }
+  Goicoechea_Purral:          { AreaLevel2: Goicoechea, description: Purral } 
+  Coronado_San_Isidro:        { AreaLevel2: Coronado, description: San Isidro }
+  Coronado_San_Rafael:        { AreaLevel2: Coronado, description: San Rafael }
+  Coronado_Jesus:             { AreaLevel2: Coronado, description: Jesús (Dulce Nombre) }
+  Coronado_Patalillo:         { AreaLevel2: Coronado, description: Patalillo (San Antonio) }
+  Coronado_Cascajal:          { AreaLevel2: Coronado, description: Cascajal }        
