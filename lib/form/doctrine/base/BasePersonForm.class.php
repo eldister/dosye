@@ -46,7 +46,7 @@ abstract class BasePersonForm extends BaseFormDoctrine
       'updated_at'           => new sfWidgetFormDateTime(),
       'created_by'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'add_empty' => true)),
       'updated_by'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'add_empty' => true)),
-      'file_list'            => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'File')),
+      'files_list'           => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'File')),
     ));
 
     $this->setValidators(array(
@@ -81,7 +81,7 @@ abstract class BasePersonForm extends BaseFormDoctrine
       'updated_at'           => new sfValidatorDateTime(),
       'created_by'           => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'required' => false)),
       'updated_by'           => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'required' => false)),
-      'file_list'            => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'File', 'required' => false)),
+      'files_list'           => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'File', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -106,28 +106,28 @@ abstract class BasePersonForm extends BaseFormDoctrine
   {
     parent::updateDefaultsFromObject();
 
-    if (isset($this->widgetSchema['file_list']))
+    if (isset($this->widgetSchema['files_list']))
     {
-      $this->setDefault('file_list', $this->object->File->getPrimaryKeys());
+      $this->setDefault('files_list', $this->object->Files->getPrimaryKeys());
     }
 
   }
 
   protected function doSave($con = null)
   {
-    $this->saveFileList($con);
+    $this->saveFilesList($con);
 
     parent::doSave($con);
   }
 
-  public function saveFileList($con = null)
+  public function saveFilesList($con = null)
   {
     if (!$this->isValid())
     {
       throw $this->getErrorSchema();
     }
 
-    if (!isset($this->widgetSchema['file_list']))
+    if (!isset($this->widgetSchema['files_list']))
     {
       // somebody has unset this widget
       return;
@@ -138,8 +138,8 @@ abstract class BasePersonForm extends BaseFormDoctrine
       $con = $this->getConnection();
     }
 
-    $existing = $this->object->File->getPrimaryKeys();
-    $values = $this->getValue('file_list');
+    $existing = $this->object->Files->getPrimaryKeys();
+    $values = $this->getValue('files_list');
     if (!is_array($values))
     {
       $values = array();
@@ -148,13 +148,13 @@ abstract class BasePersonForm extends BaseFormDoctrine
     $unlink = array_diff($existing, $values);
     if (count($unlink))
     {
-      $this->object->unlink('File', array_values($unlink));
+      $this->object->unlink('Files', array_values($unlink));
     }
 
     $link = array_diff($values, $existing);
     if (count($link))
     {
-      $this->object->link('File', array_values($link));
+      $this->object->link('Files', array_values($link));
     }
   }
 
