@@ -4,7 +4,7 @@
 		<h1 class="module_name">Personas</h1>
 
 		<ul>
-		    <li><a class="module_operation" href="<?php echo url_for('p/new') ?>"><img src="img/add.jpg"/>Agregar nueva persona</a></li>
+		    <li><a class="module_operation" href="<?php echo url_for('p/new') ?>"><?php echo image_tag('add.jpg') ?>Agregar nueva persona</a></li>
 		</ul>
 
 		<div class="module_search">
@@ -14,7 +14,6 @@
                             function updateAction(textinput){
                                 var url = "<?php echo url_for('p/search') ?>" + "/" + textinput.value.replace(/[\W]+/g,"+");
                                 document.getElementById('search_form').action = url;
-                                alert(url);
                             }
                         </script>
                     </form>

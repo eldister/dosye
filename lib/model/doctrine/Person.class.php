@@ -12,5 +12,9 @@
  */
 class Person extends BasePerson
 {
+    public function getFullName()
+    {
+        return $this->getFirstName().' '.$this->getLastName();
+    }
 
 }
