@@ -23,7 +23,7 @@ a:hover {
 }
 
 td, th {
-	padding: 3px 5px;
+	padding: 5px 5px;
 }
 
 th {
@@ -34,8 +34,14 @@ tbody th {
     vertical-align: top;
 }
 
-h4 {
+table {
+    margin: 10px 3px;
+}
+
+h4, table caption {
 	font-size: 120%;
+        text-align: left;
+        font-weight: bold;
 }
 
 /* Clases generales */

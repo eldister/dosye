@@ -16,13 +16,13 @@
  * @property string $job_phone
  * @property string $other_phone
  * @property string $email
+ * @property integer $preferred_mean_id
  * @property integer $nationality_id
  * @property string $identification
  * @property enum $gender
  * @property integer $marital_status_id
  * @property boolean $has_a_job
  * @property string $employment
- * @property boolean $paid_job
  * @property boolean $temporal_job
  * @property integer $address_area1
  * @property integer $address_area2
@@ -30,7 +30,12 @@
  * @property string $address_neighborhood
  * @property string $address_directions
  * @property string $church
+ * @property integer $church_begin_year
+ * @property integer $conversion_year
+ * @property date $pea_begin_date
+ * @property date $pea_finish_date
  * @property integer $educational_level
+ * @property string $formation
  * @property Nationality $Nationality
  * @property MaritalStatus $MaritalStatus
  * @property AreaLevel1 $AreaLevel1
@@ -39,6 +44,7 @@
  * @property EducationalLevel $EducationalLevel
  * @property Image $PhotoImage
  * @property sfGuardUser $User
+ * @property ContactMean $PreferredContactMean
  * @property Doctrine_Collection $Files
  * @property Doctrine_Collection $PersonFile
  * 
@@ -53,13 +59,13 @@
  * @method string              getJobPhone()             Returns the current record's "job_phone" value
  * @method string              getOtherPhone()           Returns the current record's "other_phone" value
  * @method string              getEmail()                Returns the current record's "email" value
+ * @method integer             getPreferredMeanId()      Returns the current record's "preferred_mean_id" value
  * @method integer             getNationalityId()        Returns the current record's "nationality_id" value
  * @method string              getIdentification()       Returns the current record's "identification" value
  * @method enum                getGender()               Returns the current record's "gender" value
  * @method integer             getMaritalStatusId()      Returns the current record's "marital_status_id" value
  * @method boolean             getHasAJob()              Returns the current record's "has_a_job" value
  * @method string              getEmployment()           Returns the current record's "employment" value
- * @method boolean             getPaidJob()              Returns the current record's "paid_job" value
  * @method boolean             getTemporalJob()          Returns the current record's "temporal_job" value
  * @method integer             getAddressArea1()         Returns the current record's "address_area1" value
  * @method integer             getAddressArea2()         Returns the current record's "address_area2" value
@@ -67,7 +73,12 @@
  * @method string              getAddressNeighborhood()  Returns the current record's "address_neighborhood" value
  * @method string              getAddressDirections()    Returns the current record's "address_directions" value
  * @method string              getChurch()               Returns the current record's "church" value
+ * @method integer             getChurchBeginYear()      Returns the current record's "church_begin_year" value
+ * @method integer             getConversionYear()       Returns the current record's "conversion_year" value
+ * @method date                getPeaBeginDate()         Returns the current record's "pea_begin_date" value
+ * @method date                getPeaFinishDate()        Returns the current record's "pea_finish_date" value
  * @method integer             getEducationalLevel()     Returns the current record's "educational_level" value
+ * @method string              getFormation()            Returns the current record's "formation" value
  * @method Nationality         getNationality()          Returns the current record's "Nationality" value
  * @method MaritalStatus       getMaritalStatus()        Returns the current record's "MaritalStatus" value
  * @method AreaLevel1          getAreaLevel1()           Returns the current record's "AreaLevel1" value
@@ -76,6 +87,7 @@
  * @method EducationalLevel    getEducationalLevel()     Returns the current record's "EducationalLevel" value
  * @method Image               getPhotoImage()           Returns the current record's "PhotoImage" value
  * @method sfGuardUser         getUser()                 Returns the current record's "User" value
+ * @method ContactMean         getPreferredContactMean() Returns the current record's "PreferredContactMean" value
  * @method Doctrine_Collection getFiles()                Returns the current record's "Files" collection
  * @method Doctrine_Collection getPersonFile()           Returns the current record's "PersonFile" collection
  * @method Person              setInternalId()           Sets the current record's "internal_id" value
@@ -89,13 +101,13 @@
  * @method Person              setJobPhone()             Sets the current record's "job_phone" value
  * @method Person              setOtherPhone()           Sets the current record's "other_phone" value
  * @method Person              setEmail()                Sets the current record's "email" value
+ * @method Person              setPreferredMeanId()      Sets the current record's "preferred_mean_id" value
  * @method Person              setNationalityId()        Sets the current record's "nationality_id" value
  * @method Person              setIdentification()       Sets the current record's "identification" value
  * @method Person              setGender()               Sets the current record's "gender" value
  * @method Person              setMaritalStatusId()      Sets the current record's "marital_status_id" value
  * @method Person              setHasAJob()              Sets the current record's "has_a_job" value
  * @method Person              setEmployment()           Sets the current record's "employment" value
- * @method Person              setPaidJob()              Sets the current record's "paid_job" value
  * @method Person              setTemporalJob()          Sets the current record's "temporal_job" value
  * @method Person              setAddressArea1()         Sets the current record's "address_area1" value
  * @method Person              setAddressArea2()         Sets the current record's "address_area2" value
@@ -103,7 +115,12 @@
  * @method Person              setAddressNeighborhood()  Sets the current record's "address_neighborhood" value
  * @method Person              setAddressDirections()    Sets the current record's "address_directions" value
  * @method Person              setChurch()               Sets the current record's "church" value
+ * @method Person              setChurchBeginYear()      Sets the current record's "church_begin_year" value
+ * @method Person              setConversionYear()       Sets the current record's "conversion_year" value
+ * @method Person              setPeaBeginDate()         Sets the current record's "pea_begin_date" value
+ * @method Person              setPeaFinishDate()        Sets the current record's "pea_finish_date" value
  * @method Person              setEducationalLevel()     Sets the current record's "educational_level" value
+ * @method Person              setFormation()            Sets the current record's "formation" value
  * @method Person              setNationality()          Sets the current record's "Nationality" value
  * @method Person              setMaritalStatus()        Sets the current record's "MaritalStatus" value
  * @method Person              setAreaLevel1()           Sets the current record's "AreaLevel1" value
@@ -112,6 +129,7 @@
  * @method Person              setEducationalLevel()     Sets the current record's "EducationalLevel" value
  * @method Person              setPhotoImage()           Sets the current record's "PhotoImage" value
  * @method Person              setUser()                 Sets the current record's "User" value
+ * @method Person              setPreferredContactMean() Sets the current record's "PreferredContactMean" value
  * @method Person              setFiles()                Sets the current record's "Files" collection
  * @method Person              setPersonFile()           Sets the current record's "PersonFile" collection
  * 
@@ -170,6 +188,9 @@ abstract class BasePerson extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
+        $this->hasColumn('preferred_mean_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('nationality_id', 'integer', null, array(
              'type' => 'integer',
              ));
@@ -196,9 +217,6 @@ abstract class BasePerson extends sfDoctrineRecord
              'type' => 'string',
              'length' => 50,
              ));
-        $this->hasColumn('paid_job', 'boolean', null, array(
-             'type' => 'boolean',
-             ));
         $this->hasColumn('temporal_job', 'boolean', null, array(
              'type' => 'boolean',
              ));
@@ -223,8 +241,24 @@ abstract class BasePerson extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
+        $this->hasColumn('church_begin_year', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('conversion_year', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('pea_begin_date', 'date', null, array(
+             'type' => 'date',
+             ));
+        $this->hasColumn('pea_finish_date', 'date', null, array(
+             'type' => 'date',
+             ));
         $this->hasColumn('educational_level', 'integer', null, array(
              'type' => 'integer',
+             ));
+        $this->hasColumn('formation', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
              ));
     }
 
@@ -261,6 +295,10 @@ abstract class BasePerson extends sfDoctrineRecord
 
         $this->hasOne('sfGuardUser as User', array(
              'local' => 'user_id',
+             'foreign' => 'id'));
+
+        $this->hasOne('ContactMean as PreferredContactMean', array(
+             'local' => 'preferred_mean_id',
              'foreign' => 'id'));
 
         $this->hasMany('File as Files', array(

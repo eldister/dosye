@@ -37,13 +37,13 @@ Person:
     job_phone:            string(50)
     other_phone:          string(50)
     email:                string(100)
+    preferred_mean_id:    integer
     nationality_id:       integer
     identification:       string(50)
     gender:               { type: enum, length: 1, values: ['M', 'F'] }
     marital_status_id:    integer
     has_a_job:            boolean
     employment:           string(50)
-    paid_job:             boolean
     temporal_job:         boolean
     address_area1:        integer
     address_area2:        integer
@@ -51,7 +51,12 @@ Person:
     address_neighborhood: string(100)
     address_directions:   string(100)
     church:               string(100)
+    church_begin_year:    integer
+    conversion_year:      integer
+    pea_begin_date:       date
+    pea_finish_date:      date
     educational_level:    integer
+    formation:            string(100)
   relations:
     Nationality:
       class:   Nationality
@@ -93,6 +98,11 @@ Person:
       class:        sfGuardUser
       local:        user_id
       foreign:      id
+    PreferredContactMean:
+      class:   ContactMean
+      local:   preferred_mean_id
+      foreign: id
+      type:    one
 
 PersonFile:
   actAs: { Timestampable: ~, fzBlameable: ~ }
@@ -137,7 +147,11 @@ AreaLevel3:
       class:   AreaLevel2
       local:   area2_id
       foreign: id
- 
+
+ContactMean:
+  columns:
+    description: string
+    
 EducationalLevel:
   columns:
     description: string
