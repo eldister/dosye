@@ -111,6 +111,10 @@ abstract class BaseComment extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'id_comment'));
 
+        $this->hasOne('sfGuardUser as User', array(
+             'local' => 'user_id',
+             'foreign' => 'id'));
+        
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);
     }

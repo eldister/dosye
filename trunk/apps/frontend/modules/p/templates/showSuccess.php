@@ -60,6 +60,8 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <?php include_component('comment', 'list', array('object' => $person, 'i' => 0)) ?>
+                        <?php include_component('comment', 'formComment', array('object' => $person)) ?>
                     </div><!-- close #profile -->
 
                     <div id="personalinfo">
