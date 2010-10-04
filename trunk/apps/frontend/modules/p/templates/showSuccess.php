@@ -173,7 +173,7 @@
                                 </tr>
                                 <tr>
                                     <th>Correo Electr&oacute;nico:</th>
-                                    <td><?php echo $person->getEmail() ?></td>
+                                    <td><a href="mailto:<?php echo $person->getEmail() ?>"><?php echo $person->getEmail() ?></a></td>
                                 </tr>
                                 <tr>
                                     <th>Medio preferido de contacto:</th>
