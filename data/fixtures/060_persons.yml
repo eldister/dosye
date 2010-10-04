@@ -10,13 +10,13 @@ Person:
     job_phone:            ~
     other_phone:          ~
     email:                teban1812@gmail.com
+    PreferredContactMean: email
     Nationality:          cr
     identification:       1-1088-0511
     gender:               M
     MaritalStatus:        married
     has_a_job:            true
     employment:           Programador
-    paid_job:             true
     temporal_job:         false
     AreaLevel1:           San_Jose
     AreaLevel2:           Coronado
@@ -24,7 +24,12 @@ Person:
     address_neighborhood: Urbanización La Amistad
     address_directions:   casa 102
     church:               Comunidad Cristiana Vida Abundante Coronado
+    church_begin_year:    1998
+    conversion_year:      1998
+    pea_begin_date:       2006/07/23
+    pea_finish_date:      ~
     EducationalLevel:     college_pregrade
+    formation:            Ingeniería en Informática
   Thirsa_Siliezar:
     internal_id:          122200003423
     first_name:           Thirsa
@@ -35,13 +40,13 @@ Person:
     job_phone:            2229-6800
     other_phone:          ~
     email:                thirsasiliezar@gmail.com
+    PreferredContactMean: sms
     Nationality:          sv
     identification:       122200003423
     gender:               F
     MaritalStatus:        married
     has_a_job:            true
     employment:           Secretaria
-    paid_job:             true
     temporal_job:         false
     AreaLevel1:           San_Jose
     AreaLevel2:           Coronado
@@ -49,4 +54,9 @@ Person:
     address_neighborhood: Urbanización La Amistad
     address_directions:   casa 102
     church:               Comunidad Cristiana Vida Abundante Coronado
+    church_begin_year:    2002
+    conversion_year:      1985
+    pea_begin_date:       2006/07/23
+    pea_finish_date:      ~
     EducationalLevel:     partial_college
+    formation:            Secretariado

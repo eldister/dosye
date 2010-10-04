@@ -1,0 +1,4 @@
+ContactMean:
+  phone_call: { description: Llamadas telefónicas }
+  sms:        { description: Mensajes SMS }
+  email:      { description: Correos electrónicos }

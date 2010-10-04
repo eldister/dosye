@@ -1,4 +1,4 @@
-<?php include_partial('moduletop', array('searchTerms' => $searchTerms)) ?>
+        <?php include_partial('moduletop', array('searchTerms' => $searchTerms)) ?>
 
 	<div id="content">
 	    <div class="wrap">
