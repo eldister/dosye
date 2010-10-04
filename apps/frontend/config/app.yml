@@ -6,5 +6,7 @@ all:
   vjCommentPlugin:
     guardbind:  true
     restricted: true
+  gravatar:
+    enabled: false
     
   culture_locale: es_CR.utf8
