@@ -3,10 +3,15 @@
 
 	<div id="content">
 	    <div class="wrap">
-<form action="<?php echo url_for('p/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
-<?php if (!$form->getObject()->isNew()): ?>
-<input type="hidden" name="sf_method" value="put" />
-<?php endif; ?>
+		<form action="<?php echo url_for('p/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
+		<?php if (!$form->getObject()->isNew()): ?>
+		<input type="hidden" name="sf_method" value="put" />
+		<?php endif; ?>
+
+		<?php echo $form['id']->render() ?>
+		<?php echo $form['created_at']->render() ?>
+		<?php echo $form['updated_at']->render() ?>
+		<?php echo $form['_csrf_token']->render() ?>
 
 		<div class="left_panel">
 		    <?php echo image_tag('person.png', 'class=photo') ?>
@@ -41,15 +46,15 @@
 			<div id="personalinfo">
                             <div class="protected_info"><strong>Atenci&oacute;n:</strong> esta informaci&oacute;n es protegida.</div>
                             <table>
-			    	<?php echo $form['date_of_birth']->renderRow(null, 'Fecha de nacimiento:') ?>
+								<?php echo $form['date_of_birth']->renderRow(null, 'Fecha de nacimiento:') ?>
                                 <?php echo $form['nationality_id']->renderRow(null, 'Nacionalidad:') ?>
-				<?php echo $form['marital_status_id']->renderRow(null, 'Estado civil:') ?>
-				<?php echo $form['employment']->renderRow(null, 'Ocupaci&oacute;n:') ?>
-				<?php echo $form['has_a_job']->renderRow(null, 'Tiene trabajo remunerado:') ?>
-				<?php echo $form['temporal_job']->renderRow(null, 'Trabajo temporal:') ?>
-				<?php echo $form['educational_level']->renderRow(null, 'Escolaridad:') ?>
-				<?php echo $form['formation']->renderRow(null, 'Formaci&oacute;n:') ?>
-				<?php echo $form['church']->renderRow(null, 'Iglesia:') ?>
+								<?php echo $form['marital_status_id']->renderRow(null, 'Estado civil:') ?>
+								<?php echo $form['employment']->renderRow(null, 'Ocupaci&oacute;n:') ?>
+								<?php echo $form['has_a_job']->renderRow(null, 'Tiene trabajo remunerado:') ?>
+								<?php echo $form['temporal_job']->renderRow(null, 'Trabajo temporal:') ?>
+								<?php echo $form['educational_level']->renderRow(null, 'Escolaridad:') ?>
+								<?php echo $form['formation']->renderRow(null, 'Formaci&oacute;n:') ?>
+								<?php echo $form['church']->renderRow(null, 'Iglesia:') ?>
                                 <?php echo $form['church_begin_year']->renderRow(null, 'A&ntilde;o de ingreso a la iglesia actual:') ?>
                                 <?php echo $form['conversion_year']->renderRow(null, 'A&ntilde;o de conversi&oacute;n:') ?>
                                 <?php echo $form['pea_begin_date']->renderRow(null, 'Fecha de ingreso a PEA:') ?>
