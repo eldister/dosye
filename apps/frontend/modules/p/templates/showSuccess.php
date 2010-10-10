@@ -1,4 +1,5 @@
 <?php use_helper('Date'); ?>
+<?php use_helper('I18N'); ?>
 <?php include_partial('moduletop') ?>
 
 <div id="content">
