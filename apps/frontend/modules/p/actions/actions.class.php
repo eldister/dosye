@@ -36,7 +36,17 @@ class pActions extends sfActions
   public function executeShow(sfWebRequest $request)
   {
     $this->person = Doctrine::getTable('Person')->find(array($request->getParameter('id')));
+    $this->files = $this->person->getFiles();
     $this->forward404Unless($this->person);
+  }
+
+  public function executeUpload(sfWebRequest $request)
+  {
+    $this->forward404Unless($request->isMethod(sfRequest::POST));
+
+    // TODO: agregar código para subir el archivo
+
+    $this->setTemplate('show');
   }
 
   public function executeNew(sfWebRequest $request)

@@ -201,23 +201,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php foreach ($files as $file): ?>
                                     <tr>
-                                        <td>Solicitud de Beca<span class="filename">BZ-2010-0423.doc</span></td>
-                                        <td>10-08-2010</td>
-                                        <td><a class="content_operation" href="person.html">vvillalta</a></td>
-                                        <td><div class="internal_info">Interno</div></td>
-                                        <td><a class="content_operation" href="#"><?php echo image_tag('download.jpg') ?>Descargar</a></td>
-                                        <!--<td><a class="content_operation" href="#"><img src="img/delete.jpg"/>Eliminar</a></td>-->
-                                    </tr>
-                                    <tr>
-                                        <td>Fotograf&iacute;a<span class="filename">foto.jpg</span></td>
-                                        <td>02-08-2010</td>
-                                        <td><a href="person.html">asura</a></td>
-                                        <td><div class="public_info">P&uacute;blico</div></td>
-                                        <td><a class="content_operation" href="#"><?php echo image_tag('download.jpg') ?>Descargar</a></td>
-                                        <!--<td><a class="content_operation" href="#"><img src="img/delete.jpg"/>Eliminar</a></td>-->
+                                        <td><?php echo $file->getDescription() ?><span class="filename"><?php echo $file->getOriginalFilename() ?></span></td>
+                                        <td><?php echo $file->getCreatedAt() ?></td>
+                                        <td><?php echo $file->getCreatedBy() ?></td>
+                                        <td><div class="<?php switch($file->getCategory()) {
+                                            case 'Internal': echo 'internal_info';break;
+                                            case 'Public': echo 'public_info'; break;
+                                            case 'Protected': echo 'protected_info'; break;
+                                        }?>">
+                                        <?php echo $file->getCategory() ?></div></td>
+                                        <td><a class="content_operation" href="<?php echo url_for('getfile/'.$file->getId()) ?>"><?php echo image_tag('download.jpg') ?>Descargar</a></td>
+                                        <?php if($file->getType() == 'image'): ?>
                                         <td><input type="checkbox" checked="checked">Imagen del perfil</input></td>
+                                        <?php endif; ?>
                                     </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div> <!-- close .filedownload -->
