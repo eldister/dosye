@@ -4,6 +4,7 @@ File:
     original_filename: { type: string(255), notnull: true }
     internal_filename: { type: string(255), notnull: true }
     description:       { type: string(255), notnull: true }
+    category:          { type: enum, values: ['Internal', 'Public', 'Protected'] }
   relations:
     Person:
       foreignAlias: Files
