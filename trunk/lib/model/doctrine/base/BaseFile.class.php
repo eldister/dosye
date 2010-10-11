@@ -8,6 +8,7 @@
  * @property string $original_filename
  * @property string $internal_filename
  * @property string $description
+ * @property enum $category
  * @property string $type
  * @property integer $image_width
  * @property integer $image_height
@@ -17,6 +18,7 @@
  * @method string              getOriginalFilename()  Returns the current record's "original_filename" value
  * @method string              getInternalFilename()  Returns the current record's "internal_filename" value
  * @method string              getDescription()       Returns the current record's "description" value
+ * @method enum                getCategory()          Returns the current record's "category" value
  * @method string              getType()              Returns the current record's "type" value
  * @method integer             getImageWidth()        Returns the current record's "image_width" value
  * @method integer             getImageHeight()       Returns the current record's "image_height" value
@@ -25,6 +27,7 @@
  * @method File                setOriginalFilename()  Sets the current record's "original_filename" value
  * @method File                setInternalFilename()  Sets the current record's "internal_filename" value
  * @method File                setDescription()       Sets the current record's "description" value
+ * @method File                setCategory()          Sets the current record's "category" value
  * @method File                setType()              Sets the current record's "type" value
  * @method File                setImageWidth()        Sets the current record's "image_width" value
  * @method File                setImageHeight()       Sets the current record's "image_height" value
@@ -55,6 +58,15 @@ abstract class BaseFile extends sfDoctrineRecord
              'type' => 'string',
              'notnull' => true,
              'length' => 255,
+             ));
+        $this->hasColumn('category', 'enum', null, array(
+             'type' => 'enum',
+             'values' => 
+             array(
+              0 => 'Internal',
+              1 => 'Public',
+              2 => 'Protected',
+             ),
              ));
         $this->hasColumn('type', 'string', 255, array(
              'type' => 'string',
