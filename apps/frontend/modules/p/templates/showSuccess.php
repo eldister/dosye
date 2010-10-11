@@ -73,6 +73,10 @@
                                     <td><?php echo format_date($person->getDateOfBirth(), 'dd/MM/yyyy') ?></td>
                                 </tr>
                                 <tr>
+                                    <th>Edad:</th>
+                                    <td><?php echo $person->getAge() ?></td>
+                                </tr>
+                                <tr>
                                     <th>Nacionalidad:</th>
                                     <td><?php echo $person->getNationality()->getDescription() ?></td>
                                 </tr>

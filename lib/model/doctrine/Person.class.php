@@ -16,4 +16,11 @@ class Person extends BasePerson
     {
         return $this->getFirstName().' '.$this->getLastName();
     }
+
+    public function getAge()
+    {
+        $today = new DateTime();
+        $dateOfBirth = new DateTime($this->getDateOfBirth());
+        return $today->diff($dateOfBirth)->y;
+    }
 }
