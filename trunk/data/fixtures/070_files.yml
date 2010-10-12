@@ -1,0 +1,39 @@
+File:
+  file1:
+    original_filename: 'prueba.txt'
+    internal_filename: '1.txt'
+    description:       'Archivo de prueba'
+    category:          'Internal'
+    CreatedBy:          User_admin
+
+Image:
+  image1:
+    original_filename: 'foto.jpg'
+    internal_filename: '2.jpg'
+    description:       'Jesús lavando los pies a sus discípulos.'
+    category:          'Public'
+    image_width:       252
+    image_height:      200
+    CreatedBy:         User_admin
+  image2:
+    original_filename: 'otra-foto.jpg'
+    internal_filename: '3.jpg'
+    description:       'Justice will prevail'
+    category:          'Public'
+    image_width:       725
+    image_height:      432
+    CreatedBy:         User_admin
+
+PersonFile:
+  Esteban_Alvarado_file1:
+    Person:  Esteban_Alvarado
+    File:    file1
+    visible: true
+  Esteban_Alvarado_image1:
+    Person:  Esteban_Alvarado
+    File:    image1
+    visible: true
+  Esteban_Alvarado_image2:
+    Person:  Esteban_Alvarado
+    File:    image2
+    visible: true

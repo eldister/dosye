@@ -40,13 +40,46 @@ class pActions extends sfActions
     $this->forward404Unless($this->person);
   }
 
-  public function executeUpload(sfWebRequest $request)
+  public function executeUploadFile(sfWebRequest $request)
   {
     $this->forward404Unless($request->isMethod(sfRequest::POST));
 
     // TODO: agregar código para subir el archivo
 
     $this->setTemplate('show');
+  }
+
+  public function executeDownloadFile(sfWebRequest $request)
+  {
+    // being sure no other content wil be output
+    $this->setLayout(false);
+    sfConfig::set('sf_web_debug', false);
+
+    // TODO: validar acceso al archivo por parte del usuario
+    $file = Doctrine::getTable('File')->find(array($request->getParameter('id')));
+    
+    $filePath = sfConfig::get('sf_web_dir').DIRECTORY_SEPARATOR.
+    'uploads'.DIRECTORY_SEPARATOR.'user'.DIRECTORY_SEPARATOR.
+    $file->getInternalFilename();
+
+    // check if the file exists
+    $this->forward404Unless(file_exists($filePath));
+    
+    $this->prepareDownload($file->getOriginalFilename(), $filePath);
+
+    return sfView::NONE;
+  }
+
+  public function prepareDownload($outFilename, $internalFilePath)
+  {
+    $this->getResponse()->clearHttpHeaders();
+    $this->getResponse()->addCacheControlHttpHeader('Cache-control','must-revalidate, post-check=0, pre-check=0');
+    $this->getResponse()->setContentType('application/octet-stream',TRUE);
+    $this->getResponse()->setHttpHeader('Content-Transfer-Encoding', 'binary', TRUE);
+    $this->getResponse()->setHttpHeader('Content-Disposition','attachment; filename='.$outFilename, TRUE);
+    $this->getResponse()->sendHttpHeaders();
+
+    $this->getResponse()->setContent(readfile($internalFilePath));
   }
 
   public function executeNew(sfWebRequest $request)
