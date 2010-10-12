@@ -12,5 +12,12 @@
  */
 class Comment extends PluginComment
 {
-
+  public function setUp()
+  {
+	  $this->hasOne('sfGuardUser as User', array(
+             'local' => 'user_id',
+             'foreign' => 'id'));
+             
+      BaseComment::setUp();
+  }
 }

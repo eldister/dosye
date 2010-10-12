@@ -212,7 +212,7 @@
                                             case 'Protected': echo 'protected_info'; break;
                                         }?>">
                                         <?php echo $file->getCategory() ?></div></td>
-                                        <td><a class="content_operation" href="<?php echo url_for('getfile/'.$file->getId()) ?>"><?php echo image_tag('download.jpg') ?>Descargar</a></td>
+                                        <td><a class="content_operation" href="<?php echo url_for('p/downloadFile?id='.$file->getId()) ?>"><?php echo image_tag('download.jpg') ?>Descargar</a></td>
                                         <?php if($file->getType() == 'image'): ?>
                                         <td><input type="checkbox" checked="checked">Imagen del perfil</input></td>
                                         <?php endif; ?>
