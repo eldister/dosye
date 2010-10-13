@@ -58,10 +58,9 @@ abstract class BaseComment extends sfDoctrineRecord
              'notnull' => true,
              'length' => 255,
              ));
-        $this->hasColumn('user_id', 'integer', 4, array(
+        $this->hasColumn('user_id', 'integer', null, array(
              'type' => 'integer',
              'notnull' => false,
-             'length' => 4,
              ));
         $this->hasColumn('record_id', 'integer', null, array(
              'type' => 'integer',

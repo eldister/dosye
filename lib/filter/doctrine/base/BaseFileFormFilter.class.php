@@ -17,6 +17,8 @@ abstract class BaseFileFormFilter extends BaseFormFilterDoctrine
       'internal_filename' => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'description'       => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'category'          => new sfWidgetFormChoice(array('choices' => array('' => '', 'Internal' => 'Internal', 'Public' => 'Public', 'Protected' => 'Protected'))),
+      'visible'           => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
+      'person_id'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Person'), 'add_empty' => true)),
       'type'              => new sfWidgetFormFilterInput(),
       'image_width'       => new sfWidgetFormFilterInput(),
       'image_height'      => new sfWidgetFormFilterInput(),
@@ -24,7 +26,6 @@ abstract class BaseFileFormFilter extends BaseFormFilterDoctrine
       'updated_at'        => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'created_by'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'add_empty' => true)),
       'updated_by'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'add_empty' => true)),
-      'person_list'       => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Person')),
     ));
 
     $this->setValidators(array(
@@ -32,6 +33,8 @@ abstract class BaseFileFormFilter extends BaseFormFilterDoctrine
       'internal_filename' => new sfValidatorPass(array('required' => false)),
       'description'       => new sfValidatorPass(array('required' => false)),
       'category'          => new sfValidatorChoice(array('required' => false, 'choices' => array('Internal' => 'Internal', 'Public' => 'Public', 'Protected' => 'Protected'))),
+      'visible'           => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
+      'person_id'         => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Person'), 'column' => 'id')),
       'type'              => new sfValidatorPass(array('required' => false)),
       'image_width'       => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'image_height'      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
@@ -39,7 +42,6 @@ abstract class BaseFileFormFilter extends BaseFormFilterDoctrine
       'updated_at'        => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'created_by'        => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('CreatedBy'), 'column' => 'id')),
       'updated_by'        => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('UpdatedBy'), 'column' => 'id')),
-      'person_list'       => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Person', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('file_filters[%s]');
@@ -49,24 +51,6 @@ abstract class BaseFileFormFilter extends BaseFormFilterDoctrine
     $this->setupInheritance();
 
     parent::setup();
-  }
-
-  public function addPersonListColumnQuery(Doctrine_Query $query, $field, $values)
-  {
-    if (!is_array($values))
-    {
-      $values = array($values);
-    }
-
-    if (!count($values))
-    {
-      return;
-    }
-
-    $query
-      ->leftJoin($query->getRootAlias().'.PersonFile PersonFile')
-      ->andWhereIn('PersonFile.file_id', $values)
-    ;
   }
 
   public function getModelName()
@@ -82,6 +66,8 @@ abstract class BaseFileFormFilter extends BaseFormFilterDoctrine
       'internal_filename' => 'Text',
       'description'       => 'Text',
       'category'          => 'Enum',
+      'visible'           => 'Boolean',
+      'person_id'         => 'ForeignKey',
       'type'              => 'Text',
       'image_width'       => 'Number',
       'image_height'      => 'Number',
@@ -89,7 +75,6 @@ abstract class BaseFileFormFilter extends BaseFormFilterDoctrine
       'updated_at'        => 'Date',
       'created_by'        => 'ForeignKey',
       'updated_by'        => 'ForeignKey',
-      'person_list'       => 'ManyKey',
     );
   }
 }

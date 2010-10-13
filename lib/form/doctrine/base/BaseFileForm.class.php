@@ -20,6 +20,8 @@ abstract class BaseFileForm extends BaseFormDoctrine
       'internal_filename' => new sfWidgetFormInputText(),
       'description'       => new sfWidgetFormInputText(),
       'category'          => new sfWidgetFormChoice(array('choices' => array('Internal' => 'Internal', 'Public' => 'Public', 'Protected' => 'Protected'))),
+      'visible'           => new sfWidgetFormInputCheckbox(),
+      'person_id'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Person'), 'add_empty' => true)),
       'type'              => new sfWidgetFormInputText(),
       'image_width'       => new sfWidgetFormInputText(),
       'image_height'      => new sfWidgetFormInputText(),
@@ -27,7 +29,6 @@ abstract class BaseFileForm extends BaseFormDoctrine
       'updated_at'        => new sfWidgetFormDateTime(),
       'created_by'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'add_empty' => true)),
       'updated_by'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'add_empty' => true)),
-      'person_list'       => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Person')),
     ));
 
     $this->setValidators(array(
@@ -36,6 +37,8 @@ abstract class BaseFileForm extends BaseFormDoctrine
       'internal_filename' => new sfValidatorString(array('max_length' => 255)),
       'description'       => new sfValidatorString(array('max_length' => 255)),
       'category'          => new sfValidatorChoice(array('choices' => array(0 => 'Internal', 1 => 'Public', 2 => 'Protected'), 'required' => false)),
+      'visible'           => new sfValidatorBoolean(array('required' => false)),
+      'person_id'         => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Person'), 'required' => false)),
       'type'              => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'image_width'       => new sfValidatorInteger(array('required' => false)),
       'image_height'      => new sfValidatorInteger(array('required' => false)),
@@ -43,7 +46,6 @@ abstract class BaseFileForm extends BaseFormDoctrine
       'updated_at'        => new sfValidatorDateTime(),
       'created_by'        => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'required' => false)),
       'updated_by'        => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'required' => false)),
-      'person_list'       => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Person', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('file[%s]');
@@ -58,62 +60,6 @@ abstract class BaseFileForm extends BaseFormDoctrine
   public function getModelName()
   {
     return 'File';
-  }
-
-  public function updateDefaultsFromObject()
-  {
-    parent::updateDefaultsFromObject();
-
-    if (isset($this->widgetSchema['person_list']))
-    {
-      $this->setDefault('person_list', $this->object->Person->getPrimaryKeys());
-    }
-
-  }
-
-  protected function doSave($con = null)
-  {
-    $this->savePersonList($con);
-
-    parent::doSave($con);
-  }
-
-  public function savePersonList($con = null)
-  {
-    if (!$this->isValid())
-    {
-      throw $this->getErrorSchema();
-    }
-
-    if (!isset($this->widgetSchema['person_list']))
-    {
-      // somebody has unset this widget
-      return;
-    }
-
-    if (null === $con)
-    {
-      $con = $this->getConnection();
-    }
-
-    $existing = $this->object->Person->getPrimaryKeys();
-    $values = $this->getValue('person_list');
-    if (!is_array($values))
-    {
-      $values = array();
-    }
-
-    $unlink = array_diff($existing, $values);
-    if (count($unlink))
-    {
-      $this->object->unlink('Person', array_values($unlink));
-    }
-
-    $link = array_diff($values, $existing);
-    if (count($link))
-    {
-      $this->object->link('Person', array_values($link));
-    }
   }
 
 }

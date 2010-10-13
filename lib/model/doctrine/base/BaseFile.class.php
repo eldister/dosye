@@ -9,30 +9,33 @@
  * @property string $internal_filename
  * @property string $description
  * @property enum $category
+ * @property boolean $visible
+ * @property integer $person_id
  * @property string $type
  * @property integer $image_width
  * @property integer $image_height
- * @property Doctrine_Collection $Person
- * @property Doctrine_Collection $PersonFile
+ * @property Person $Person
  * 
- * @method string              getOriginalFilename()  Returns the current record's "original_filename" value
- * @method string              getInternalFilename()  Returns the current record's "internal_filename" value
- * @method string              getDescription()       Returns the current record's "description" value
- * @method enum                getCategory()          Returns the current record's "category" value
- * @method string              getType()              Returns the current record's "type" value
- * @method integer             getImageWidth()        Returns the current record's "image_width" value
- * @method integer             getImageHeight()       Returns the current record's "image_height" value
- * @method Doctrine_Collection getPerson()            Returns the current record's "Person" collection
- * @method Doctrine_Collection getPersonFile()        Returns the current record's "PersonFile" collection
- * @method File                setOriginalFilename()  Sets the current record's "original_filename" value
- * @method File                setInternalFilename()  Sets the current record's "internal_filename" value
- * @method File                setDescription()       Sets the current record's "description" value
- * @method File                setCategory()          Sets the current record's "category" value
- * @method File                setType()              Sets the current record's "type" value
- * @method File                setImageWidth()        Sets the current record's "image_width" value
- * @method File                setImageHeight()       Sets the current record's "image_height" value
- * @method File                setPerson()            Sets the current record's "Person" collection
- * @method File                setPersonFile()        Sets the current record's "PersonFile" collection
+ * @method string  getOriginalFilename()  Returns the current record's "original_filename" value
+ * @method string  getInternalFilename()  Returns the current record's "internal_filename" value
+ * @method string  getDescription()       Returns the current record's "description" value
+ * @method enum    getCategory()          Returns the current record's "category" value
+ * @method boolean getVisible()           Returns the current record's "visible" value
+ * @method integer getPersonId()          Returns the current record's "person_id" value
+ * @method string  getType()              Returns the current record's "type" value
+ * @method integer getImageWidth()        Returns the current record's "image_width" value
+ * @method integer getImageHeight()       Returns the current record's "image_height" value
+ * @method Person  getPerson()            Returns the current record's "Person" value
+ * @method File    setOriginalFilename()  Sets the current record's "original_filename" value
+ * @method File    setInternalFilename()  Sets the current record's "internal_filename" value
+ * @method File    setDescription()       Sets the current record's "description" value
+ * @method File    setCategory()          Sets the current record's "category" value
+ * @method File    setVisible()           Sets the current record's "visible" value
+ * @method File    setPersonId()          Sets the current record's "person_id" value
+ * @method File    setType()              Sets the current record's "type" value
+ * @method File    setImageWidth()        Sets the current record's "image_width" value
+ * @method File    setImageHeight()       Sets the current record's "image_height" value
+ * @method File    setPerson()            Sets the current record's "Person" value
  * 
  * @package    dosye
  * @subpackage model
@@ -68,6 +71,13 @@ abstract class BaseFile extends sfDoctrineRecord
               2 => 'Protected',
              ),
              ));
+        $this->hasColumn('visible', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => true,
+             ));
+        $this->hasColumn('person_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('type', 'string', 255, array(
              'type' => 'string',
              'length' => 255,
@@ -90,14 +100,9 @@ abstract class BaseFile extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasMany('Person', array(
-             'refClass' => 'PersonFile',
-             'local' => 'id',
-             'foreign' => 'file_id'));
-
-        $this->hasMany('PersonFile', array(
-             'local' => 'id',
-             'foreign' => 'file_id'));
+        $this->hasOne('Person', array(
+             'local' => 'person_id',
+             'foreign' => 'id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $fzblameable0 = new Doctrine_Template_fzBlameable();

@@ -9,7 +9,7 @@ Comment:
       type: string(255)
       notnull: true
     user_id:
-      type: integer(4)
+      type: integer
       notnull: false
     record_id:
       type: integer
