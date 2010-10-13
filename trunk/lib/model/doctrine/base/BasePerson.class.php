@@ -46,7 +46,6 @@
  * @property sfGuardUser $User
  * @property ContactMean $PreferredContactMean
  * @property Doctrine_Collection $Files
- * @property Doctrine_Collection $PersonFile
  * 
  * @method string              getInternalId()           Returns the current record's "internal_id" value
  * @method string              getFirstName()            Returns the current record's "first_name" value
@@ -89,7 +88,6 @@
  * @method sfGuardUser         getUser()                 Returns the current record's "User" value
  * @method ContactMean         getPreferredContactMean() Returns the current record's "PreferredContactMean" value
  * @method Doctrine_Collection getFiles()                Returns the current record's "Files" collection
- * @method Doctrine_Collection getPersonFile()           Returns the current record's "PersonFile" collection
  * @method Person              setInternalId()           Sets the current record's "internal_id" value
  * @method Person              setFirstName()            Sets the current record's "first_name" value
  * @method Person              setLastName()             Sets the current record's "last_name" value
@@ -131,7 +129,6 @@
  * @method Person              setUser()                 Sets the current record's "User" value
  * @method Person              setPreferredContactMean() Sets the current record's "PreferredContactMean" value
  * @method Person              setFiles()                Sets the current record's "Files" collection
- * @method Person              setPersonFile()           Sets the current record's "PersonFile" collection
  * 
  * @package    dosye
  * @subpackage model
@@ -302,11 +299,6 @@ abstract class BasePerson extends sfDoctrineRecord
              'foreign' => 'id'));
 
         $this->hasMany('File as Files', array(
-             'refClass' => 'PersonFile',
-             'local' => 'file_id',
-             'foreign' => 'id'));
-
-        $this->hasMany('PersonFile', array(
              'local' => 'id',
              'foreign' => 'person_id'));
 

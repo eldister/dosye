@@ -51,7 +51,6 @@ abstract class BasePersonForm extends BaseFormDoctrine
       'updated_at'           => new sfWidgetFormDateTime(),
       'created_by'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'add_empty' => true)),
       'updated_by'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'add_empty' => true)),
-      'files_list'           => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'File')),
     ));
 
     $this->setValidators(array(
@@ -91,7 +90,6 @@ abstract class BasePersonForm extends BaseFormDoctrine
       'updated_at'           => new sfValidatorDateTime(),
       'created_by'           => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('CreatedBy'), 'required' => false)),
       'updated_by'           => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('UpdatedBy'), 'required' => false)),
-      'files_list'           => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'File', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -110,62 +108,6 @@ abstract class BasePersonForm extends BaseFormDoctrine
   public function getModelName()
   {
     return 'Person';
-  }
-
-  public function updateDefaultsFromObject()
-  {
-    parent::updateDefaultsFromObject();
-
-    if (isset($this->widgetSchema['files_list']))
-    {
-      $this->setDefault('files_list', $this->object->Files->getPrimaryKeys());
-    }
-
-  }
-
-  protected function doSave($con = null)
-  {
-    $this->saveFilesList($con);
-
-    parent::doSave($con);
-  }
-
-  public function saveFilesList($con = null)
-  {
-    if (!$this->isValid())
-    {
-      throw $this->getErrorSchema();
-    }
-
-    if (!isset($this->widgetSchema['files_list']))
-    {
-      // somebody has unset this widget
-      return;
-    }
-
-    if (null === $con)
-    {
-      $con = $this->getConnection();
-    }
-
-    $existing = $this->object->Files->getPrimaryKeys();
-    $values = $this->getValue('files_list');
-    if (!is_array($values))
-    {
-      $values = array();
-    }
-
-    $unlink = array_diff($existing, $values);
-    if (count($unlink))
-    {
-      $this->object->unlink('Files', array_values($unlink));
-    }
-
-    $link = array_diff($values, $existing);
-    if (count($link))
-    {
-      $this->object->link('Files', array_values($link));
-    }
   }
 
 }

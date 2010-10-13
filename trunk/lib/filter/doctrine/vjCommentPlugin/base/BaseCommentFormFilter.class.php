@@ -14,7 +14,7 @@ abstract class BaseCommentFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'record_model'   => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'user_id'        => new sfWidgetFormFilterInput(),
+      'user_id'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('User'), 'add_empty' => true)),
       'record_id'      => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'author_name'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'author_email'   => new sfWidgetFormFilterInput(),
@@ -29,7 +29,7 @@ abstract class BaseCommentFormFilter extends BaseFormFilterDoctrine
 
     $this->setValidators(array(
       'record_model'   => new sfValidatorPass(array('required' => false)),
-      'user_id'        => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'user_id'        => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('User'), 'column' => 'id')),
       'record_id'      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'author_name'    => new sfValidatorPass(array('required' => false)),
       'author_email'   => new sfValidatorPass(array('required' => false)),
@@ -61,7 +61,7 @@ abstract class BaseCommentFormFilter extends BaseFormFilterDoctrine
     return array(
       'id'             => 'Number',
       'record_model'   => 'Text',
-      'user_id'        => 'Number',
+      'user_id'        => 'ForeignKey',
       'record_id'      => 'Number',
       'author_name'    => 'Text',
       'author_email'   => 'Text',

@@ -5,14 +5,15 @@ File:
     internal_filename: { type: string(255), notnull: true }
     description:       { type: string(255), notnull: true }
     category:          { type: enum, values: ['Internal', 'Public', 'Protected'] }
+    visible:           { type: boolean, default: true }
+    person_id:         integer
   relations:
     Person:
       foreignAlias: Files
       class:        Person
-      refClass:     PersonFile
-      local:        id
-      foreign:      file_id
       type:         one
+      local:        person_id
+      foreign:      id
 
 Image:
   inheritance:
@@ -103,18 +104,6 @@ Person:
       class:   ContactMean
       local:   preferred_mean_id
       foreign: id
-      type:    one
-
-PersonFile:
-  actAs: { Timestampable: ~, fzBlameable: ~ }
-  columns:
-    person_id: { type: integer, notnull: true, primary: true }
-    file_id:   { type: integer, notnull: true, primary: true }
-    visible:   { type: boolean, notnull: true, default: true }
-  relations:
-    Person:
-      type:    one
-    File:
       type:    one
 
 Nationality:
