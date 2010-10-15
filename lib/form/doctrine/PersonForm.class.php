@@ -29,11 +29,14 @@ class PersonForm extends BasePersonForm
     $this->widgetSchema['pea_begin_date'] = new sfWidgetFormDate(array('format' => $format, 'default' => $today, 'years' => $pea_years));
     $this->widgetSchema['pea_finish_date'] = new sfWidgetFormDate(array('format' => $format, 'years' => $pea_years));  
   
-	// configura los campos ocultos
-	$this->widgetSchema['created_at'] = new sfWidgetFormInputHidden();
-	$this->widgetSchema['updated_at'] = new sfWidgetFormInputHidden();
-	$this->setValidator('created_at', new sfValidatorDateTime(array('required' => false)));
-	$this->setValidator('updated_at', new sfValidatorDateTime(array('required' => false)));
+    // configura los campos ocultos
+    $this->widgetSchema['created_at'] = new sfWidgetFormInputHidden();
+    $this->widgetSchema['updated_at'] = new sfWidgetFormInputHidden();
+    $this->setValidator('created_at', new sfValidatorDateTime(array('required' => false)));
+    $this->setValidator('updated_at', new sfValidatorDateTime(array('required' => false)));
+
+    // configura los sexos
+    $this->widgetSchema['gender'] = new sfWidgetFormChoice(array('choices' => array('M' => 'Masculino', 'F' => 'Femenino')));
 	
   }
 }
