@@ -41,7 +41,7 @@
                             </tr>
                             <tr>
                                 <th>Sexo:</th>
-                                <td><?php echo $person->getGender() ?></td>
+                                <td><?php if($person->getGender() == 'M') echo 'Masculino'; else echo 'Femenino'; ?></td>
                             </tr>
                             <tr>
                                 <th>Identificaci&oacute;n:</th>
@@ -223,13 +223,14 @@
                         </div> <!-- close .filedownload -->
                         <div class="fileupload">
                             <h4>Subir un nuevo archivo</h4>
+                            <?php echo form_tag('p/uploadFile', 'multipart=true') ?>
                             <table>
                                 <tbody>
                                     <tr>
-                                        <th>Archivo:</th><td><input type="file" /></td>
+                                        <th>Archivo:</th><td><input type="file" name="file" id="file" value="" /></td>
                                     </tr>
                                     <tr>
-                                        <th>Descripci&oacute;n:</th><td><input type="text" /></td>
+                                        <th>Descripci&oacute;n:</th><td><input type="text" name="description" id="description" value="" /></td>
                                     </tr>
                                     <tr>
                                         <th>Categor&iacute;a:</th>
@@ -242,8 +243,10 @@
                                 </tbody>
                             </table>
                             <div>
-                                <input type="button" value="Subir el archivo" />&nbsp;<a href="#">Cancelar</a>
+                                <input type="submit" name="commit" value="Subir el archivo" />
                             </div>
+                            </form>
+
                         </div> <!-- close .fileupload -->
                     </div> <!-- close #files -->
 
