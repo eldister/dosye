@@ -7,6 +7,8 @@ File:
     category:          { type: enum, values: ['Internal', 'Public', 'Protected'] }
     visible:           { type: boolean, default: true }
     person_id:         integer
+    content_type:      string(50)
+    size:              integer
   relations:
     Person:
       foreignAlias: Files

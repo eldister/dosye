@@ -21,6 +21,8 @@ class FileForm extends BaseFileForm {
         $this->widgetSchema['original_filename'] = new sfWidgetFormInputHidden();
         $this->widgetSchema['visible'] = new sfWidgetFormInputHidden(array('default' => true));
         $this->widgetSchema['person_id'] = new sfWidgetFormInputHidden();
+        $this->widgetSchema['content_type'] = new sfWidgetFormInputHidden();
+        $this->widgetSchema['size'] = new sfWidgetFormInputHidden();
         $this->widgetSchema['type'] = new sfWidgetFormInputHidden();
         $this->widgetSchema['image_width'] = new sfWidgetFormInputHidden();
         $this->widgetSchema['image_height'] = new sfWidgetFormInputHidden();

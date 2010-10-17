@@ -46,6 +46,8 @@ class pActions extends sfActions {
         $this->fileForm->bind($fileFormValues, $fileFormFiles);
         $this->fileForm->getObject()->set('original_filename', $fileFormFiles['internal_filename']['name']);
         $this->fileForm->getObject()->set('person_id', $request->getParameter('person_id'));
+        $this->fileForm->getObject()->set('content_type', $fileFormFiles['internal_filename']['type']);
+        $this->fileForm->getObject()->set('size', $fileFormFiles['internal_filename']['size']);
 
         if ($this->fileForm->isValid()) {
 
@@ -71,17 +73,18 @@ class pActions extends sfActions {
         // check if the file exists
         $this->forward404Unless(file_exists($filePath));
 
-        $this->prepareDownload($file->getOriginalFilename(), $filePath);
+        $this->prepareDownload($file->getOriginalFilename(), $filePath, $file->getSize());
 
         return sfView::NONE;
     }
 
-    public function prepareDownload($outFilename, $internalFilePath) {
+    public function prepareDownload($outFilename, $internalFilePath, $fileSize) {
         $this->getResponse()->clearHttpHeaders();
         $this->getResponse()->addCacheControlHttpHeader('Cache-control', 'must-revalidate, post-check=0, pre-check=0');
         $this->getResponse()->setContentType('application/octet-stream', TRUE);
         $this->getResponse()->setHttpHeader('Content-Transfer-Encoding', 'binary', TRUE);
         $this->getResponse()->setHttpHeader('Content-Disposition', 'attachment; filename=' . $outFilename, TRUE);
+        $this->getResponse()->setHttpHeader('Content-Length', $fileSize, TRUE);
         $this->getResponse()->sendHttpHeaders();
 
         $this->getResponse()->setContent(readfile($internalFilePath));
