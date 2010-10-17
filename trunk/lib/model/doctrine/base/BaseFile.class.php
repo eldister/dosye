@@ -11,6 +11,8 @@
  * @property enum $category
  * @property boolean $visible
  * @property integer $person_id
+ * @property string $content_type
+ * @property integer $size
  * @property string $type
  * @property integer $image_width
  * @property integer $image_height
@@ -22,6 +24,8 @@
  * @method enum    getCategory()          Returns the current record's "category" value
  * @method boolean getVisible()           Returns the current record's "visible" value
  * @method integer getPersonId()          Returns the current record's "person_id" value
+ * @method string  getContentType()       Returns the current record's "content_type" value
+ * @method integer getSize()              Returns the current record's "size" value
  * @method string  getType()              Returns the current record's "type" value
  * @method integer getImageWidth()        Returns the current record's "image_width" value
  * @method integer getImageHeight()       Returns the current record's "image_height" value
@@ -32,6 +36,8 @@
  * @method File    setCategory()          Sets the current record's "category" value
  * @method File    setVisible()           Sets the current record's "visible" value
  * @method File    setPersonId()          Sets the current record's "person_id" value
+ * @method File    setContentType()       Sets the current record's "content_type" value
+ * @method File    setSize()              Sets the current record's "size" value
  * @method File    setType()              Sets the current record's "type" value
  * @method File    setImageWidth()        Sets the current record's "image_width" value
  * @method File    setImageHeight()       Sets the current record's "image_height" value
@@ -76,6 +82,13 @@ abstract class BaseFile extends sfDoctrineRecord
              'default' => true,
              ));
         $this->hasColumn('person_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('content_type', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('size', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('type', 'string', 255, array(
