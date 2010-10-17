@@ -1,5 +1,7 @@
 <?php use_helper('Date'); ?>
 <?php use_helper('I18N'); ?>
+<?php use_stylesheets_for_form($fileForm) ?>
+<?php use_javascripts_for_form($fileForm) ?>
 <?php include_partial('moduletop') ?>
 
 <div id="content">
@@ -223,10 +225,15 @@
                         </div> <!-- close .filedownload -->
                         <div class="fileupload">
                             <h4>Subir un nuevo archivo</h4>
-                            <?php echo form_tag('p/uploadFile', 'multipart=true') ?>
+                            <?php echo form_tag_for($fileForm, 'p/uploadFile') ?>
                             <table>
                                 <tbody>
-                                    <tr>
+                                    <?php echo $fileForm['internal_filename']->renderRow(null, 'Archivo:') ?>
+                                    <?php echo $fileForm['description']->renderRow(null, 'Descripci&oacute;n:') ?>
+                                    <?php echo $fileForm['category']->renderRow(null, 'Categor&iacute;a:') ?>
+                                    
+
+                                    <!--tr>
                                         <th>Archivo:</th><td><input type="file" name="file" id="file" value="" /></td>
                                     </tr>
                                     <tr>
@@ -239,9 +246,11 @@
                                             <div class="protected_info"><input type="radio" name="file_category" value="protected">Protegido: el archivo s&oacute;lo ser&aacute; visible por el due&ntilde;o del perfil y los usuarios con acceso administrativo o docente.</input></div>
                                             <div class="public_info"><input type="radio" name="file_category" value="public">P&uacute;blico: el archivo ser&aacute; visible para todos los usuarios. Una imagen debe ser p&uacute;blica para establecerla como imagen del perfil.</input></div>
                                         </td>
-                                    </tr>
+                                    </tr-->
                                 </tbody>
                             </table>
+                            <?php echo $fileForm['_csrf_token']->render() ?>
+                            <input type="hidden" name="person_id" id="person_id" value="<?php echo$person->getId() ?>" />
                             <div>
                                 <input type="submit" name="commit" value="Subir el archivo" />
                             </div>

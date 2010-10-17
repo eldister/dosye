@@ -9,8 +9,6 @@
 		<?php endif; ?>
 
 		<?php echo $form['id']->render() ?>
-		<?php echo $form['created_at']->render() ?>
-		<?php echo $form['updated_at']->render() ?>
 		<?php echo $form['_csrf_token']->render() ?>
 
 		<div class="left_panel">
