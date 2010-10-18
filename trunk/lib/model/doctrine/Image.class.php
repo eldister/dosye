@@ -10,7 +10,13 @@
  * @author     Your name here
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
-class Image extends BaseImage
-{
+class Image extends BaseImage {
+
+    public function getProportionalHeight(int $width) {
+        // obtiene el tamaño actual
+        list($originalWidth, $originalHeight) = @getimagesize(File::getUserUploadDirectory() . $this->getInternalFilename());
+        // retorna la altura proporcional
+        return $width * $originalHeight / $originalWidth;
+    }
 
 }
