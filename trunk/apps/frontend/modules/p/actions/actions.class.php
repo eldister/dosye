@@ -61,10 +61,8 @@ class pActions extends sfActions {
     }
 
     public function executeDownloadFile(sfWebRequest $request) {
-        // being sure no other content wil be output
-        $this->setLayout(false);
-        sfConfig::set('sf_web_debug', false);
-
+       
+        
         // TODO: validar acceso al archivo por parte del usuario
         $file = Doctrine::getTable('File')->find(array($request->getParameter('id')));
 
@@ -73,21 +71,32 @@ class pActions extends sfActions {
         // check if the file exists
         $this->forward404Unless(file_exists($filePath));
 
-        $this->prepareDownload($file->getOriginalFilename(), $filePath, $file->getSize());
+        $this->prepareDownload($file->getOriginalFilename(), $file->getSize(), $file->getContentType());
 
+        $this->getResponse()->setContent(@readfile( $filePath ));
+
+        flush();
+        
         return sfView::NONE;
     }
 
-    public function prepareDownload($outFilename, $internalFilePath, $fileSize) {
+    public function prepareDownload($outFilename, $fileSize, $contentType) {
+
+        // being sure no other content wil be output
+        $this->setLayout(false);
+        sfConfig::set('sf_web_debug', false);
+
+        // Enforce full download and prevent caching
+	session_cache_limiter('none');
+
+        // set Http Headers
         $this->getResponse()->clearHttpHeaders();
         $this->getResponse()->addCacheControlHttpHeader('Cache-control', 'must-revalidate, post-check=0, pre-check=0');
-        $this->getResponse()->setContentType('application/octet-stream', TRUE);
+        $this->getResponse()->setContentType($contentType, TRUE);
         $this->getResponse()->setHttpHeader('Content-Transfer-Encoding', 'binary', TRUE);
         $this->getResponse()->setHttpHeader('Content-Disposition', 'attachment; filename=' . $outFilename, TRUE);
         $this->getResponse()->setHttpHeader('Content-Length', $fileSize, TRUE);
         $this->getResponse()->sendHttpHeaders();
-
-        $this->getResponse()->setContent(readfile($internalFilePath));
     }
 
     public function getUserUploadDirectory() {

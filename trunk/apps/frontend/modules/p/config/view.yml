@@ -5,3 +5,6 @@ all:
 searchSuccess:
   stylesheets: [-redmond/jquery-ui-1.8.4.custom.css]
   javascripts: [-jquery-1.4.2.min.js,-jquery-ui-1.8.4.custom.min.js]
+
+downloadSuccess:
+  has_layout:  off 
