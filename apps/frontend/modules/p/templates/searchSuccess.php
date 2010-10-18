@@ -10,7 +10,13 @@
                         <tbody>
                             <?php foreach ($persons as $person): ?>
                             <tr>
-                                <td rowspan="4" class="result_photo"><?php echo image_tag('person_thumb.png', 'size="50x50"') ?></td>
+                                <td rowspan="4" class="result_photo">
+                                    <?php if($person->getPhotoImage() && $person->getPhotoImage()->getInternalFilename() != ''): ?>
+                                      <img src="<?php echo File::getUserUploadUrl().$person->getPhotoImage()->getInternalFilename(); ?> " class="photo_thumb" alt="foto"/>
+                                    <?php else: ?>
+                                      <img src="<?php echo image_path('person_thumb.png'); ?>" class="photo_thumb" alt="foto" />
+                                    <?php endif; ?>
+                                </td>
                                 <td class="result_caption">Nombre:</td>
                                 <td class="result_data result_main_data"><a class="content_operation" href="<?php echo url_for('p/show?id='.$person->getId()) ?>"><?php echo $person->getFullName() ?></a></td>
                                 <td class="result_action"><a class="content_operation" href="<?php echo url_for('p/show?id='.$person->getId()) ?>"><?php echo image_tag('show.png') ?>Ver el expediente</a></td>
