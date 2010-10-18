@@ -8,7 +8,11 @@
     <div class="wrap">
 
         <div class="left_panel">
-            <?php echo image_tag('person.png', 'class="photo"') ?>
+           <?php if($person->getPhotoImage() && $person->getPhotoImage()->getInternalFilename() != ''): ?>
+             <img src="<?php echo File::getUserUploadUrl().$person->getPhotoImage()->getInternalFilename(); ?> " class="photo" alt="foto"/>
+           <?php else: ?>
+             <img src="<?php echo image_path('person.png'); ?>" class="photo" alt="foto" />
+           <?php endif; ?>
             <ul>
                 <li><a class="content_operation" href="<?php echo url_for('p/edit?id=' . $person->getId()) ?>"><?php echo image_tag('edit.png') ?>Modificar</a></li>
             </ul>
@@ -220,7 +224,13 @@
                                         }?></div></td>
                                         <td><a class="content_operation" href="<?php echo url_for('p/downloadFile?id='.$file->getId()) ?>"><?php echo image_tag('download.jpg') ?>Descargar</a></td>
                                         <?php if($file->getType() == 'image' && $file->getCategory() == 'Public'): ?>
-                                        <td><input type="checkbox" <?php if($person->getPhotoImage() && $person->getPhotoImage()->getId() == $file->getId()) echo 'checked="checked"'; ?> >Imagen del perfil</input></td>
+                                        <td>                                        
+                                            <?php if($person->getPhotoImage() && $person->getPhotoImage()->getId() == $file->getId()): ?>
+                                            <input type="checkbox" onchange="javascript:window.location='<?php echo url_for("p/setProfileImage?id=".$person->getId()."&image=0")?>'"  checked="checked">Imagen del perfil</input>
+                                            <?php else: ?>
+                                            <input type="checkbox" onchange="javascript:window.location='<?php echo url_for("p/setProfileImage?id=".$person->getId()."&image=".$file->getId())?>'">Imagen del perfil</input>
+                                            <?php endif; ?>
+                                        </td>
                                         <?php endif; ?>
                                     </tr>
                                     <?php endforeach; ?>

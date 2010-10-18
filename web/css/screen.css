@@ -382,4 +382,9 @@ ul.tab li.active a span, ul.tab li.active a:hover span{
     content:url(../images/internal.png) " ";
 }
 
+img.photo
+{
+    max-width: 130px;
+}
+
 

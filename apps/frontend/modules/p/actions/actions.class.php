@@ -57,7 +57,7 @@ class pActions extends sfActions {
             $this->fileForm->getObject()->set('type', $fileType);
             if ($fileType == 'image') {
                 // determinar el tamaño de la imagen
-                list($width, $height) = @getimagesize($this->getUserUploadDirectory() . $fileFormValues['internal_filename']);
+                list($width, $height) = @getimagesize(File::getUserUploadDirectory() . $fileFormValues['internal_filename']);
                 $this->fileForm->getObject()->set('image_width', $width);
                 $this->fileForm->getObject()->set('image_height', $height);
 
@@ -79,7 +79,7 @@ class pActions extends sfActions {
         // TODO: validar acceso al archivo por parte del usuario
         $file = Doctrine::getTable('File')->find(array($request->getParameter('id')));
 
-        $filePath = $this->getUserUploadDirectory() . $file->getInternalFilename();
+        $filePath = File::getUserUploadDirectory() . $file->getInternalFilename();
 
         // check if the file exists
         $this->forward404Unless(file_exists($filePath));
@@ -112,9 +112,23 @@ class pActions extends sfActions {
         $this->getResponse()->sendHttpHeaders();
     }
 
-    public function getUserUploadDirectory() {
-        return sfConfig::get('sf_upload_dir') . DIRECTORY_SEPARATOR . 'user' . DIRECTORY_SEPARATOR;
+    public function executeSetProfileImage(sfWebRequest $request){
+        $image = $request->getParameter('image');
+        $this->person = Doctrine::getTable('Person')->find(array($request->getParameter('id')));
+
+        if ($image == 0) {
+            // se debe eliminar la imagen de perfil
+            $this->person->setPhotoImageId(null);
+        } else {
+            // se debe establecer la imagen de perfil
+            $this->person->setPhotoImageId($image);
+        }
+
+        $this->person->save();
+
+        $this->redirect('p/show?id=' . $request->getParameter('id'));
     }
+
 
     public function executeNew(sfWebRequest $request) {
         $this->form = new PersonForm();
