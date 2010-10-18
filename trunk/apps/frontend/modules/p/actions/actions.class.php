@@ -41,16 +41,28 @@ class pActions extends sfActions {
 
         $fileFormValues = $request->getParameter('file');
         $fileFormFiles = $request->getFiles('file');
+        $fileContentType = $fileFormFiles['internal_filename']['type'];
 
         $this->fileForm = new FileForm();
         $this->fileForm->bind($fileFormValues, $fileFormFiles);
         $this->fileForm->getObject()->set('original_filename', $fileFormFiles['internal_filename']['name']);
         $this->fileForm->getObject()->set('person_id', $request->getParameter('person_id'));
-        $this->fileForm->getObject()->set('content_type', $fileFormFiles['internal_filename']['type']);
+        $this->fileForm->getObject()->set('content_type', $fileContentType);
         $this->fileForm->getObject()->set('size', $fileFormFiles['internal_filename']['size']);
 
-        if ($this->fileForm->isValid()) {
+        // determina el tipo de archivo
+        $fileContentTypeArray = explode('/', $fileContentType);
+        if (array_count_values($fileContentTypeArray) > 0){
+            $fileType = $fileContentTypeArray[0];
+            $this->fileForm->getObject()->set('type', $fileType);
+            if ($fileType == 'image')
+            {
+                // TODO: determinar el tamaño de la imagen
+                // TODO: (nice-to-have) generar el thumbnail y relacionarlo
+            }
+        }
 
+        if ($this->fileForm->isValid()) {
             $this->fileForm->save();
             $this->redirect('p/show?id=' . $request->getParameter('person_id') . '#files');
         } else {

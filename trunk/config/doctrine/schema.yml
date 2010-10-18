@@ -22,7 +22,7 @@ Image:
     extends:  File
     type:     column_aggregation
     keyField: type
-    keyValue: Image
+    keyValue: image
   columns:
     image_width: integer
     image_height: integer

@@ -199,24 +199,28 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Nombre</th><th>Fecha</th><th>Usuario</th><th>Categor&iacute;a</th>
+                                        <th>Archivo</th><th>Fecha</th><th>Usuario</th><th>Categor&iacute;a</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($files as $file): ?>
                                     <tr>
                                         <td><?php echo $file->getDescription() ?><span class="filename"><?php echo $file->getOriginalFilename() ?></span></td>
-                                        <td><?php echo $file->getCreatedAt() ?></td>
+                                        <td><?php echo format_date($file->getCreatedAt(), 'dd/MM/yyyy HH:mm') ?></td>
                                         <td><?php echo $file->getCreatedBy() ?></td>
                                         <td><div class="<?php switch($file->getCategory()) {
                                             case 'Internal': echo 'internal_info';break;
                                             case 'Public': echo 'public_info'; break;
                                             case 'Protected': echo 'protected_info'; break;
                                         }?>">
-                                        <?php echo $file->getCategory() ?></div></td>
+                                        <?php switch($file->getCategory()) {
+                                            case 'Internal': echo 'Interno';break;
+                                            case 'Public': echo 'P&uacute;blico'; break;
+                                            case 'Protected': echo 'Protegido'; break;
+                                        }?></div></td>
                                         <td><a class="content_operation" href="<?php echo url_for('p/downloadFile?id='.$file->getId()) ?>"><?php echo image_tag('download.jpg') ?>Descargar</a></td>
-                                        <?php if($file->getType() == 'image'): ?>
-                                        <td><input type="checkbox" checked="checked">Imagen del perfil</input></td>
+                                        <?php if($file->getType() == 'image' && $file->getCategory() == 'Public'): ?>
+                                        <td><input type="checkbox" <?php if($person->getPhotoImage() && $person->getPhotoImage()->getId() == $file->getId()) echo 'checked="checked"'; ?> >Imagen del perfil</input></td>
                                         <?php endif; ?>
                                     </tr>
                                     <?php endforeach; ?>
