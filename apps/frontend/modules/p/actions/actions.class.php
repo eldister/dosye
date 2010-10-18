@@ -52,12 +52,15 @@ class pActions extends sfActions {
 
         // determina el tipo de archivo
         $fileContentTypeArray = explode('/', $fileContentType);
-        if (array_count_values($fileContentTypeArray) > 0){
+        if (array_count_values($fileContentTypeArray) > 0) {
             $fileType = $fileContentTypeArray[0];
             $this->fileForm->getObject()->set('type', $fileType);
-            if ($fileType == 'image')
-            {
-                // TODO: determinar el tamaño de la imagen
+            if ($fileType == 'image') {
+                // determinar el tamaño de la imagen
+                list($width, $height) = @getimagesize($this->getUserUploadDirectory() . $fileFormValues['internal_filename']);
+                $this->fileForm->getObject()->set('image_width', $width);
+                $this->fileForm->getObject()->set('image_height', $height);
+
                 // TODO: (nice-to-have) generar el thumbnail y relacionarlo
             }
         }
@@ -66,15 +69,13 @@ class pActions extends sfActions {
             $this->fileForm->save();
             $this->redirect('p/show?id=' . $request->getParameter('person_id') . '#files');
         } else {
-            $this->person = Doctrine::getTable('Person')->find(array( $request->getParameter('person_id') ));
+            $this->person = Doctrine::getTable('Person')->find(array($request->getParameter('person_id')));
             $this->files = $this->person->getFiles();
             $this->setTemplate('show');
         }
     }
 
     public function executeDownloadFile(sfWebRequest $request) {
-       
-        
         // TODO: validar acceso al archivo por parte del usuario
         $file = Doctrine::getTable('File')->find(array($request->getParameter('id')));
 
@@ -85,10 +86,10 @@ class pActions extends sfActions {
 
         $this->prepareDownload($file->getOriginalFilename(), $file->getSize(), $file->getContentType());
 
-        $this->getResponse()->setContent(@readfile( $filePath ));
+        $this->getResponse()->setContent(@readfile($filePath));
 
         flush();
-        
+
         return sfView::NONE;
     }
 
@@ -99,7 +100,7 @@ class pActions extends sfActions {
         sfConfig::set('sf_web_debug', false);
 
         // Enforce full download and prevent caching
-	session_cache_limiter('none');
+        session_cache_limiter('none');
 
         // set Http Headers
         $this->getResponse()->clearHttpHeaders();
