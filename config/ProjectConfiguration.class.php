@@ -14,5 +14,6 @@ class ProjectConfiguration extends sfProjectConfiguration
     $this->enablePlugins('fzBlameablePlugin');
     $this->enablePlugins('sfAdminThemejRollerPlugin');
     $this->enablePlugins('sfFormExtraPlugin');
+    $this->enablePlugins('sfThumbnailPlugin');
   }
 }
