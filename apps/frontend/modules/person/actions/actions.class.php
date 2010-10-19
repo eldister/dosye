@@ -8,7 +8,7 @@
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class pActions extends sfActions {
+class personActions extends sfActions {
 
     public function executeSearch(sfWebRequest $request) {
         $terms = explode(' ', $request->GetParameter('search_terms', ''));
@@ -67,7 +67,7 @@ class pActions extends sfActions {
 
         if ($this->fileForm->isValid()) {
             $this->fileForm->save();
-            $this->redirect('p/show?id=' . $request->getParameter('person_id') . '#files');
+            $this->redirect('person/show?id=' . $request->getParameter('person_id') . '#files');
         } else {
             $this->person = Doctrine::getTable('Person')->find(array($request->getParameter('person_id')));
             $this->files = $this->person->getFiles();
@@ -126,7 +126,7 @@ class pActions extends sfActions {
 
         $this->person->save();
 
-        $this->redirect('p/show?id=' . $request->getParameter('id'));
+        $this->redirect('person/show?id=' . $request->getParameter('id'));
     }
 
 
@@ -165,7 +165,7 @@ class pActions extends sfActions {
         $this->forward404Unless($person = Doctrine::getTable('Person')->find(array($request->getParameter('id'))), sprintf('Object person does not exist (%s).', $request->getParameter('id')));
         $person->delete();
 
-        $this->redirect('p/index');
+        $this->redirect('person/search');
     }
 
     protected function processForm(sfWebRequest $request, sfForm $form) {
@@ -173,7 +173,7 @@ class pActions extends sfActions {
         if ($form->isValid()) {
             $person = $form->save();
 
-            $this->redirect('p/edit?id=' . $person->getId());
+            $this->redirect('person/edit?id=' . $person->getId());
         }
     }
 

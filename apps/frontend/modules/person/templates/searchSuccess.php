@@ -18,8 +18,8 @@
                                     <?php endif; ?>
                                 </td>
                                 <td class="result_caption">Nombre:</td>
-                                <td class="result_data result_main_data"><a class="content_operation" href="<?php echo url_for('p/show?id='.$person->getId()) ?>"><?php echo $person->getFullName() ?></a></td>
-                                <td class="result_action"><a class="content_operation" href="<?php echo url_for('p/show?id='.$person->getId()) ?>"><?php echo image_tag('show.png') ?>Ver el expediente</a></td>
+                                <td class="result_data result_main_data"><a class="content_operation" href="<?php echo url_for('person/show?id='.$person->getId()) ?>"><?php echo $person->getFullName() ?></a></td>
+                                <td class="result_action"><a class="content_operation" href="<?php echo url_for('person/show?id='.$person->getId()) ?>"><?php echo image_tag('show.png') ?>Ver el expediente</a></td>
                             </tr>
                             <tr>
                                 <td class="result_caption">Identificaci&oacute;n:</td>

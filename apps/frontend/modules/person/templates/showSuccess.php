@@ -14,7 +14,7 @@
              <img src="<?php echo image_path('person.png'); ?>" class="photo" alt="foto" />
            <?php endif; ?>
             <ul>
-                <li><a class="content_operation" href="<?php echo url_for('p/edit?id=' . $person->getId()) ?>"><?php echo image_tag('edit.png') ?>Modificar</a></li>
+                <li><a class="content_operation" href="<?php echo url_for('person/edit?id=' . $person->getId()) ?>"><?php echo image_tag('edit.png') ?>Modificar</a></li>
             </ul>
         </div>
 
@@ -222,13 +222,13 @@
                                             case 'Public': echo 'P&uacute;blico'; break;
                                             case 'Protected': echo 'Protegido'; break;
                                         }?></div></td>
-                                        <td><a class="content_operation" href="<?php echo url_for('p/downloadFile?id='.$file->getId()) ?>"><?php echo image_tag('download.jpg') ?>Descargar</a></td>
+                                        <td><a class="content_operation" href="<?php echo url_for('person/downloadFile?id='.$file->getId()) ?>"><?php echo image_tag('download.jpg') ?>Descargar</a></td>
                                         <?php if($file->getType() == 'image' && $file->getCategory() == 'Public'): ?>
                                         <td>                                        
                                             <?php if($person->getPhotoImage() && $person->getPhotoImage()->getId() == $file->getId()): ?>
-                                            <input type="checkbox" onchange="javascript:window.location='<?php echo url_for("p/setProfileImage?id=".$person->getId()."&image=0")?>'"  checked="checked">Imagen del perfil</input>
+                                            <input type="checkbox" onchange="javascript:window.location='<?php echo url_for("person/setProfileImage?id=".$person->getId()."&image=0")?>'"  checked="checked">Imagen del perfil</input>
                                             <?php else: ?>
-                                            <input type="checkbox" onchange="javascript:window.location='<?php echo url_for("p/setProfileImage?id=".$person->getId()."&image=".$file->getId())?>'">Imagen del perfil</input>
+                                            <input type="checkbox" onchange="javascript:window.location='<?php echo url_for("person/setProfileImage?id=".$person->getId()."&image=".$file->getId())?>'">Imagen del perfil</input>
                                             <?php endif; ?>
                                         </td>
                                         <?php endif; ?>
@@ -239,7 +239,7 @@
                         </div> <!-- close .filedownload -->
                         <div class="fileupload">
                             <h4>Subir un nuevo archivo</h4>
-                            <?php echo form_tag_for($fileForm, 'p/uploadFile') ?>
+                            <?php echo form_tag_for($fileForm, 'person/uploadFile') ?>
                             <table>
                                 <tbody>
                                     <?php echo $fileForm['internal_filename']->renderRow(null, 'Archivo:') ?>

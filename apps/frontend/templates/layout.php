@@ -31,8 +31,8 @@
 		<li <?php if($rp['module'] == 'home') echo 'class="active"'; ?> >
 			<?php echo link_to('<span>Inicio</span>', 'home/view') ?>
 		</li>
-		<li <?php if($rp['module'] == 'p') echo 'class="active"'; ?> >
-			<?php echo link_to('<span>Personas</span>', 'p/search') ?>
+		<li <?php if($rp['module'] == 'person') echo 'class="active"'; ?> >
+			<?php echo link_to('<span>Personas</span>', 'person/search') ?>
 		</li>
 	    </ul>
 

@@ -3,7 +3,7 @@
 
 	<div id="content">
 	    <div class="wrap">
-		<form action="<?php echo url_for('p/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
+		<form action="<?php echo url_for('person/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
 		<?php if (!$form->getObject()->isNew()): ?>
 		<input type="hidden" name="sf_method" value="put" />
 		<?php endif; ?>
@@ -89,7 +89,7 @@
 
 		<div class="text-right">
 			<input type="submit" value="Guardar"/>
-			<a href="<?php if ($form->getObject()->isNew()) echo url_for('p/search'); else echo url_for('p/show?id='.$form->getObject()->getId()) ?>">Cancelar</a>
+			<a href="<?php if ($form->getObject()->isNew()) echo url_for('person/search'); else echo url_for('person/show?id='.$form->getObject()->getId()) ?>">Cancelar</a>
 		</div>
                 </form>
 
