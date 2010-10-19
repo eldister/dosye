@@ -35,6 +35,7 @@ Person:
     last_name:            { type: string(100), notnull: true }
     user_id:              integer
     photo_image_id:       integer
+    active:               { type: boolean, default: true }
     date_of_birth:        date
     cell_phone:           string(50)
     home_phone:           string(50)

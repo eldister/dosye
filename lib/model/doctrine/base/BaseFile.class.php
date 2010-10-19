@@ -105,7 +105,7 @@ abstract class BaseFile extends sfDoctrineRecord
         $this->setSubClasses(array(
              'Image' => 
              array(
-              'type' => 'Image',
+              'type' => 'image',
              ),
              ));
     }
