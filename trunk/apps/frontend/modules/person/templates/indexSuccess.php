@@ -12,7 +12,7 @@
   <tbody>
     <?php foreach ($persons as $person): ?>
     <tr>
-      <td><a href="<?php echo url_for('p/show?id='.$person->getId()) ?>"><?php echo $person->getInternalId() ?></a></td>
+      <td><a href="<?php echo url_for('person/show?id='.$person->getId()) ?>"><?php echo $person->getInternalId() ?></a></td>
       <td><?php echo $person->getFirstName() ?></td>
       <td><?php echo $person->getLastName() ?></td>
       <td><?php echo $person->getIdentification() ?></td>
@@ -21,4 +21,4 @@
   </tbody>
 </table>
 
-  <a href="<?php echo url_for('p/new') ?>">New</a>
+  <a href="<?php echo url_for('person/new') ?>">New</a>
