@@ -10,6 +10,7 @@
  * @property string $last_name
  * @property integer $user_id
  * @property integer $photo_image_id
+ * @property boolean $active
  * @property date $date_of_birth
  * @property string $cell_phone
  * @property string $home_phone
@@ -52,6 +53,7 @@
  * @method string              getLastName()             Returns the current record's "last_name" value
  * @method integer             getUserId()               Returns the current record's "user_id" value
  * @method integer             getPhotoImageId()         Returns the current record's "photo_image_id" value
+ * @method boolean             getActive()               Returns the current record's "active" value
  * @method date                getDateOfBirth()          Returns the current record's "date_of_birth" value
  * @method string              getCellPhone()            Returns the current record's "cell_phone" value
  * @method string              getHomePhone()            Returns the current record's "home_phone" value
@@ -93,6 +95,7 @@
  * @method Person              setLastName()             Sets the current record's "last_name" value
  * @method Person              setUserId()               Sets the current record's "user_id" value
  * @method Person              setPhotoImageId()         Sets the current record's "photo_image_id" value
+ * @method Person              setActive()               Sets the current record's "active" value
  * @method Person              setDateOfBirth()          Sets the current record's "date_of_birth" value
  * @method Person              setCellPhone()            Sets the current record's "cell_phone" value
  * @method Person              setHomePhone()            Sets the current record's "home_phone" value
@@ -161,6 +164,10 @@ abstract class BasePerson extends sfDoctrineRecord
              ));
         $this->hasColumn('photo_image_id', 'integer', null, array(
              'type' => 'integer',
+             ));
+        $this->hasColumn('active', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => true,
              ));
         $this->hasColumn('date_of_birth', 'date', null, array(
              'type' => 'date',
