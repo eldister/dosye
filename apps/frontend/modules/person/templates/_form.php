@@ -38,6 +38,8 @@
                                 <?php echo $form['gender']->renderRow(null, 'Sexo:') ?>
                                 <?php echo $form['identification']->renderRow(null, 'Identificaci&oacute;n:') ?>
                                 <?php echo $form['internal_id']->renderRow(null, 'Expediente:') ?>
+                                <?php echo $form['user_id']->renderRow(null, 'Usuario:') ?>
+                                <?php echo $form['active']->renderRow(null, 'Activo:') ?>
 			    </table>
 			</div>
 
