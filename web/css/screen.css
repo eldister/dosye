@@ -222,6 +222,10 @@ td.result_separator {
     margin-right: 3px;
 }
 
+#content_tabs{
+    margin-top: 5px;
+}
+
 span.filename {
 	display: block;
 	clear: left;
@@ -390,6 +394,17 @@ img.photo
 img.photo_thumb
 {
     max-width: 55px;
+}
+
+.return:before
+{
+    content:url(../images/back.png) " ";
+}
+
+.return
+{
+    color: green;
+    padding-bottom: 5px;
 }
 
 
