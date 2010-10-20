@@ -165,7 +165,7 @@ h3.content_title {
 
 .left_panel > ul {
     list-style-type: none;
-    margin:5px -30px;
+    margin:5px 0px 5px -30px;
 }
 
 .one_panel {

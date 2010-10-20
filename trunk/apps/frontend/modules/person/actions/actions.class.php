@@ -145,8 +145,9 @@ class personActions extends sfActions {
     }
 
     public function executeEdit(sfWebRequest $request) {
-        $this->forward404Unless($person = Doctrine::getTable('Person')->find(array($request->getParameter('id'))), sprintf('Object person does not exist (%s).', $request->getParameter('id')));
-        $this->form = new PersonForm($person);
+        $this->person = Doctrine::getTable('Person')->find(array($request->getParameter('id')));
+        $this->forward404Unless($this->person, sprintf('Object person does not exist (%s).', $request->getParameter('id')));
+        $this->form = new PersonForm($this->person);
     }
 
     public function executeUpdate(sfWebRequest $request) {

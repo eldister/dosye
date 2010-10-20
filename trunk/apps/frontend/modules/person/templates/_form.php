@@ -10,9 +10,18 @@
 
 		<?php echo $form['id']->render() ?>
 		<?php echo $form['_csrf_token']->render() ?>
+                <?php echo $form['photo_image_id']->render() ?>
 
 		<div class="left_panel">
-		    <?php echo image_tag('person.png', 'class=photo') ?>
+                   <?php if($person && $person->getPhotoImage() && $person->getPhotoImage()->getInternalFilename() != ''): ?>
+                     <img src="<?php echo File::getUserUploadUrl().$person->getPhotoImage()->getInternalFilename(); ?> " class="photo" alt="foto"/>
+                   <?php else: ?>
+                     <img src="<?php echo image_path('person.png'); ?>" class="photo" alt="foto" />
+                   <?php endif; ?>
+                     <div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; margin-right: 20px; padding: 0 .7em;">
+				<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+				La imagen se establece en la secci&oacute;n de archivos del expediente.</p>
+			</div>
 		</div>
 
 		<div class="right_panel">
