@@ -26,7 +26,7 @@
 
 		<div class="right_panel">
 		    <h3 class="content_title"><?php echo ($form->getObject()->isNew() ? 'Nueva persona' : $form->getObject()->getFullName().' ('.$form->getObject()->getInternalId().')') ?></h3>
-
+                    <div><a class="return" href="<?php if (!$form->getObject()->isNew()) echo url_for('person/show?id='.$form->getObject()->getId()) ?>" >Volver al expediente</a></div>
 		    <div id="content_tabs">
 			<script type="text/javascript">
 			$(function(){
