@@ -10,7 +10,6 @@ default:
     description:  Sistema de expediente electrónico del Programa de Educación Abierta Vida Abundante
     keywords:     PEA, expediente, estudiantes, voluntarios, educación
     language:     es
-    #robots:       index, follow
 
   stylesheets:    [screen.css]
 

@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <title>Expediente Electr&oacute;nico del PEA</title>
-        <link rel="stylesheet" href="css/screen.css" type="text/css" media="all" />
-	<?php include_http_metas() ?>
+        <?php include_http_metas() ?>
         <?php include_metas() ?>
         <?php include_title() ?>
         <link rel="shortcut icon" href="/favicon.ico" />
