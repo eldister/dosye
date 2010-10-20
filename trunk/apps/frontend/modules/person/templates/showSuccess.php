@@ -63,8 +63,14 @@
                                     <?php if ($person->getUser()): ?>
                                     <?php echo $person->getUser()->getUserName() ?>
                                     <?php endif; ?>
-                                    </td>
-                                </tr>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Activo:</th>
+                                <td><?php if ($person->getActive())
+                                            echo 'S&iacute;'; else
+                                            echo 'No'; ?></td>
+                            </tr>
                             </tbody>
                         </table>
                         <?php include_component('comment', 'list', array('object' => $person, 'i' => 0)) ?>
