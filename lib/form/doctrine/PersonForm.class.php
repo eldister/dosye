@@ -33,6 +33,9 @@ class PersonForm extends BasePersonForm {
                 $this['created_by'], $this['updated_by']
         );
 
+        // oculta el campo photo_image_id
+        $this->widgetSchema['photo_image_id'] = new sfWidgetFormInputHidden();
+
         // valida el email
         $this->validatorSchema['email'] = new sfValidatorAnd(array(
                     $this->validatorSchema['email'],
@@ -42,7 +45,7 @@ class PersonForm extends BasePersonForm {
         // configura los sexos
         $this->widgetSchema['gender'] = new sfWidgetFormChoice(array('choices' => array('M' => 'Masculino', 'F' => 'Femenino')));
 
-        // convierte los campos de texto que corresponda, a áreas de texto
+        // convierte el campo de la dirección a área de texto
         $this->widgetSchema['address_directions'] = new sfWidgetFormTextarea();
     }
 

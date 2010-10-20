@@ -14,7 +14,7 @@
              <img src="<?php echo image_path('person.png'); ?>" class="photo" alt="foto" />
            <?php endif; ?>
             <ul>
-                <li><a class="content_operation" href="<?php echo url_for('person/edit?id=' . $person->getId()) ?>"><?php echo image_tag('edit.png') ?>Modificar</a></li>
+                <li><a class="content_operation" href="<?php echo url_for('person/edit?id=' . $person->getId()) ?>"><?php echo image_tag('edit.png') ?>Modificar el expediente</a></li>
             </ul>
         </div>
 
