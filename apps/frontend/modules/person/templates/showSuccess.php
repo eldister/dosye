@@ -250,23 +250,30 @@
                                 <tbody>
                                     <?php echo $fileForm['internal_filename']->renderRow(null, 'Archivo:') ?>
                                     <?php echo $fileForm['description']->renderRow(null, 'Descripci&oacute;n:') ?>
-                                    <?php echo $fileForm['category']->renderRow(null, 'Categor&iacute;a:') ?>
-                                    
+                                     <tr>
+                                                 <th><label for="file_category">Categoría:</label></th>
+                                                 <td>
+                                                     <div class="internal_info">
+                                                         <input name="file[category]" type="radio" value="Internal" id="file_category_Internal">
+                                                         &nbsp;<label for="file_category_Internal">
+             				Interno: el archivo sólo será visible por los usuarios que cuentan con acceso administrativo.
+                                                         </label>
+                                                     </div>
+                                                     <div class="protected_info">
+                                                         <input name="file[category]" type="radio" value="Protected" id="file_category_Public">
+                                                         &nbsp;<label for="file_category_Public">
+             				Protegido: el archivo sólo será visible por el dueño del perfil y los usuarios con acceso administrativo o docente.
+                                                         </label>
+                                                     </div>
+                                                     <div class="public_info">
+                                                         <input name="file[category]" type="radio" value="Public" id="file_category_Protected">
+                                                         &nbsp;<label for="file_category_Protected">
+             				Público: el archivo será visible para todos los usuarios. Una imagen debe ser pública para establecerla como imagen del perfil.
+                                                         </label>
+                                                     </div>
+                                                 </td>
+                                             </tr>
 
-                                    <!--tr>
-                                        <th>Archivo:</th><td><input type="file" name="file" id="file" value="" /></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Descripci&oacute;n:</th><td><input type="text" name="description" id="description" value="" /></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Categor&iacute;a:</th>
-                                        <td>
-                                            <div class="internal_info"><input type="radio" name="file_category" value="internal">Interno: el archivo s&oacute;lo ser&aacute; visible por los usuarios que cuentan con acceso administrativo.</input></div>
-                                            <div class="protected_info"><input type="radio" name="file_category" value="protected">Protegido: el archivo s&oacute;lo ser&aacute; visible por el due&ntilde;o del perfil y los usuarios con acceso administrativo o docente.</input></div>
-                                            <div class="public_info"><input type="radio" name="file_category" value="public">P&uacute;blico: el archivo ser&aacute; visible para todos los usuarios. Una imagen debe ser p&uacute;blica para establecerla como imagen del perfil.</input></div>
-                                        </td>
-                                    </tr-->
                                 </tbody>
                             </table>
                             <?php echo $fileForm['_csrf_token']->render() ?>
