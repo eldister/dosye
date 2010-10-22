@@ -1,3 +1,41 @@
+sfGuardPermission:
+  Permission_backend:
+    name:           backend
+    description:    Acceso al backend de la aplicación para administrar usuarios, grupos, comentarios y reportes de comentarios.
+  Permission_internal_others:
+    name:           internal_others
+    description:    Acceso a la información interna de expedientes de otras personas.
+  Permission_internal_self:
+    name:           internal_self
+    description:    Acceso a la información interna de su propio expediente.
+  Permission_protected_others:
+    name:           protected_others
+    description:    Acceso a la información protegida de expedientes de otras personas.
+  Permission_protected_self:
+    name:           protected_self
+    description:    Acceso a la información protegida de su propio expediente.
+  Permission_set_user:
+    name:           set_user
+    description:    Puede relacionar un usuario con su expediente.
+  
+sfGuardGroup:
+  Group_students:
+    name:           students
+    description:    Acceso estudiantil
+    Permissions:    [Permission_protected_self]
+  Group_professors:
+    name:           professors
+    description:    Acceso académico
+    Permissions:    [Permission_protected_self, Permission_protected_others]
+  Group_admin:
+    name:           administrators
+    description:    Acceso administrativo
+    Permissions:    [Permission_protected_self,Permission_protected_others,Permission_internal_self,Permission_internal_others,Permission_set_user]
+  Group_sysadmin:
+    name:           system_administrators
+    description:    Administración del sistema
+    Permissions:    [Permission_protected_self, Permission_protected_others,Permission_internal_self,Permission_internal_others,Permission_set_user,Permission_backend]
+
 sfGuardUser:
   User_admin:
     first_name:     Administrator
@@ -6,23 +44,39 @@ sfGuardUser:
     username:       admin
     password:       admin
     is_super_admin: true
+    Groups:         [Group_sysadmin]
+  User_egarcia:
+    first_name:     Elvira
+    last_name:      García
+    email_address:  info@educacionabierta.org
+    username:       egarcia
+    password:       1234
+    is_super_admin: false
+    Groups:         [Group_sysadmin]
+  User_vvillalta:
+    first_name:     Vivian
+    last_name:      Villalta Chavarría
+    email_address:  vivivilla@gmail.com
+    username:       vvillalta
+    password:       1234
+    is_super_admin: false
     Groups:         [Group_admin]
-  User_ealvarado:
-    first_name:     Esteban
-    last_name:      Alvarado
-    email_address:  teban1812@gmail.com
-    username:       ealvarado
-    password:       123456
-    is_super_admin: true
-    Groups:         [Group_admin]
+  User_abolanos:
+    first_name:     Alfonso
+    last_name:      Bolaños Obando
+    email_address:  abolanos@disarsa.com
+    username:       abolanos
+    password:       1234
+    is_super_admin: false
+    Groups:         [Group_professors]
+  User_aserrano:
+    first_name:     Alexis
+    last_name:      Serrano Rodríguez
+    email_address:  alexis123@gmail.com
+    username:       aserrano
+    password:       1234
+    is_super_admin: false
+    Groups:         [Group_students]
 
-sfGuardGroup:
-  Group_admin:
-    name:           admin
-    description:    Administrator group
-    Permissions:    [Permission_admin]
 
-sfGuardPermission:
-  Permission_admin:
-    name:           admin
-    description:    Administrator permission
+
