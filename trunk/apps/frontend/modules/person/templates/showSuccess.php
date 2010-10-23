@@ -217,7 +217,7 @@
                                     <tr>
                                         <td><?php echo $file->getDescription() ?><span class="filename"><?php echo $file->getOriginalFilename() ?></span></td>
                                         <td><?php echo format_date($file->getCreatedAt(), 'dd/MM/yyyy HH:mm') ?></td>
-                                        <td><?php echo $file->getCreatedBy() ?></td>
+                                        <td><?php echo $file->getCreatedBy()->getName() ?></td>
                                         <td><div class="<?php switch($file->getCategory()) {
                                             case 'Internal': echo 'internal_info';break;
                                             case 'Public': echo 'public_info'; break;
