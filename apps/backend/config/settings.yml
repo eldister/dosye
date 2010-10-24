@@ -24,8 +24,6 @@ test:
 
 all:
   .settings:
-    default_culture: es_CR
-    i18n: on
     # Form security secret (CSRF protection)
     csrf_secret:            6287bd3469f25976f124c2481a1fbfb92cae9f08
 
@@ -36,12 +34,13 @@ all:
     # Enable the database manager
     use_database:           true
 
-    enabled_modules:         [default, sfGuardGroup, sfGuardUser, sfGuardPermission, sfGuardAuth, commentAdmin, commentReportAdmin]
+    enabled_modules:        [default, sfGuardGroup, sfGuardUser, sfGuardPermission, sfGuardAuth, commentAdmin, commentReportAdmin]
     
     login_module:           sfGuardAuth
     login_action:           signin
     secure_module:          sfGuardAuth
     secure_action:          secure
     
-    default_culture:        es
+    default_culture:        es_CR
     i18n:                   true
+    charset:                utf-8

@@ -5,233 +5,233 @@
     <header />
     <body>
       <!-- Actions -->
-      <trans-unit>
+      <trans-unit id="1">
         <source>New</source>
         <target>Nuevo</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="2">
         <source>Edit</source>
         <target>Editar</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="3">
         <source>Delete</source>
         <target>Borrar</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="4">
         <source>List</source>
         <target>Listado</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="5">
         <source>Save</source>
         <target>Guardar</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="6">
         <source>Save and add</source>
         <target>Guardar y crear otro</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="7">
         <source>Cancel</source>
         <target>Cancelar</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="8">
         <source>Choose an action</source>
         <target>Selecciona una acción</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="9">
         <source>go</source>
         <target>ok</target>
       </trans-unit>
 
       <!-- Filters -->
-      <trans-unit>
+      <trans-unit id="10">
         <source>Reset</source>
         <target>Restablecer</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="11">
         <source>Filter</source>
         <target>Filtrar</target>
       </trans-unit>
 
       <!-- List -->
-      <trans-unit>
+      <trans-unit id="12">
         <source>No result</source>
         <target>Sin resultados</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="13">
         <source>Actions</source>
         <target>Acciones</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="14">
         <source>(page %%page%%/%%nb_pages%%)</source>
         <target>(página %%page%%/%%nb_pages%%)</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="15">
         <source>asc</source>
         <target>asc</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="16">
         <source>desc</source>
         <target>desc</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="17">
         <source>[0] no result|[1] 1 result|(1,+Inf] %1% results</source>
         <target>[0] sin resultados|[1] 1 resultado|(1,+Inf] %1% resultados</target>
       </trans-unit>
 
       <!-- Pagination -->
-      <trans-unit>
+      <trans-unit id="18">
         <source>First page</source>
         <target>Primera página</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="19">
         <source>Previous page</source>
         <target>Página anterior</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="20">
         <source>Next page</source>
         <target>Página siguiente</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="21">
         <source>Last page</source>
         <target>Última página</target>
       </trans-unit>
 
       <!-- Form -->
-      <trans-unit>
+      <trans-unit id="22">
         <source>The item was created successfully.</source>
         <target>El elemento se ha creado correctamente.</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="23">
         <source>The item was updated successfully.</source>
         <target>El elemento se ha actualizado correctamente.</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="24">
         <source>The item was created successfully. You can add another one below.</source>
         <target>El elemento se ha creado correctamente y ahora puedes crear otro elemento.</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="25">
         <source>The item was updated successfully. You can add another one below.</source>
         <target>El elemento se ha actualizado correctamente y ahora puedes crear otro elemento.</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="26">
         <source>The item has not been saved due to some errors.</source>
         <target>El elemento no se ha guardado porque se ha producido algún error.</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="27">
         <source>The item was deleted successfully.</source>
         <target>El elemento se ha borrado correctamente.</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="28">
         <source>You must at least select one item.</source>
         <target>Debes seleccionar al menos un elemento.</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="29">
         <source>You must select an action to execute on the selected items.</source>
         <target>Selecciona la acción que quieres ejecutar sobre los elementos seleccionados.</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="30">
         <source>A problem occurs when deleting the selected items as some items do not exist anymore.</source>
         <target>Se ha producido un error al borrar los elementos seleccionados porque al menos uno de ellos ya no existe.</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="31">
         <source>The selected items have been deleted successfully.</source>
         <target>Los elementos seleccionados se han borrado correctamente.</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="32">
         <source>A problem occurs when deleting the selected items.</source>
         <target>Se ha producido un error al borrar los elementos seleccionados.</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="33">
         <source>is empty</source>
         <target>vacío</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="34">
         <source>yes or no</source>
         <target>si o no</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="35">
         <source>yes</source>
         <target>si</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="36">
         <source>no</source>
         <target>no</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="37">
         <source><![CDATA[from %from_date% to %to_date%]]></source>
         <target><![CDATA[de %from_date% a %to_date%]]></target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="38">
         <source><![CDATA[from %from_date%<br />to %to_date%]]></source>
         <target><![CDATA[de %from_date%<br />a %to_date%]]></target>
       </trans-unit>
 <!-- commentAdmin module -->
-      <trans-unit>
+      <trans-unit id="39">
         <source>Your comment has been removed</source>
         <target>Su anotación ha sido borrada</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="40">
         <source>The item was restored successfully.</source>
         <target>El objeto ha sido restaurado exitosamente.</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="41">
         <source>The selected items have been restored successfully.</source>
         <target>Los objetos seleccionados han sido restaurados exitosamente.</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="42">
         <source>There is no email adress configure for the moderation team. Please contact the administrator.</source>
         <target>No hay direcciones de correo electrónico configuradas para el equipo de moderación. Por favor, contacte al administrador..</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="43">
         <source>Restore</source>
         <target>Restaurar</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="44">
         <source>Reply</source>
         <target>Responder</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="45">
         <source>Save and Delete</source>
         <target>Guardar y Borrar</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="46">
         <source>Save and Restore</source>
         <target>Guardar y Restaurar</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="47">
         <source>Reply message</source>
         <target>Mensaje inicial</target>
       </trans-unit>
       <!-- commentReportAdmin module -->
-      <trans-unit>
+      <trans-unit id="48">
         <source>You can't add new report.</source>
         <target>No se puede agregar el nuevo reporte.</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="49">
         <source>You can't edit report.</source>
         <target>No se puede modificar el reporte.</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="50">
         <source>Report validated</source>
         <target>Reporte validado</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="51">
         <source>Report invalidated</source>
         <target>Reporte invalidado</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="52">
         <source>Comment removed and report validated.</source>
         <target>La anotación fue borrada y el reporte fue validado.</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="53">
         <source>valid</source>
         <target>válido</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="54">
         <source>invalid</source>
         <target>inválido</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="55">
         <source>untreated</source>
         <target>no atendido</target>
       </trans-unit>
