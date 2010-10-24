@@ -17,6 +17,12 @@ sfGuardPermission:
   Permission_set_user:
     name:           set_user
     description:    Puede relacionar un usuario con su expediente.
+  Permission_edit_self:
+    name:           edit_self
+    description:    Puede editar su propia información del expediente.
+  Permission_edit_others:
+    name:           edit_others
+    description:    Puede editar la información del expediente de otras personas.
   
 sfGuardGroup:
   Group_students:
@@ -26,15 +32,15 @@ sfGuardGroup:
   Group_professors:
     name:           professors
     description:    Acceso académico
-    Permissions:    [Permission_protected_self, Permission_protected_others]
+    Permissions:    [Permission_protected_self, Permission_protected_others, Permission_edit_self]
   Group_admin:
     name:           administrators
     description:    Acceso administrativo
-    Permissions:    [Permission_protected_self,Permission_protected_others,Permission_internal_self,Permission_internal_others,Permission_set_user]
+    Permissions:    [Permission_protected_self, Permission_protected_others, Permission_internal_self, Permission_internal_others, Permission_set_user, Permission_edit_self, Permission_edit_others]
   Group_sysadmin:
     name:           system_administrators
     description:    Administración del sistema
-    Permissions:    [Permission_protected_self, Permission_protected_others,Permission_internal_self,Permission_internal_others,Permission_set_user,Permission_backend]
+    Permissions:    [Permission_protected_self, Permission_protected_others, Permission_internal_self, Permission_internal_others, Permission_set_user, Permission_edit_self, Permission_edit_others, Permission_backend]
 
 sfGuardUser:
   User_admin:
