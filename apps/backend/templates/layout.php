@@ -26,10 +26,10 @@
             <?php echo link_to('Grupos', 'guard/groups') ?>
           </li>
             <li>
-            <?php echo link_to('Comentarios', '@commentAdmin') ?>
+            <?php echo link_to('Anotaciones', '@commentAdmin') ?>
           </li>
             <li>
-            <?php echo link_to('Reportes sobre Comentarios', '@commentReportAdmin') ?>
+            <?php echo link_to('Reportes sobre Anotaciones', '@commentReportAdmin') ?>
           </li>
         <li>
             <?php echo link_to('Salir', '@sf_guard_signout') ?>
