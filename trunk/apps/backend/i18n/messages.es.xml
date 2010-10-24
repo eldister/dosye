@@ -4,55 +4,55 @@
   <file original="global" source-language="en" datatype="plaintext">
     <header/>
     <body>
-      <trans-unit id="11">
+      <trans-unit>
         <source>Author</source>
         <target>Autor</target>
-      </trans-unit id="12">
+      </trans-unit>
       <trans-unit>
         <source>Body</source>
         <target>Mensaje</target>
-      </trans-unit id="13">
+      </trans-unit>
       <trans-unit>
         <source>Edition</source>
         <target>Edición</target>
       </trans-unit>
-      <trans-unit id="1">
+      <trans-unit>
         <source>Group list</source>
         <target>Lista de grupos</target>
       </trans-unit>
-      <trans-unit id="2">
+      <trans-unit>
         <source>Editing Group "%%name%%"</source>
         <target>Modificando el grupo "%%name%%"</target>
       </trans-unit>
-      <trans-unit id="3">
+      <trans-unit>
         <source>New Group</source>
         <target>Nuevo grupo</target>
       </trans-unit>
-      <trans-unit id="4">
+      <trans-unit>
         <source>Permission list</source>
         <target>Lista de permisos</target>
       </trans-unit>
-      <trans-unit id="5">
+      <trans-unit>
         <source>Editing Permission "%%name%%"</source>
         <target>Modificando el permiso "%%name%%"</target>
       </trans-unit>
-      <trans-unit id="6">
+      <trans-unit>
         <source>New Permission</source>
         <target>Nuevo permiso</target>
       </trans-unit>
-      <trans-unit id="7">
+      <trans-unit>
         <source>User list</source>
         <target>Lista de usuarios</target>
       </trans-unit>
-      <trans-unit id="8">
+      <trans-unit>
         <source>Editing User "%%username%%"</source>
         <target>Modificando al usuario "%%username%%"</target>
       </trans-unit>
-      <trans-unit id="9">
+      <trans-unit>
         <source>New User</source>
         <target>Nuevo usuario</target>
       </trans-unit>
-      <trans-unit id="10">
+      <trans-unit>
         <source>Password (again)</source>
         <target>Password (otra vez)</target>
       </trans-unit>
