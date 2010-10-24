@@ -25,6 +25,7 @@ test:
 all:
   .settings:
     default_culture: es_CR
+    i18n: on
     # Form security secret (CSRF protection)
     csrf_secret:            25ee5d7dfbb458fab379e296c02613c32ac25ab3
 
