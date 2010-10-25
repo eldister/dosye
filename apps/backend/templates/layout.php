@@ -17,6 +17,14 @@
         </h1>
       </div>
 
+      <?php if ($sf_user->isAuthenticated()): ?>
+      <div class="you">
+        <ul class="logged_in">
+            <li><?php echo $sf_user->getName() ?></li>
+            <li><?php echo link_to('salir &raquo;', '@sf_guard_signout') ?></li>
+        </ul>
+      </div><!-- close .you -->
+               
       <div id="menu">
         <ul>
           <li>
@@ -31,10 +39,9 @@
             <li>
             <?php echo link_to('Reportes sobre Anotaciones', '@commentReportAdmin') ?>
           </li>
-        <li>
-            <?php echo link_to('Salir', '@sf_guard_signout') ?>
-          </li></ul>
+        </ul>
       </div>
+      <?php endif; ?>
 
       <div id="content">
         <?php echo $sf_content ?>

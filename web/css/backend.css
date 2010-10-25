@@ -322,3 +322,30 @@ em
   color: #fff;
 }
 
+.you {
+    text-align: right;
+    float: right;
+}
+
+.you ul.not_logged_in {
+    margin-top: 60px;
+}
+
+.you ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+.you ul.not_logged_in li a {
+    font-size: 18px;
+}
+
+div#login {
+    width: 375px;
+    margin: auto;
+}
+
+.you ul.logged_in {
+    margin-top: 10px;
+}
+
