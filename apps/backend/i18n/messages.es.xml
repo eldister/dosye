@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
 <xliff version="1.0">
-  <file original="global" source-language="en" datatype="plaintext">
+  <file original="global" source-language="en" datatype="plaintext" date="2010-10-25T05:50:45Z">
     <header/>
     <body>
       <trans-unit>
@@ -55,6 +55,54 @@
       <trans-unit>
         <source>Password (again)</source>
         <target>Password (otra vez)</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Comments list</source>
+        <target>Lista de anotaciones</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Edit comment</source>
+        <target>Modificar anotación</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Reply to comment</source>
+        <target>Responder a la anotación</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Deleted</source>
+        <target>Borrada</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Model</source>
+        <target>Modelo</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Record</source>
+        <target>Registro</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Posted the</source>
+        <target>Publicada el</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Reason</source>
+        <target>Motivo</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Comment's Reports list</source>
+        <target>Lista de reportes de anotaciones</target>
+      </trans-unit>
+      <trans-unit>
+        <source>State</source>
+        <target>Estado</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Send the</source>
+        <target>Enviado el</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Link</source>
+        <target>Vínculo</target>
       </trans-unit>
     </body>
   </file>
