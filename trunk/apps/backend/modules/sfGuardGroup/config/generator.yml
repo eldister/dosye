@@ -2,13 +2,14 @@ generator:
   class: sfDoctrineGenerator
   param:
     model_class:           sfGuardGroup
-    theme:                 jroller
+    theme:                 laigu
     non_verbose_templates: true
     with_show:             false
     singular:              ~
     plural:                ~
     route_prefix:          sf_guard_group
     with_doctrine_route:   true
+
 
     config:
       list:
@@ -23,3 +24,6 @@ generator:
 
       new:
         title: New Group
+
+      filter:
+        params: { collapsed: true }

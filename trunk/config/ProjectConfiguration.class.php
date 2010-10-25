@@ -15,5 +15,6 @@ class ProjectConfiguration extends sfProjectConfiguration
     $this->enablePlugins('sfAdminThemejRollerPlugin');
     $this->enablePlugins('sfFormExtraPlugin');
     $this->enablePlugins('sfThumbnailPlugin');
+    $this->enablePlugins('laiguAdminThemePlugin');
   }
 }

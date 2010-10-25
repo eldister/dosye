@@ -2,7 +2,7 @@ generator:
   class: sfDoctrineGenerator
   param:
     model_class:           Comment
-    theme:                 jroller
+    theme:                 laigu
     non_verbose_templates: true
     with_show:             false
     singular:              ~
