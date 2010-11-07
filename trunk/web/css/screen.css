@@ -38,10 +38,11 @@ table {
     margin: 10px 3px;
 }
 
-h4, table caption {
-	font-size: 120%;
-        text-align: left;
-        font-weight: bold;
+h4, table caption, #anotaciones h1, #anotaciones legend {
+    font-style: italic;
+    font-size: 120%;
+    text-align: left;
+    font-weight: bold;
 }
 
 /* Clases generales */

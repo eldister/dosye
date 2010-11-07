@@ -40,7 +40,8 @@ class FileForm extends BaseFileForm {
             'category'          => new sfValidatorChoice(array('choices' => array(0 => 'Internal', 1 => 'Public', 2 => 'Protected'), 'required' => true)),
             'internal_filename' => new sfValidatorFile(array(
                 'path'     => sfConfig::get('sf_upload_dir').'/user',
-                'required' => true))
+                'required' => true,
+                'max_size' => 10485760)) // 10MB
         ));
     }
 
