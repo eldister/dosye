@@ -73,8 +73,10 @@
                             </tr>
                             </tbody>
                         </table>
-                        <?php include_component('comment', 'list', array('object' => $person, 'i' => 0)) ?>
-                        <?php include_component('comment', 'formComment', array('object' => $person)) ?>
+                        <div id="anotaciones">
+                            <?php include_component('comment', 'list', array('object' => $person, 'i' => 0)) ?>
+                            <?php include_component('comment', 'formComment', array('object' => $person)) ?>
+                        </div>
                     </div><!-- close #profile -->
 
                     <div id="personalinfo">
@@ -248,7 +250,7 @@
                             <?php echo form_tag_for($fileForm, 'person/uploadFile') ?>
                             <table>
                                 <tbody>
-                                    <?php echo $fileForm['internal_filename']->renderRow(null, 'Archivo:') ?>
+                                    <?php echo $fileForm['internal_filename']->renderRow(array('style' => 'width:100%'), 'Archivo:') ?>
                                     <?php echo $fileForm['description']->renderRow(null, 'Descripci&oacute;n:') ?>
                                      <tr>
                                                  <th><label for="file_category">Categoría:</label></th>
