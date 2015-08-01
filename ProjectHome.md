@@ -1,0 +1,4 @@
+Este es un sistema para los voluntarios del PEA Vida Abundante (http://www.educacionabierta.org), quienes requieren mejorar sus canales de comunicación y gestionar la información de los expedientes de manera centralizada y accesible desde cualquier lugar.
+El Sistema de Expediente Electrónico del PEA es un sistema colaborativo de gestión de la información al estilo de una red social que les ayudará a eliminar el uso de expedientes de papel y a diferencia del sistema de expedientes que actualmente llevan en papel, nuestro producto les permitirá tener acceso a la información a través del Internet, les facilitará la comunicación por correo electrónico y les ayudará a reducir el uso de papel en sus procesos administrativos.
+
+Dosye significa "expediente" en criollo haitiano y en azerí, y también son las siglas de "DOcumental SYstem for Education".
